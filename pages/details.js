@@ -1,7 +1,7 @@
 import DetailsList from "../components/SearchPage/DetailsList/DetailsList";
 
-export default function DetailsPage() {
+export default function DetailsPage( { cocktails } ) {
     return(
-        <DetailsList />
+        <DetailsList cocktails={cocktails}/>
     )
 }

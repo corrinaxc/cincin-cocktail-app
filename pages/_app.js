@@ -41,5 +41,6 @@ export default function App({ Component, pageProps }) {
 
   return <Component {...pageProps}
   // cocktail={cocktails}
-  handleInputChange={handleInputChange} />;
+  handleInputChange={handleInputChange}
+  cocktails={cocktails} />;
 }
