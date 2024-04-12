@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 export default function HomePageForm({ handleInputChange }) {
 
 const router = useRouter(); 
+const { query } = router;
 
 function handleSubmit(e) {
     e.preventDefault();
@@ -13,7 +14,10 @@ function handleSubmit(e) {
     const searchQuery = e.target.cocktailInput.value;
     console.log(searchQuery);
     handleInputChange(searchQuery);
-    router.push(`/details`);
+    router.push({
+        pathname: `${searchQuery}`, 
+        query: { searchQuery } 
+      });
 
 
     // const url = APIurl + `?${urlSpecifierStorage}&page=${pageNumber}`;

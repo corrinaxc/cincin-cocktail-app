@@ -46,3 +46,7 @@ button {
 h1{
   text-align: center;
 }
+
+img {
+  border-radius: 5px;
+}

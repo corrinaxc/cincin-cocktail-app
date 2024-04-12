@@ -1,7 +1,8 @@
-import DetailsList from "../components/SearchPage/DetailsList/DetailsList";
+// import Link from
+import CocktailCard from "@/components/CocktailCard/CocktailCard"
 
-export default function DetailsPage( { cocktails } ) {
+export default function CocktailDetails( {cocktails} ) {
     return(
-        <DetailsList cocktails={cocktails}/>
+        <CocktailCard cocktails = {cocktails} />
     )
 }
