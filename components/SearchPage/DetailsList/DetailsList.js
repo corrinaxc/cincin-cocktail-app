@@ -5,7 +5,7 @@ export default function DetailsList() {
         <div>
             <ul>
                 <li>Name, Ingredients will go here
-                    <img>image will go here</img>
+                    <img />
                 </li>
             </ul>
         </div>
