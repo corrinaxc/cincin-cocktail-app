@@ -1,6 +1,6 @@
 
 
-export default function DetailsList() {
+export default function DetailsList(cocktails) {
     return (
         <div>
             <ul>

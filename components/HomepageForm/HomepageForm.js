@@ -1,6 +1,15 @@
 
 
 export default function HomePageForm() {
+
+function handleSubmit() {
+    e.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    const searchQuery = data.query;
+
+
+}
     return (
         <form className="flex flex-col bg-white gap-2.5">
         <label htmlFor="cocktailInput" className="text-black">What is your tipple of choice?</label>
