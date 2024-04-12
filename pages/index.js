@@ -5,11 +5,11 @@ import Nav from "@/components/Nav/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home( {handleInputChange} ) {
   return (
     <>
     <Banner />
-    <HomePageForm />
+    <HomePageForm handleInputChange={handleInputChange} />
     <Nav />
     </>
   );

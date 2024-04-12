@@ -1,18 +1,26 @@
 import "@/styles/globals.css";
 import useSWR from "swr";
+import { useState } from "react";
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
 
-  const {
+  const [input, setInput] = useState("");
+  const searchQuery = input ? `s=${input}` : "";
+  const searchURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?${searchQuery}`;
+
+  const { 
     data: cocktails,
     error,
-    isLoading,
-  } = useSWR(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`, fetcher);
-  if (error) return <div>Failed to Load</div>;
-  if (isLoading) return <div>loading...</div>
-  console.log(cocktails);
+    isValidating } = useSWR(searchURL, fetcher);
+
+  const handleInputChange = (query) => {
+    setInput(query);}
+
+    console.log(cocktails);
+  
+  // console.log(cocktails);
 
   // cocktails.forEach((cocktail) => {
   //   const newCocktail = [
@@ -32,5 +40,6 @@ export default function App({ Component, pageProps }) {
   // })
 
   return <Component {...pageProps}
-  cocktail={cocktails} />;
+  // cocktail={cocktails}
+  handleInputChange={handleInputChange} />;
 }
