@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary: 253, 137, 147
+ /* --background-start-rgb: 214, 219, 220;
+ --background-end-rgb: 255, 255, 255; */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,17 +17,32 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: black;
+  background: rgb(var(--primary));
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+form {
+  width: 80%;
+  padding: 20px;
+  border-radius: 5px;
+  margin:3px;
+}
+
+button {
+  width: 100px;;
+  align-self: center;
+  border-radius: 5px;
+}
+
+h1{
+  text-align: center;
 }
