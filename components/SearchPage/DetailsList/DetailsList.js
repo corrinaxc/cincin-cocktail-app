@@ -1,4 +1,5 @@
 import Searchbar from "../Searchbar/SearchBar";
+import Link from  'next/link';
 
 export default function DetailsList({ cocktails }) {
   if (!cocktails) {
@@ -12,7 +13,7 @@ export default function DetailsList({ cocktails }) {
       {cocktails?.map((cocktail) => (
         <div key={cocktail.idDrink}>
           <h2>{cocktail.strDrink}</h2>
-          <img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+          <Link><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} /></Link>
         </div>
       ))}
     </>
