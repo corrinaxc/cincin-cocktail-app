@@ -13,12 +13,11 @@ export default function DetailsList({ cocktails }) {
       {cocktails?.map((cocktail) => (
         <div key={cocktail.idDrink}>
           <h2>{cocktail.strDrink}</h2>
-         <img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+         <Link href={`/cocktails/${cocktail.strDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+         </Link>
         </div>
       ))}
     </>
     </>
   );
 }
-
-// href={`/art-pieces/${piece.slug}

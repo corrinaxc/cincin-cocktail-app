@@ -1,20 +1,21 @@
-// import Link
 
-export default function CocktailCard( { cocktails } ) {
+export default function CocktailCard( {
+    name,
+    method
+}) {
+
     return (
         <>
-        <div>
-            {/* <Link> */}
-            <button>Back</button>
-            {/* </Link> */}
-            <button>Add to Favourites</button>
-            <img />
-        </div>
-        <h2>Cocktail Name</h2>
+        {/* <Link> */}
+        <button>Back</button>
+        {/* </Link> */}
+        <button>Add to Favourites</button>
+        <img />
+        <h2>{name}</h2>
         <ul>
-            <li>Ingredient</li>
+        <li>Ingredient</li>
         </ul>
-        <p>Method</p>
+        <p>{method}</p>
         </>
-    )
+)
 }
