@@ -1,4 +1,4 @@
-import Searchbar from "../Searchbar/SearchBar";
+import Searchbar from "../Searchbar/SearchBar.js";
 import Link from  'next/link';
 
 export default function DetailsList({ cocktails }) {
