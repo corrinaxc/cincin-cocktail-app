@@ -13,7 +13,7 @@ export default function DetailsList({ cocktails }) {
       {cocktails?.map((cocktail) => (
         <div key={cocktail.idDrink}>
           <h2>{cocktail.strDrink}</h2>
-          <Link><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} /></Link>
+         <img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
         </div>
       ))}
     </>
@@ -21,18 +21,4 @@ export default function DetailsList({ cocktails }) {
   );
 }
 
-{/* {books.map((book) => (
-  <div key={book.id}>
-    <img src={book.volumeInfo.imageLinks?.smallThumbnail}></img>
-    <h4>{book.volumeInfo.title}</h4>
-    <p>{book.volumeInfo.authors}</p>
-  </div>
-))}
-</>
-);
-} */}
-
-{/* <div className="colorDiv">
-{colors?.map((color, index) => (
-  <Div key={index} color={color}></Div>
-))}</div> */}
+// href={`/art-pieces/${piece.slug}

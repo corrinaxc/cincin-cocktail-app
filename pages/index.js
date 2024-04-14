@@ -10,7 +10,6 @@ export default function Home( {handleInputChange} ) {
     <>
     <Banner />
     <HomePageForm handleInputChange={handleInputChange} />
-    <Nav />
     </>
   );
 }
