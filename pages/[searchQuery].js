@@ -1,4 +1,4 @@
-import DetailsList from "../components/SearchPage/DetailsList/DetailsList";
+import DetailsList from "../components/DetailsList/DetailsList";
 
 export default function DetailsPage( { cocktails, cocktailSearch } ) {
     return(
