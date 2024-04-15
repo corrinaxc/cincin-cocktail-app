@@ -16,17 +16,24 @@ export default function CocktailCard( {
     
     return (
         <>
-        <button onClick={handleBackButtonClick}>Back</button>
+        <div className="cocktailCard">
+        <div className="mb-8 rounded-md display: flex flex-col">
+        <button onClick={handleBackButtonClick} className="ml-2">Back</button>
         {/* </Link> */}
-        <button>Add to Favourites</button>
+        <button className="mr-2">❤️</button>
+        <br></br>
         <img src={image}/>
+        </div>
+        <div className="bg-white rounded-md display: flex flex-col gap-6">
         <h1>{name}</h1>
         <ul>
             {ingredients?.map((ingredient) => (
-            <li>{ingredient.measure} {ingredient.ingredient}</li>
+            <li className="underline">{ingredient.measure} {ingredient.ingredient}</li>
              ))}
         </ul>
         <p className="italic">{method}</p>
+        </div>
+        </div>
         </>
 )
 }
