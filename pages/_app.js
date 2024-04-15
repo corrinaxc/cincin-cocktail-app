@@ -27,9 +27,8 @@ export default function App({ Component, pageProps }) {
   };
 
   const handleIngredientChange = (query) => {
-    setInput(query);
-    setIsIngredientSearch(true)
-    console.log("isIngredientSearch,", true)
+    setSearchQueryIngredient(query); 
+    setIsIngredientSearch(true);
   };
 
   useEffect(() => {
