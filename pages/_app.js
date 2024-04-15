@@ -1,14 +1,16 @@
 import "@/styles/globals.css";
 import useSWR from "swr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Nav from "@/components/Nav/Nav";
+
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
 export default function App({ Component, pageProps }) {
   const [input, setInput] = useState("");
+  const [searchQuery, setSearchQuery] = useState("")
 
-  const searchQuery = input ? `s=${input}` : "";
+  // const searchQuery = input ? `s=${input}` : "";
   const searchURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?${searchQuery}`;
 
   const { data, error } = useSWR(searchURL, fetcher);
@@ -19,6 +21,10 @@ export default function App({ Component, pageProps }) {
   };
 
   const cocktails = data ? data.drinks : null; // Ensure cocktails is null if data is not loaded
+
+  useEffect(() => {
+    setSearchQuery(input ? `s=${input}` : "");
+  }, [input]);
 
   // if (error) return <div>Failed to Load</div>;
   // if (isLoading) return <div>Loading...</div>;

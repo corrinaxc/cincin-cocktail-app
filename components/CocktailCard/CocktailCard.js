@@ -1,16 +1,18 @@
-
+import Link from "next/link"
 export default function CocktailCard( {
     name,
-    method
+    method,
+    image
 }) {
 
     return (
         <>
-        {/* <Link> */}
+        <Link href="/[searchQuery]">
         <button>Back</button>
+        </Link>
         {/* </Link> */}
         <button>Add to Favourites</button>
-        <img />
+        <img src={image}/>
         <h2>{name}</h2>
         <ul>
         <li>Ingredient</li>
@@ -19,3 +21,7 @@ export default function CocktailCard( {
         </>
 )
 }
+
+{/* <Link className="backButton" href="/art-pieces">
+<button className="backButton" >⭠</button>
+</Link> */}

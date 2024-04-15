@@ -29,6 +29,7 @@ export default function IndividualCocktailPage( {cocktails} ) {
         <CocktailCard 
         name = {selectedCocktail.strDrink}
         method = {selectedCocktail.strInstructions}
+        image = {selectedCocktail.strDrinkThumb}
         />
     )
 }
