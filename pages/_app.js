@@ -14,20 +14,22 @@ export default function App({ Component, pageProps }) {
   const [searchQueryIngredient, setSearchQueryIngredient] = useState("");
 
   const searchURL = isIngredientSearch
-  ? `https://www.thecocktaildb.com/api/json/v1/1/search.php?${searchQuery}`
-  : `www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchQueryIngredient}`
+  ? `www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${searchQueryIngredient}`
+  : `https://www.thecocktaildb.com/api/json/v2/9973533/search.php?${searchQuery}`
+
 
   const { data, error } = useSWR(searchURL, fetcher);
   const isLoading = !data && !error; // Define isLoading based on data and error
 
   const handleInputChange = (query) => {
     setInput(query);
-    setIsIngredientSearch("false")
+    setIsIngredientSearch(false)
   };
 
   const handleIngredientChange = (query) => {
     setInput(query);
-    setIsIngredientSearch("true")
+    setIsIngredientSearch(true)
+    console.log("isIngredientSearch,", true)
   };
 
   useEffect(() => {
