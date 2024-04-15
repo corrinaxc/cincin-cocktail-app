@@ -15,10 +15,10 @@ const router = useRouter();
             query: { searchQuery }
         });
     }
-    
+
     return (
         <>
-        <form>
+        <form className="m-0 p-2.5">
         <input name="newCocktailSearch" type="text"></input>
         <button onClick={handleSearch} type="submit">Search</button>
         </form>
