@@ -6,6 +6,8 @@ export default function DetailsList({ cocktails }) {
     return <div>No cocktails available</div>;
   }
 
+
+
   return (
     <>
     <Searchbar />

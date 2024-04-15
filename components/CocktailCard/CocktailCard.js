@@ -2,7 +2,8 @@ import Link from "next/link"
 export default function CocktailCard( {
     name,
     method,
-    image
+    image,
+    ingredients
 }) {
 
     return (
@@ -13,15 +14,13 @@ export default function CocktailCard( {
         {/* </Link> */}
         <button>Add to Favourites</button>
         <img src={image}/>
-        <h2>{name}</h2>
+        <h1>{name}</h1>
         <ul>
-        <li>Ingredient</li>
+            {ingredients?.map((ingredient) => (
+            <li>{ingredient.measure} {ingredient.ingredient}</li>
+             ))}
         </ul>
-        <p>{method}</p>
+        <p className="italic">{method}</p>
         </>
 )
 }
-
-{/* <Link className="backButton" href="/art-pieces">
-<button className="backButton" >⭠</button>
-</Link> */}
