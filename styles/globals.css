@@ -51,3 +51,10 @@ img {
   border-radius: 5px;
   width: 200px;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
