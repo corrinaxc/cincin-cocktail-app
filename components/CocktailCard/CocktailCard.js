@@ -1,16 +1,22 @@
 import Link from "next/link"
+import { useRouter } from 'next/router';
+
 export default function CocktailCard( {
     name,
     method,
     image,
-    ingredients
+    ingredients,
 }) {
 
+    const router = useRouter();
+
+    const handleBackButtonClick = () => {
+        router.back();
+      };
+    
     return (
         <>
-        <Link href="/[searchQuery]">
-        <button>Back</button>
-        </Link>
+        <button onClick={handleBackButtonClick}>Back</button>
         {/* </Link> */}
         <button>Add to Favourites</button>
         <img src={image}/>

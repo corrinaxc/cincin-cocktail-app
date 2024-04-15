@@ -3,7 +3,9 @@ import { useState } from "react";
 import CocktailCard from '@/components/CocktailCard/CocktailCard';
 import { useEffect } from "react";
 
-export default function IndividualCocktailPage({ cocktails }) {
+export default function IndividualCocktailPage({ 
+    cocktails,
+     }) {
     const router = useRouter();
     const { strDrink } = router.query;
     const [selectedCocktail, setSelectedCocktail] = useState(null);
