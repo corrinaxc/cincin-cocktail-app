@@ -9,6 +9,7 @@ const fetcher = async (url) => await fetch(url).then((res) => res.json());
 export default function App({ Component, pageProps }) {
   const [input, setInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("")
+  const [cocktails, setCocktails] = useState("")
 
   // const searchQuery = input ? `s=${input}` : "";
   const searchURL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?${searchQuery}`;
@@ -20,7 +21,11 @@ export default function App({ Component, pageProps }) {
     setInput(query);
   };
 
-  const cocktails = data ? data.drinks : null; // Ensure cocktails is null if data is not loaded
+  useEffect(() => {
+    if (data) {
+      setCocktails(data.drinks);
+    }
+  }, [data]); 
 
   useEffect(() => {
     setSearchQuery(input ? `s=${input}` : "");
