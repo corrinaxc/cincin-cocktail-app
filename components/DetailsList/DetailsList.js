@@ -1,14 +1,15 @@
 import Searchbar from '../Searchbar/Searchbar';
 import Link from  'next/link';
+import { useRouter } from 'next/router';
 
-export default function DetailsList({ cocktails }) {
+export default function DetailsList({ cocktails, handleInputChange }) {
   if (!cocktails) {
     return <div>No cocktails available</div>;
   }
 
   return (
     <>
-    <Searchbar />
+    <Searchbar handleInputChange={handleInputChange}/>
     <>
       {cocktails?.map((cocktail) => (
         <div className="cocktailListDetail" key={cocktail.idDrink}>
