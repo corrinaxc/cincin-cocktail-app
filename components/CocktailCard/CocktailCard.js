@@ -20,7 +20,7 @@ export default function CocktailCard( {
         <div className="mb-8 rounded-md display: flex flex-col">
         <button onClick={handleBackButtonClick} className="ml-2">Back</button>
         {/* </Link> */}
-        <button className="mr-2">❤️</button>
+        <button className="mr-2">🤍</button>
         <br></br>
         <img src={image}/>
         </div>
