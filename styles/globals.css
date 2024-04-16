@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
 :root {
   --primary: 253, 137, 147
  /* --background-start-rgb: 214, 219, 220;
@@ -16,11 +18,17 @@
   }
 }
 
+/* .just-another hand-regular {
+  font-family: "Just Another Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+} */
+
 body {
   color: black;
   background: rgb(var(--primary));
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -31,10 +39,10 @@ body {
 }
 
 form {
-  width: 80%;
   padding: 20px;
   border-radius: 5px;
-  margin:3px;
+  margin:20px;
+  align-self: center;
 }
 
 button {
@@ -45,9 +53,45 @@ button {
 
 h1{
   text-align: center;
+  font-size: 1.5rem;
 }
 
 img {
   border-radius: 5px;
   width: 200px;
+  align-self: center;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+input {
+  border-radius: 5;
+}
+
+.cocktailCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  width: 400px;
+  padding: 5px;
+}
+
+/* .cocktailListDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+} */
