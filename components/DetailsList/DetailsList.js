@@ -1,7 +1,11 @@
 import Searchbar from '../Searchbar/Searchbar';
 import Link from  'next/link';
+import FavouriteButton from '../FavouriteButton/FavouriteButton';
 
-export default function DetailsList({ cocktails }) {
+export default function DetailsList({ 
+  cocktails,
+  onToggleFavourite,
+  cocktailsInfo }) {
   if (!cocktails) {
     return <div>No cocktails available</div>;
   }
@@ -15,7 +19,7 @@ export default function DetailsList({ cocktails }) {
           <h2>{cocktail.strDrink}</h2>
          <Link href={`/cocktails/${cocktail.strDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
          </Link>
-         <button className="mr-2">🤍</button>
+         <FavouriteButton onToggleFavourite={onToggleFavourite} cocktailsInfo={cocktailsInfo} idDrink={cocktail.idDrink}/>
         </div>
       ))}
     </>
