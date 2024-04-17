@@ -6,8 +6,9 @@ import { useEffect } from "react";
 export default function IndividualCocktailPage({ 
     cocktails,
     onToggleFavourite,
-    cocktailsInfo
+    cocktailsInfo,
      }) {
+
     const router = useRouter();
     const { strDrink } = router.query;
     const [selectedCocktail, setSelectedCocktail] = useState(null);

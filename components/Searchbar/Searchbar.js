@@ -12,7 +12,6 @@ const router = useRouter();
         handleInputChange(searchQuery);
         router.push({
             pathname: `${searchQuery}`,
-            query: { searchQuery }
         });
     }
 

@@ -18,12 +18,15 @@ export default function App({ Component, pageProps }) {
     { defaultValue: [] }
   );
 
+// function fetchData() {
+
   const searchURL = isIngredientSearch
     ? `https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${searchQueryIngredient}`
     : `https://www.thecocktaildb.com/api/json/v2/9973533/search.php?${searchQuery}`;
 
   const { data, error } = useSWR(searchURL, fetcher);
-  const isLoading = !data && !error; // Define isLoading based on data and error
+  const isLoading = !data && !error;
+
 
   const handleInputChange = (query) => {
     setInput(query);
@@ -74,6 +77,9 @@ export default function App({ Component, pageProps }) {
       cocktails={cocktails}
       onToggleFavourite={handleToggleFavorite}
       cocktailsInfo = {cocktailsInfo}
+      isIngredientSearch={isIngredientSearch}
+      searchQuery={searchQuery}
+      searchQueryIngredient={searchQueryIngredient}
     />
     <Nav />
     </>
