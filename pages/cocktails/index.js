@@ -1,8 +1,16 @@
 // import Link from
 import CocktailCard from "@/components/CocktailCard/CocktailCard"
 
-export default function CocktailDetails( {cocktails} ) {
+export default function CocktailDetails( {
+    cocktails,
+    onToggleFavourite,
+    cocktailsInfo
+    } 
+    ) {
     return(
-        <CocktailCard cocktails = {cocktails} />
+        <CocktailCard 
+        cocktails = {cocktails}
+        onToggleFavourite={onToggleFavourite}
+        cocktailsInfo={cocktailsInfo} />
     )
 }
