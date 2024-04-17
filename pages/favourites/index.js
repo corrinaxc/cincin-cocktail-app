@@ -10,6 +10,8 @@ export default function Favourites( {
         const favCocktail = cocktailsInfo.find((info) => info.idDrink === cocktail.idDrink);
         return cocktail && cocktail.isFavourite === true;
     });
+
+    console.log(cocktailsInfo)
     return(
         <DetailsList
         cocktails={cocktails}

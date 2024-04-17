@@ -7,6 +7,7 @@ export default function DetailsList({
   onToggleFavourite,
   cocktailsInfo,
   handleInputChange }) {
+  
   if (!cocktails) {
     return <div>No cocktails available</div>;
   }
@@ -17,7 +18,7 @@ export default function DetailsList({
       {cocktails?.map((cocktail) => (
         <div className="cocktailListDetail" key={cocktail.idDrink}>
           <h2>{cocktail.strDrink}</h2>
-         <Link href={`/cocktails/${cocktail.strDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+         <Link idDrink = {cocktail.idDrink} href={`/cocktails/${cocktail.strDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
          </Link>
          <FavouriteButton onToggleFavourite={onToggleFavourite} cocktailsInfo={cocktailsInfo} idDrink={cocktail.idDrink}/>
         </div>
