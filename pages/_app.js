@@ -62,6 +62,8 @@ export default function App({ Component, pageProps }) {
       setCocktailsInfo([...cocktailsInfo, { idDrink, isFavorite: true }]);
     }
   }
+ 
+  
 
   return (
     <>
