@@ -7,7 +7,8 @@ import cocktailImage from "../public/resources/cocktail.png"
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home( {handleInputChange, handleIngredientChange} ) {
+export default function Home( {handleInputChange, handleIngredientChange, cocktails} ) {
+  console.log(cocktails);
   return (
     <>
     <Banner />
