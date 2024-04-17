@@ -18,7 +18,7 @@ export default function DetailsList({
       {cocktails?.map((cocktail) => (
         <div className="cocktailListDetail" key={cocktail.idDrink}>
           <h2>{cocktail.strDrink}</h2>
-         <Link idDrink = {cocktail.idDrink} href={`/cocktails/${cocktail.strDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+         <Link href={`/cocktails/${cocktail.idDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
          </Link>
          <FavouriteButton onToggleFavourite={onToggleFavourite} cocktailsInfo={cocktailsInfo} idDrink={cocktail.idDrink}/>
         </div>
