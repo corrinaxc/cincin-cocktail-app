@@ -10,8 +10,11 @@ const fetcher = async (url) => await fetch(url).then((res) => res.json());
 export default function App({ Component, pageProps }) {
   const [input, setInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("")
-  const [cocktails, setCocktails] = useState([])
-  const [isIngredientSearch, setIsIngredientSearch] = useState(false);
+  const [cocktails, setCocktails] = useState([]);
+
+  const [isIngredientSearch, setIsIngredientSearch] = useLocalStorageState(
+    "ingredientSearch",
+    { defaultValue: false});
   const [searchQueryIngredient, setSearchQueryIngredient] = useState("");
   const [cocktailsInfo, setCocktailsInfo] = useLocalStorageState(
     "cocktailInfo",

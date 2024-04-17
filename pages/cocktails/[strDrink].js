@@ -2,11 +2,15 @@ import { useRouter } from 'next/router';
 import { useState } from "react";
 import CocktailCard from '@/components/CocktailCard/CocktailCard';
 import { useEffect } from "react";
+import useSWR from 'swr';
+
+const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
 export default function IndividualCocktailPage({ 
     cocktails,
     onToggleFavourite,
     cocktailsInfo,
+    idDrink,
      }) {
 
     const router = useRouter();
@@ -14,48 +18,59 @@ export default function IndividualCocktailPage({
     const [selectedCocktail, setSelectedCocktail] = useState(null);
     const [ingredients, setIngredients] = useState([]);
 
-    useEffect(() => {
-        if (cocktails) {
-            const cocktail = cocktails.find(c => c.strDrink === strDrink);
-            setSelectedCocktail(cocktail);
+    const searchQuery = idDrink;
 
-            const tempIngredients = [];
-            if (cocktail) {
-                for (let i = 1; i <= 15; i++) {
-                    const ingredientKey = `strIngredient${i}`;
-                    const measureKey = `strMeasure${i}`;
+    // console.log(searchQueryIngredient)
 
-                    if (cocktail[ingredientKey]) { 
-                        tempIngredients.push({
-                            ingredient: cocktail[ingredientKey],
-                            measure: cocktail[measureKey] || 'to taste'
-                        });
-                    }
-                }
-            }
-            setIngredients(tempIngredients);
-        }
-    }, [cocktails, strDrink]); 
+    const searchURL = `www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${searchQuery}`
 
-    if (!strDrink) {
-        return <div>Loading...</div>;
-    }
+    const { data, error } = useSWR(searchURL, fetcher);
+    const isLoading = !data && !error; 
+    console.log(searchQuery)
+    console.log(data);
 
-    if (!selectedCocktail) {
-        return <div>Cocktail not found</div>;
-    }
+    // useEffect(() => {
+    //     if (cocktails) {
+    //         const cocktail = cocktails.find(c => c.strDrink === strDrink);
+    //         setSelectedCocktail(cocktail);
 
-    console.log(ingredients);
+    //         const tempIngredients = [];
+    //         if (cocktail) {
+    //             for (let i = 1; i <= 15; i++) {
+    //                 const ingredientKey = `strIngredient${i}`;
+    //                 const measureKey = `strMeasure${i}`;
 
-    return (
-        <CocktailCard 
-        name = {selectedCocktail.strDrink}
-        ingredients = {ingredients}
-        method = {selectedCocktail.strInstructions}
-        image = {selectedCocktail.strDrinkThumb}
-        idDrink = {selectedCocktail.idDrink}
-        onToggleFavourite={onToggleFavourite}
-        cocktailsInfo={cocktailsInfo}
-        />
-    )
+    //                 if (cocktail[ingredientKey]) { 
+    //                     tempIngredients.push({
+    //                         ingredient: cocktail[ingredientKey],
+    //                         measure: cocktail[measureKey] || 'to taste'
+    //                     });
+    //                 }
+    //             }
+    //         }
+    //         setIngredients(tempIngredients);
+    //     }
+    // }, [cocktails, strDrink]); 
+
+    // if (!strDrink) {
+    //     return <div>Loading...</div>;
+    // }
+
+    // if (!selectedCocktail) {
+    //     return <div>Cocktail not found</div>;
+    // }
+
+    // console.log(selectedCocktail);
+
+    // return (
+    //     <CocktailCard 
+    //     name = {selectedCocktail.strDrink}
+    //     ingredients = {ingredients}
+    //     method = {selectedCocktail.strInstructions}
+    //     image = {selectedCocktail.strDrinkThumb}
+    //     idDrink = {selectedCocktail.idDrink}
+    //     onToggleFavourite={onToggleFavourite}
+    //     cocktailsInfo={cocktailsInfo}
+    //     />
+    // )
 }
