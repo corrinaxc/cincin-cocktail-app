@@ -1,15 +1,19 @@
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
-export default function Searchbar( { handleInputChange } ) {
+const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
-const router = useRouter();
+export default function Searchbar({ isIngredientSearch }) {
+    const router = useRouter();
 
     function handleSearch(e) {
         e.preventDefault();
         const formData = new FormData(e.target.form); 
         const searchQuery = formData.get('newCocktailSearch');
         console.log(searchQuery);
-        handleInputChange(searchQuery);
+        const searchURL = isIngredientSearch
+            ? `https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${searchQuery}`
+            : `https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${searchQuery}`;
         router.push({
             pathname: `${searchQuery}`,
         });
@@ -17,10 +21,10 @@ const router = useRouter();
 
     return (
         <>
-        <form className="m-0 p-2.5">
-        <input name="newCocktailSearch" type="text"></input>
-        <button onClick={handleSearch} type="submit">Search</button>
-        </form>
+            <form className="m-0 p-2.5">
+                <input name="newCocktailSearch" type="text"></input>
+                <button onClick={handleSearch} type="submit">Search</button>
+            </form>
         </>
     )
 }
