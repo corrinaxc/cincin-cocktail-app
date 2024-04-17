@@ -15,8 +15,7 @@ function handleSubmit(e) {
     console.log(searchQuery);
     handleInputChange(searchQuery);
     router.push({
-        pathname: `${searchQuery}`, 
-        query: { searchQuery } 
+        pathname: `${searchQuery}`,
       })
     } else if (data.ingredientInput) {
     const searchQueryIngredient = e.target.ingredientInput.value;
@@ -24,7 +23,6 @@ function handleSubmit(e) {
     handleIngredientChange(searchQueryIngredient);
     router.push({
         pathname: `${searchQueryIngredient}`,
-        query: {searchQueryIngredient}
     })
     }
 }
