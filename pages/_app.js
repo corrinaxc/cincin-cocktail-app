@@ -55,30 +55,7 @@ export default function App({ Component, pageProps, session }) {
 
   // if (error) return <div>Failed to Load</div>;
   // if (isLoading) return <div>Loading...</div>;
-
-  // function handleToggleFavorite(idDrink) {
-  //   const favourite = {
-  //     idDrink: cocktail.idDrink,
-  //     strDrink: cocktail.strDrink,
-  //     strDrinkThumb: cocktail.strDrinkThumb,
-  //     userId: session.user.id
-  //   }
-
-    // const cocktail = cocktailsInfo.find((cocktail) => cocktail.idDrink === idDrink);
-    // if (cocktail) {
-    //   setCocktailsInfo(
-    //     cocktailsInfo.map((cocktail) =>
-    //     cocktail.idDrink === idDrink
-    //         ? { ...cocktail, isFavorite: !cocktail.isFavorite }
-    //         : cocktail
-    //     )
-    //   );
-    // } else {
-    //   setCocktailsInfo([...cocktailsInfo, { idDrink, isFavorite: true }]);
-    // }}
  
-  
-
   return (
     <>
     <SessionProvider session={session}>
