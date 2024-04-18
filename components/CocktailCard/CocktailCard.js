@@ -13,34 +13,12 @@ export default function CocktailCard( {
 }) {
 
     const router = useRouter();
-    const {data: session, status} = useSession();
+    // const {data: session, status} = useSession();
 
     const handleBackButtonClick = () => {
         router.back();
       };
 
-    async function handleToggleFavorite() {
-        const favourite = {
-          idDrink: idDrink,
-          strDrink: name,
-          strDrinkThumb: image,
-          userId: session.user.id
-        }
-        console.log(favourite)
-
-        if (session) {
-            const response = await fetch("/api/favourites", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(favourite),
-              });
-        }
-        else {
-                signIn();
-            }
-        };
     
     return (
         <>
@@ -48,7 +26,7 @@ export default function CocktailCard( {
         <div className="mb-8 rounded-md display: flex flex-col">
         <button onClick={handleBackButtonClick} className="ml-2">Back</button>
         {/* </Link> */}
-        <FavouriteButton onToggleFavourite={handleToggleFavorite} cocktailsInfo={cocktailsInfo} idDrink={idDrink}/>
+        <FavouriteButton name={name} image={image} cocktailsInfo={cocktailsInfo} idDrink={idDrink}/>
         <br></br>
         <img src={image}/>
         </div>

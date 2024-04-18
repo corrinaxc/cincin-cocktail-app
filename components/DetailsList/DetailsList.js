@@ -4,10 +4,9 @@ import FavouriteButton from '../FavouriteButton/FavouriteButton';
 
 export default function DetailsList({ 
   cocktails,
-  onToggleFavourite,
   cocktailsInfo,
   handleInputChange }) {
-  
+    
   if (!cocktails) {
     return <div>No cocktails available</div>;
   }
@@ -20,7 +19,10 @@ export default function DetailsList({
           <h2>{cocktail.strDrink}</h2>
          <Link href={`/cocktails/${cocktail.idDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
          </Link>
-         <FavouriteButton onToggleFavourite={onToggleFavourite} cocktailsInfo={cocktailsInfo} idDrink={cocktail.idDrink}/>
+         <FavouriteButton 
+         idDrink={cocktail.idDrink}
+         name={cocktail.strDrink}
+         image={cocktail.strDrinkThumb}/>
         </div>
       ))}
     </>
