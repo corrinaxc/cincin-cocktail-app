@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Nav from "@/components/Nav/Nav";
 import useLocalStorageState from "use-local-storage-state";
 import {SessionProvider} from "next-auth/react";
+import {useSession} from 'next-auth/react'
 
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
@@ -55,20 +56,26 @@ export default function App({ Component, pageProps, session }) {
   // if (error) return <div>Failed to Load</div>;
   // if (isLoading) return <div>Loading...</div>;
 
-  function handleToggleFavorite(idDrink) {
-    const cocktail = cocktailsInfo.find((cocktail) => cocktail.idDrink === idDrink);
-    if (cocktail) {
-      setCocktailsInfo(
-        cocktailsInfo.map((cocktail) =>
-        cocktail.idDrink === idDrink
-            ? { ...cocktail, isFavorite: !cocktail.isFavorite }
-            : cocktail
-        )
-      );
-    } else {
-      setCocktailsInfo([...cocktailsInfo, { idDrink, isFavorite: true }]);
-    }
-  }
+  // function handleToggleFavorite(idDrink) {
+  //   const favourite = {
+  //     idDrink: cocktail.idDrink,
+  //     strDrink: cocktail.strDrink,
+  //     strDrinkThumb: cocktail.strDrinkThumb,
+  //     userId: session.user.id
+  //   }
+
+    // const cocktail = cocktailsInfo.find((cocktail) => cocktail.idDrink === idDrink);
+    // if (cocktail) {
+    //   setCocktailsInfo(
+    //     cocktailsInfo.map((cocktail) =>
+    //     cocktail.idDrink === idDrink
+    //         ? { ...cocktail, isFavorite: !cocktail.isFavorite }
+    //         : cocktail
+    //     )
+    //   );
+    // } else {
+    //   setCocktailsInfo([...cocktailsInfo, { idDrink, isFavorite: true }]);
+    // }}
  
   
 
@@ -80,7 +87,6 @@ export default function App({ Component, pageProps, session }) {
       handleInputChange={handleInputChange}
       handleIngredientChange={handleIngredientChange}
       cocktails={cocktails}
-      onToggleFavourite={handleToggleFavorite}
       cocktailsInfo = {cocktailsInfo}
       isIngredientSearch={isIngredientSearch}
       searchQuery={searchQuery}
