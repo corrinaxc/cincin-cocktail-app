@@ -17,6 +17,7 @@ const login = () => {
 else {
     return (
         <div>
+        <h1>Log In</h1>
         <p>You are not signed in</p>
         <button onClick={() => signIn()} >Sign In</button>
         </div>
