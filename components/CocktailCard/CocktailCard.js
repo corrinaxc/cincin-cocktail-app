@@ -1,22 +1,24 @@
 import Link from "next/link"
 import { useRouter } from 'next/router';
 import FavouriteButton from "../FavouriteButton/FavouriteButton";
+import {useSession, signIn } from 'next-auth/react'
 
 export default function CocktailCard( {
     name,
     method,
     image,
     ingredients,
-    onToggleFavourite,
     cocktailsInfo,
     idDrink
 }) {
 
     const router = useRouter();
+    // const {data: session, status} = useSession();
 
     const handleBackButtonClick = () => {
         router.back();
       };
+
     
     return (
         <>
@@ -24,7 +26,7 @@ export default function CocktailCard( {
         <div className="mb-8 rounded-md display: flex flex-col">
         <button onClick={handleBackButtonClick} className="ml-2">Back</button>
         {/* </Link> */}
-        <FavouriteButton onToggleFavourite={onToggleFavourite} cocktailsInfo={cocktailsInfo} idDrink={idDrink}/>
+        <FavouriteButton name={name} image={image} cocktailsInfo={cocktailsInfo} idDrink={idDrink}/>
         <br></br>
         <img src={image}/>
         </div>
