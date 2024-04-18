@@ -3,11 +3,12 @@ import useSWR from "swr";
 import { useState, useEffect } from "react";
 import Nav from "@/components/Nav/Nav";
 import useLocalStorageState from "use-local-storage-state";
+import {SessionProvider} from "next-auth/react";
 
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, session }) {
   const [input, setInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("")
   const [cocktails, setCocktails] = useState([]);
@@ -73,6 +74,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+    <SessionProvider session={session}>
     <Component
       {...pageProps}
       handleInputChange={handleInputChange}
@@ -85,6 +87,7 @@ export default function App({ Component, pageProps }) {
       searchQueryIngredient={searchQueryIngredient}
     />
     <Nav />
+    </SessionProvider>
     </>
   );
 }
