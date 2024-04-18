@@ -1,12 +1,13 @@
 export default function FavouriteList({ 
     cocktails,
-    onToggleFavourite,
     cocktailsInfo,
     handleInputChange }) {
     
     if (!cocktails) {
       return <div>No cocktails available</div>;
     }
+
+    
     return (
       <>
       <Searchbar handleInputChange={handleInputChange}/>
