@@ -22,10 +22,10 @@ export default async function handler(request, response) {
             console.log(error);
             response.status(500).json({ error: error.message });
         }
-    } else if (request.method === "DELETE") {
-            await Favourite.findByIdAndDelete(id);
-            response.status(200).json({ status: `Joke ${id} successfully deleted.` });
-          }
-    else {
+    // } else if (request.method === "DELETE") {
+    //         await Favourite.findByIdAndDelete(idDrink);
+    //         response.status(200).json({ status: `Facourite ${idDrink} successfully deleted.` });
+    //       }
+    } else {
         response.status(405).json({ message: "Method not allowed" });
     }}

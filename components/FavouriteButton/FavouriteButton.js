@@ -1,11 +1,14 @@
-import {useSession, signIn } from 'next-auth/react'
+import {useSession, signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function FavouriteButton( {
   name,
   image,
-  idDrink
+  idDrink,
+  id
 } ) {
   const {data: session, status} = useSession();
+  const router = useRouter();
 
   async function handleToggleFavorite() {
 
@@ -30,9 +33,18 @@ export default function FavouriteButton( {
         }
     };
 
+    async function handleDelete() {
+      await fetch(`/api/favourites/${id}`, {
+        method: "DELETE",
+    })
+    };
+
       return (
+        <div>
         <button className="favButton" onClick={handleToggleFavorite}>🤍
         {/* <span>{foundCocktailInfo?.isFavorite ? "❤️" : "🤍"}</span> */}
         </button>
+        <button onClick={handleDelete}>Delete</button>
+        </div>
       )
 }
