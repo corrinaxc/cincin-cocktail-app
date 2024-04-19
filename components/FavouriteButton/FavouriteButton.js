@@ -42,13 +42,13 @@ export default function FavouriteButton( {
       mutate();
     }
     };
-
-      return (
-        <div>
-        <button className="favButton" onClick={handleToggleFavorite}>🤍
-        {/* <span>{foundCocktailInfo?.isFavorite ? "❤️" : "🤍"}</span> */}
-        </button>
-        <button onClick={handleDelete}>Delete</button>
-        </div>
-      )
+  return (
+    <div>
+      {id ? (
+        <button onClick={handleDelete}>❤️</button>
+      ) : (
+        <button className="favButton" onClick={handleToggleFavorite}>🤍</button>
+      )}
+    </div>
+  )
 }

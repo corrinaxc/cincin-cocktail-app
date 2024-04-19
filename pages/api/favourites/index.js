@@ -15,12 +15,12 @@ export default async function handler(request, response) {
         }
     } else if (request.method === "GET") {
         try {
-            const favourites = await Favourite.find();
-            console.log('=====',favourites)
-            response.status(200).json(favourites);
+          const { userId } = request.query;
+          const favourites = await Favourite.find({ userId: userId });
+          response.status(200).json(favourites);
         } catch (error) {
-            console.log(error);
-            response.status(500).json({ error: error.message });
+          console.log(error);
+          response.status(500).json({ error: error.message });
         }
     // } else if (request.method === "DELETE") {
     //         await Favourite.findByIdAndDelete(idDrink);
