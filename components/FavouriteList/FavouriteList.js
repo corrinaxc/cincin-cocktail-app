@@ -1,23 +1,33 @@
+import { useState, useEffect } from 'react';
+import Searchbar from '../Searchbar/Searchbar';
+import Link from 'next/link';
+import FavouriteButton from '../FavouriteButton/FavouriteButton';
+
+
 export default function FavouriteList({ 
-    cocktails,
-    cocktailsInfo,
     handleInputChange }) {
     
-    if (!cocktails) {
-      return <div>No cocktails available</div>;
-    }
+      const [favourites, setFavourites] = useState([])
 
+      useEffect(() => {
+        fetch('api/favourites')
+          .then(response => response.json())
+          .then(data => 
+            setFavourites(data),
+            )
+          .catch(error => console.error ('There was an error!', error));
+      }, []);
     
     return (
       <>
       <Searchbar handleInputChange={handleInputChange}/>
       <>
-        {cocktails?.map((cocktail) => (
-          <div className="cocktailListDetail" key={cocktail.idDrink}>
-            <h2>{cocktail.strDrink}</h2>
-           <Link href={`/cocktails/${cocktail.idDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+        {favourites?.map((favourite) => (
+          <div className="cocktailListDetail" key={favourite.idDrink}>
+            <h2>{favourite.strDrink}</h2>
+           <Link href={`/cocktails/${favourite.idDrink}`}><img className="w-28" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
            </Link>
-           <FavouriteButton onToggleFavourite={onToggleFavourite} cocktailsInfo={cocktailsInfo} idDrink={cocktail.idDrink}/>
+           <FavouriteButton name={favourite.name} idDrink={favourite.idDrink} image={favourite.strDrinkThumb}/>
           </div>
         ))}
       </>
