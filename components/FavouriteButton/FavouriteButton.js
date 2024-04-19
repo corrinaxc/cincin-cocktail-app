@@ -5,7 +5,8 @@ export default function FavouriteButton( {
   name,
   image,
   idDrink,
-  id
+  id,
+  mutate
 } ) {
   const {data: session, status} = useSession();
   const router = useRouter();
@@ -34,9 +35,12 @@ export default function FavouriteButton( {
     };
 
     async function handleDelete() {
-      await fetch(`/api/favourites/${id}`, {
+      const response = await fetch(`/api/favourites/${id}`, {
         method: "DELETE",
     })
+    if (response.ok){
+      mutate();
+    }
     };
 
       return (
