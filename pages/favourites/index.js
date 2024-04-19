@@ -1,22 +1,10 @@
-import DetailsList from "@/components/DetailsList/DetailsList"
+import FavouriteList from "@/components/FavouriteList/FavouriteList"
 
 export default function Favourites( {
-    cocktails,
-    cocktailSearch,
-    onToggleFavourite,
-    cocktailsInfo
+    onInputChange
 }) {
-    const favourites = cocktails.filter((cocktail) => {
-        const favCocktail = cocktailsInfo.find((info) => info.idDrink === cocktail.idDrink);
-        return cocktail && cocktail.isFavourite === true;
-    });
-
-    console.log(cocktailsInfo)
     return(
-        <DetailsList
-        cocktails={cocktails}
-        cocktailSearch={cocktailSearch} 
-        onToggleFavourite={onToggleFavourite}
-        cocktailsInfo={cocktailsInfo}/>
+        <FavouriteList
+        onInputChange={onInputChange} />
     )
 }
