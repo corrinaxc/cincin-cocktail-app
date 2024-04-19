@@ -27,7 +27,7 @@ export default function FavouriteList({
             <h2>{favourite.strDrink}</h2>
            <Link href={`/cocktails/${favourite.idDrink}`}><img className="w-28" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
            </Link>
-           <FavouriteButton name={favourite.name} idDrink={favourite.idDrink} image={favourite.strDrinkThumb}/>
+           <FavouriteButton name={favourite.name} id={favourite._id} idDrink={favourite.idDrink} image={favourite.strDrinkThumb}/>
           </div>
         ))}
       </>
