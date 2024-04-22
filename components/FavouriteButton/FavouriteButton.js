@@ -12,28 +12,36 @@ export default function FavouriteButton( {
   const router = useRouter();
 
   async function handleToggleFavorite() {
-
-    if (session) {
-      const favourite = {
-        idDrink: idDrink,
-        strDrink: name,
-        strDrinkThumb: image,
-        userId: session.user.id
-      }
-        console.log(favourite)
-        const response = await fetch("/api/favourites", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(favourite),
-          });
+    if (!session) {
+      signIn();
+      return;
     }
-    else {
-            signIn();
-        }
+  
+    const favourite = {
+      idDrink: idDrink,
+      strDrink: name,
+      strDrinkThumb: image,
+      userId: session.user.id
     };
-
+  
+    console.log(favourite);
+    const response = await fetch("/api/favourites", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(favourite),
+    });
+  
+    if (response.status === 409) {
+      alert('This drink is already in your favorites!');
+    } else if (response.ok) {
+      mutate();
+    } else {
+      alert('There was an error processing your request.');
+    }
+  }
+  
     async function handleDelete() {
       const response = await fetch(`/api/favourites/${id}`, {
         method: "DELETE",
