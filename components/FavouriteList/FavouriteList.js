@@ -32,7 +32,12 @@ export default function FavouriteList({ handleInputChange }) {
             <Link href={`/cocktails/${favourite.idDrink}`}>
               <img className="w-28" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
             </Link>
-            <FavouriteButton name={favourite.name} id={favourite._id} idDrink={favourite.idDrink} image={favourite.strDrinkThumb} mutate={mutate}/>
+            <FavouriteButton name={favourite.name}
+            id={favourite._id}
+            idDrink={favourite.idDrink}
+            image={favourite.strDrinkThumb}
+            mutate={mutate}
+            favourites={favourites}/>
           </div>
         ))}
       </>

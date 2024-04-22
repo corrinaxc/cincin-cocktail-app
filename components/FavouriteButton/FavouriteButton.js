@@ -6,24 +6,26 @@ export default function FavouriteButton( {
   image,
   idDrink,
   id,
-  mutate
+  mutate,
+  favourites
 } ) {
   const {data: session, status} = useSession();
   const router = useRouter();
+  const favouriteItem = favourites.find(fav => fav.idDrink === idDrink);
 
   async function handleToggleFavorite() {
     if (!session) {
       signIn();
       return;
     }
-  
+
     const favourite = {
       idDrink: idDrink,
       strDrink: name,
       strDrinkThumb: image,
       userId: session.user.id
     };
-  
+
     console.log(favourite);
     const response = await fetch("/api/favourites", {
       method: "POST",
@@ -32,7 +34,7 @@ export default function FavouriteButton( {
       },
       body: JSON.stringify(favourite),
     });
-  
+
     if (response.status === 409) {
       alert('This drink is already in your favorites!');
     } else if (response.ok) {
@@ -41,22 +43,28 @@ export default function FavouriteButton( {
       alert('There was an error processing your request.');
     }
   }
-  
-    async function handleDelete() {
-      const response = await fetch(`/api/favourites/${id}`, {
-        method: "DELETE",
-    })
-    if (response.ok){
+
+  async function handleDelete() {
+    if (!favouriteItem) return;
+
+    const response = await fetch(`/api/favourites/${favouriteItem._id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
       mutate();
+    } else {
+      console.error("Failed to delete the favourite");
     }
-    };
+  }
+
   return (
     <div>
-      {id ? (
+      {favouriteItem ? (
         <button onClick={handleDelete}>❤️</button>
       ) : (
         <button className="favButton" onClick={handleToggleFavorite}>🤍</button>
       )}
     </div>
-  )
+  );
 }
