@@ -11,6 +11,3 @@ export default function AddCocktailForm() {
         <input type="file" name="cocktailImage"></input>
     </form>)
 }
-
-{/* <label htmlFor="cocktailInput" className="text-black">What is your tipple of choice?</label>
-<input type="text" name="cocktailInput" className="border-2 border-black rounded-md"></input> */}
