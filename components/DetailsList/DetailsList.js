@@ -43,7 +43,8 @@ export default function DetailsList({
          idDrink={cocktail.idDrink}
          name={cocktail.strDrink}
          image={cocktail.strDrinkThumb}
-         mutate={mutate}/>
+         mutate={mutate}
+         favourites={favourites}/>
         </div>
       ))}
     </>
