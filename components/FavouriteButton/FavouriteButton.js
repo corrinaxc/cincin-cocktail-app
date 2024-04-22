@@ -11,7 +11,7 @@ export default function FavouriteButton( {
 } ) {
   const {data: session, status} = useSession();
   const router = useRouter();
-  const favouriteItem = favourites.find(fav => fav.idDrink === idDrink);
+  const favouriteItem = favourites && Array.isArray(favourites) ? favourites.find(fav => fav.idDrink === idDrink) : null;
 
   async function handleToggleFavorite() {
     if (!session) {
