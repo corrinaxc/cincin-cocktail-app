@@ -14,6 +14,6 @@ export default function AddCocktailButton() {
     }
 
     return (
-        <button onClick={handleAddCocktailButton}>Add New Cocktail</button>
+        <button className="addCocktailButton" onClick={handleAddCocktailButton}>Add New Cocktail</button>
     );
 }

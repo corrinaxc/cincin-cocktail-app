@@ -23,14 +23,13 @@ export default function CocktailCard( {
     return (
         <>
         <div className="cocktailCard">
-        <div className="mb-8 rounded-md display: flex flex-col">
-        <button onClick={handleBackButtonClick} className="ml-2">Back</button>
-        {/* </Link> */}
-        <FavouriteButton name={name} image={image} cocktailsInfo={cocktailsInfo} idDrink={idDrink}/>
+        <div className="cocktailCardImageDiv">
+        <button onClick={handleBackButtonClick} className="backButton">Back</button>
+        <FavouriteButton className=""name={name} image={image} cocktailsInfo={cocktailsInfo} idDrink={idDrink}/>
         <br></br>
         <img src={image}/>
         </div>
-        <div className="bg-white rounded-md display: flex flex-col gap-6">
+        <div className="cocktailCardDetail">
         <h1>{name}</h1>
         <ul>
             {ingredients?.map((ingredient) => (
@@ -43,3 +42,6 @@ export default function CocktailCard( {
         </>
 )
 }
+
+// className="mb-8 rounded-md display: flex flex-col"
+//  <div className="bg-white rounded-md display: flex flex-col gap-6">

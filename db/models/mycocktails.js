@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const mycocktailsSchema = new Schema({
+const mycocktailSchema = new Schema({
     strDrink: {type:String, required:true},
     strDrinkThumb: 
     {data:Buffer,
     contentType:String},
     userId: {type:String},
-    ingredients: {type:String},
+    ingredients: {type:Array},
     method: {type:String},
     });
 
-    const Mycocktail = mongoose.models.Mycocktail || mongoose.model("Mycocktail", mycocktailsSchema);
+    const MyCocktail = mongoose.models.MyCocktail || mongoose.model("MyCocktail", mycocktailSchema);
