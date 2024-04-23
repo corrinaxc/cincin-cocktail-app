@@ -162,3 +162,16 @@ input {
   width: 210px;
   border-radius: 10px;
 }
+
+.addCocktailForm {
+  display:flex;
+  flex-direction: column;
+  gap: 2.5px;
+  background-color: white;
+}
+
+.formInput {
+  border-color: #0c0c0c;
+  border-width: 1px;
+  border-radius: 1px;
+}

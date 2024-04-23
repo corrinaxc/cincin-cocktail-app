@@ -43,15 +43,15 @@ export default function AddCocktailForm() {
     
 
     return (
-        <form className="display: flex, flex-col bg-white gap-2.5">
+        <form className="addCocktailForm">
             <label htmlFor="cocktailName">Cocktail Name</label>
-            <input type="text" name="cocktailName" value={formData.cocktailName} onChange={handleChange}></input>
+            <input className='formInput' type="text" name="cocktailName" value={formData.cocktailName} onChange={handleChange}></input>
             <label htmlFor="ingredients">Ingredients</label>
-            <input type="text" name="ingredients" value={formData.ingredients} onChange={handleChange}></input>
+            <input className='formInput' type="text" name="ingredients" value={formData.ingredients} onChange={handleChange}></input>
             <label htmlFor="method">Method</label>
-            <input type="text" name="method" value={formData.method} onChange={handleChange}></input>
+            <input className='formInput' type="text" name="method" value={formData.method} onChange={handleChange}></input>
             <label htmlFor="cocktailImage">Image Upload</label>
-            <input type="text" name="cocktailImage" onChange={handleChange} value={formData.cocktailImage}></input>
+            <input className='formInput' type="text" name="cocktailImage" onChange={handleChange} value={formData.cocktailImage}></input>
             <button type="button" onClick={handleAddCocktail}>Add Cocktail</button>
         </form>
     );
