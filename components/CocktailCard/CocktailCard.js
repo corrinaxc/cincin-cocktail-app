@@ -2,6 +2,11 @@ import Link from "next/link"
 import { useRouter } from 'next/router';
 import FavouriteButton from "../FavouriteButton/FavouriteButton";
 import {useSession, signIn } from 'next-auth/react'
+import { useState } from "react";
+import useSWR from 'swr';
+import { useEffect } from "react";
+
+const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
 export default function CocktailCard( {
     name,
@@ -13,11 +18,23 @@ export default function CocktailCard( {
 }) {
 
     const router = useRouter();
-    // const {data: session, status} = useSession();
+    const { data: session, status } = useSession();
+    const [favourites, setFavourites] = useState([]);
+    const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
 
     const handleBackButtonClick = () => {
         router.back();
       };
+    
+      useEffect(() => {
+        if (data) {
+          setFavourites(data);
+        }
+      }, [data]);
+    
+      if (status === 'loading') return <div>Loading...</div>;
+      if (error) return <div>Error fetching data</div>;
+      if (!favourites) return <div>No favourites found</div>;
 
     
     return (
@@ -25,9 +42,14 @@ export default function CocktailCard( {
         <div className="cocktailCard">
         <div className="cocktailCardImageDiv">
         <button onClick={handleBackButtonClick} className="backButton">Back</button>
-        <FavouriteButton className=""name={name} image={image} cocktailsInfo={cocktailsInfo} idDrink={idDrink}/>
+        <FavouriteButton className="favButton" name={name}
+        image={image}
+        cocktailsInfo={cocktailsInfo}
+        idDrink={idDrink}
+        mutate={mutate}
+        favourites={favourites}/>
         <br></br>
-        <img src={image}/>
+        <img className="cocktailImage" src={image}/>
         </div>
         <div className="cocktailCardDetail">
         <h1>{name}</h1>
