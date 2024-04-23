@@ -1,7 +1,7 @@
+import MyCocktailsList from "@/components/MyCocktailsList/MyCocktailsList"
+
 export default function MyCocktails() {
     return (
-        <div>
-            <p>Hi</p>
-        </div>
+        <MyCocktailsList />
     )
 }
