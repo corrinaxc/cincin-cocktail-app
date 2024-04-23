@@ -5,10 +5,10 @@ export default function Nav() {
     return(
         <footer>
         <nav className="bg-white mt-3 w-screen text-center rounded-md display: flex justify-center gap-7 h-16">
-            <Link href={'/'}>Home</Link>
-            <Link className="w-14" href={'/favourites'}>❤️</Link>
+            <Link className="homeIcon" href={'/'}><img src='/resources/icons8-home-50.png'></img></Link>
+            <Link href={'/favourites'}>❤️</Link>
             <Link href={'/account'}>
-                <img className='w-6' src='/resources/profile.png' />
+                <img className='profileButton' src='/resources/profile.png' />
             </Link>
         </nav>
         </footer>

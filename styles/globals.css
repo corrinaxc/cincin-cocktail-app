@@ -71,7 +71,6 @@ button {
 
 h1{
   text-align: center;
-  font-size: 1.5rem;
 }
 
 img {
@@ -85,6 +84,10 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  font-size: xx-large;
+  justify-content: space-evenly;
+  display: flex;
+  gap: 100px;
 }
 
 input {
@@ -101,11 +104,11 @@ input {
   flex-direction: row;
   background-color: white;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 20px;
   border-radius: 5px;
   width: 100%;
   padding: 5px;
+  height:64px;
+  font-size: xx-large;
 }
 
 .addCocktailButton {
@@ -174,4 +177,52 @@ input {
   border-color: #0c0c0c;
   border-width: 1px;
   border-radius: 1px;
+}
+
+.account {
+  margin-top: 50px;
+  position: absolute;
+  width: 100%;
+  height: 225px;
+}
+
+.userImage {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 190px;
+  border-radius: 10px;
+}
+
+.userName {
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  font-size: larger;
+  top: 50px;
+}
+
+.signOutButton {
+  position: absolute;
+  bottom: 81px;
+  right: 66px;
+  border: black;
+  border-width: 1px;
+}
+
+.myCocktailsLink {
+  position: absolute;
+  left: 30px;
+  bottom: 0;
+  font-size: larger;
+}
+
+.profileButton {
+  margin-top: 5px;
+  width: 40px;
+}
+
+.homeIcon {
+  margin-top: 5px;
+  width: 40px;
 }
