@@ -4,9 +4,7 @@ const { Schema } = mongoose;
 
 const mycocktailSchema = new Schema({
     strDrink: {type:String, required:true},
-    strDrinkThumb: 
-    {data:Buffer,
-    contentType:String},
+    strDrinkThumb: {type:String},
     userId: {type:String},
     ingredients: {type:Array},
     method: {type:String},
