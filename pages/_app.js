@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+// import 'https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap';
+
 import useSWR from "swr";
 import { useState, useEffect } from "react";
 import Nav from "@/components/Nav/Nav";
