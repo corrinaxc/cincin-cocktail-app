@@ -1,13 +1,11 @@
 import "@/styles/globals.css";
-// import 'https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap';
-
 import useSWR from "swr";
 import { useState, useEffect } from "react";
 import Nav from "@/components/Nav/Nav";
 import useLocalStorageState from "use-local-storage-state";
 import {SessionProvider} from "next-auth/react";
 import {useSession} from 'next-auth/react'
-
+import { Head } from "next/head";
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 

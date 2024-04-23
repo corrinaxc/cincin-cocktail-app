@@ -25,13 +25,13 @@ export default function MyCocktails() {
   }, []);
 
   console.log(myCocktails);
-  
+
     return (
           <>
             {myCocktails?.map((myCocktail) => (
               <div className="cocktailListDetail" key={myCocktail.id}>
                 <h2>{myCocktail.strDrink}</h2>
-                <Link href={`/cocktails/${myCocktail.id}`}>
+                <Link href={`/mycocktails/${myCocktail._id}`}>
                   <img className="w-28" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
                 </Link>
                 {/* <FavouriteButton name={favourite.name}
