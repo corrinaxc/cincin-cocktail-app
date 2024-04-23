@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
 :root {
   --primary: 253, 137, 147
@@ -10,8 +16,9 @@
  --background-end-rgb: 255, 255, 255; */
 }
 
-/* <uniquifier>: Use a unique and descriptive class name
-<weight>: Use a value from 100 to 700 */
+  body {
+    margin: 0;
+  }
 
 .josefin-sans {
   font-family: "Josefin Sans", sans-serif;
