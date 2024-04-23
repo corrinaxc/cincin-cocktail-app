@@ -30,7 +30,6 @@ export default function MyCocktails() {
     console.log(myCocktails);
     return (
         <>
-        <Banner />
         <MyCocktailsList myCocktails={myCocktails} />
         <AddCocktailButton />
         </>

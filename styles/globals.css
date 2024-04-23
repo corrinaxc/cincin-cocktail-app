@@ -63,10 +63,13 @@ form {
   align-self: center;
 }
 
-button {
+.homepageFormButton {
   width: 100px;;
   align-self: center;
   border-radius: 5px;
+  border: #0c0c0c;
+  border-width: 2px;
+  border-style: solid;
 }
 
 h1{
@@ -153,8 +156,8 @@ input {
 
 .favButton {
   position: absolute;
-  top: 11px;
-  right: 1px;
+  top: 3px;
+  right: 42px;
 }
 
 .cocktailImage {
@@ -225,4 +228,27 @@ input {
 .homeIcon {
   margin-top: 5px;
   width: 40px;
+}
+
+.detailsList {
+  margin-bottom: 70px;
+}
+
+.cocktailListDetail {
+  position:relative;
+  width:400px;
+  height:200px;
+  margin:20px;
+}
+
+.cocktailListImage {
+  position: absolute;
+  border-radius: 10px;
+  width: 180px;
+}
+
+.cocktailDetailName {
+  position: absolute;
+  font-size: larger;
+  left: 190px;
 }
