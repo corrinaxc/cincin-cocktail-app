@@ -15,6 +15,8 @@ export default function DetailsList({
     const { data: session, status } = useSession();
     const [favourites, setFavourites] = useState([]);
     const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
+
+    console.log(cocktails)
   
     useEffect(() => {
       if (data) {
@@ -33,11 +35,11 @@ export default function DetailsList({
   return (
     <>
     <Searchbar handleInputChange={handleInputChange}/>
-    <>
+    <div className='detailsList'>
       {cocktails?.map((cocktail) => (
         <div className="cocktailListDetail" key={cocktail.idDrink}>
-          <h2>{cocktail.strDrink}</h2>
-         <Link href={`/cocktails/${cocktail.idDrink}`}><img className="w-28" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+          <h2 className='cocktailDetailName'>{cocktail.strDrink}</h2>
+         <Link href={`/cocktails/${cocktail.idDrink}`}><img className="cocktailListImage" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
          </Link>
          <FavouriteButton 
          idDrink={cocktail.idDrink}
@@ -47,7 +49,7 @@ export default function DetailsList({
          favourites={favourites}/>
         </div>
       ))}
-    </>
+    </div>
     </>
   );
 }
