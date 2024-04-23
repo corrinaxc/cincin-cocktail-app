@@ -13,3 +13,5 @@ const mycocktailSchema = new Schema({
     });
 
     const MyCocktail = mongoose.models.MyCocktail || mongoose.model("MyCocktail", mycocktailSchema);
+
+    export default MyCocktail;
