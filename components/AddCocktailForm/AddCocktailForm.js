@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 export default function AddCocktailForm() {
+    const router = useRouter();
     const { data: session, status } = useSession();
     const [formData, setFormData] = useState({
         cocktailName: '',
         ingredients: '',
         method: '',
-        cocktailImage: null
+        cocktailImage: '',
     });
 
     const handleChange = (e) => {
@@ -33,6 +35,7 @@ export default function AddCocktailForm() {
             });
             const data = await response.json();
             console.log(data);
+            router.push('/mycocktails');
         } catch (error) {
             console.error("Error adding cocktail:", error);
         }
@@ -48,7 +51,7 @@ export default function AddCocktailForm() {
             <label htmlFor="method">Method</label>
             <input type="text" name="method" value={formData.method} onChange={handleChange}></input>
             <label htmlFor="cocktailImage">Image Upload</label>
-            <input type="file" name="cocktailImage" onChange={(e) => setFormData({ ...formData, cocktailImage: e.target.files[0] })}></input>
+            <input type="text" name="cocktailImage" onChange={handleChange} value={formData.cocktailImage}></input>
             <button type="button" onClick={handleAddCocktail}>Add Cocktail</button>
         </form>
     );
