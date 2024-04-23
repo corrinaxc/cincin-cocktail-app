@@ -16,11 +16,22 @@ export default function CocktailCard( {
     cocktailsInfo,
     idDrink
 }) {
-
-    const router = useRouter();
     const { data: session, status } = useSession();
     const [favourites, setFavourites] = useState([]);
     const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
+    const router = useRouter();
+  
+    useEffect(() => {
+      if (data) {
+        setFavourites(data);
+      }
+    }, [data]);
+  
+    if (status === 'loading') return <div>Loading...</div>;
+    if (error) return <div>Error fetching data</div>;
+    if (!favourites) return <div>No favourites found</div>;
+
+
 
     const handleBackButtonClick = () => {
         router.back();
