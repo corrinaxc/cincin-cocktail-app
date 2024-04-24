@@ -31,6 +31,11 @@ export default function MyCocktails() {
       {myCocktails.map((myCocktail) => (
         <div className="cocktailListDetail" key={myCocktail._id}>
           <h2>{myCocktail.strDrink}</h2>
+          <ul>
+            {myCocktail.ingredients?.map((ingredient) => (
+            <li className="underline">{ingredient}</li>
+             ))}
+        </ul>
           <Link href={`/mycocktails/${myCocktail._id}`}>
             <img className="w-28" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
           </Link>
