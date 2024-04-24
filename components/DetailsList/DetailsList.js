@@ -39,6 +39,23 @@ export default function DetailsList({
       {cocktails?.map((cocktail) => (
         <div className="cocktailListDetail" key={cocktail.idDrink}>
           <h2 className='cocktailDetailName'>{cocktail.strDrink}</h2>
+          <ul className='cocktailDetailIngredients'>
+            <li>{cocktail.strIngredient1}</li>
+            <li>{cocktail.strIngredient2}</li>
+            <li>{cocktail.strIngredient3}</li>
+            <li>{cocktail.strIngredient4}</li>
+            <li>{cocktail.strIngredient5}</li>
+            <li>{cocktail.strIngredient6}</li>
+            <li>{cocktail.strIngredient7}</li>
+            <li>{cocktail.strIngredient8}</li>
+            <li>{cocktail.strIngredient9}</li>
+            <li>{cocktail.strIngredient10}</li>
+            <li>{cocktail.strIngredient11}</li>
+            <li>{cocktail.strIngredient12}</li>
+            <li>{cocktail.strIngredient13}</li>
+            <li>{cocktail.strIngredient14}</li>
+            <li>{cocktail.strIngredient15}</li>
+          </ul>
          <Link href={`/cocktails/${cocktail.idDrink}`}><img className="cocktailListImage" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
          </Link>
          <FavouriteButton 
