@@ -211,14 +211,14 @@ input {
 .signOutButton {
   position: absolute;
   bottom: 81px;
-  right: 66px;
+  right: 85px;
   border: black;
   border-width: 1px;
 }
 
 .myCocktailsLink {
   position: absolute;
-  left: 30px;
+  left: 25px;
   bottom: 0;
   font-size: larger;
 }
