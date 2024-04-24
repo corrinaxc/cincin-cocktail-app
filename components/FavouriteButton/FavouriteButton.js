@@ -61,7 +61,7 @@ export default function FavouriteButton( {
   return (
     <div>
       {favouriteItem ? (
-        <button onClick={handleDelete}>❤️</button>
+        <button className="favButton" onClick={handleDelete}>❤️</button>
       ) : (
         <button className="favButton" onClick={handleToggleFavorite}>🤍</button>
       )}
