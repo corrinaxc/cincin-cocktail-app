@@ -27,12 +27,11 @@ export default function DetailsList({
     }, [data]);
 
     useEffect(() => {
-      // Function to fetch details for each cocktail
       const fetchCocktailExtraInfo = async () => {
         const detailsPromises = cocktails.map(async cocktail => {
           const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktail.idDrink}`);
           const data = await response.json();
-          return data; // Return the parsed JSON data
+          return data;
         });
     
         const detailsData = await Promise.all(detailsPromises);

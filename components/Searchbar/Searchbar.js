@@ -8,22 +8,20 @@ export default function Searchbar({ isIngredientSearch }) {
 
     function handleSearch(e) {
         e.preventDefault();
-        const formData = new FormData(e.target.form); 
+        const formData = new FormData(e.target);
+        console.log(e.target)
         const searchQuery = formData.get('newCocktailSearch');
-        console.log(searchQuery);
+        console.log("Search query:", searchQuery);
         const searchURL = isIngredientSearch
-            ? `https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${searchQuery}`
-            : `https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${searchQuery}`;
-        router.push({
-            pathname: `${searchQuery}`,
-        });
+            ? `/search?ingredient=${searchQuery}`
+            : `/search?cocktail=${searchQuery}`;
+        router.push(searchQuery);
     }
 
     return (
         <>
-            <form className="newSearch">
+            <form className="newSearch" onSubmit={handleSearch}>
                 <input className='newSearchInput' name="newCocktailSearch" type="text" placeholder="New Search"></input>
-                {/* <button onClick={handleSearch} type="submit">Search</button> */}
             </form>
         </>
     )
