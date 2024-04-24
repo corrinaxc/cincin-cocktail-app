@@ -21,9 +21,9 @@ export default function Searchbar({ isIngredientSearch }) {
 
     return (
         <>
-            <form className="m-0 p-2.5">
-                <input name="newCocktailSearch" type="text"></input>
-                <button onClick={handleSearch} type="submit">Search</button>
+            <form className="newSearch">
+                <input className='newSearchInput' name="newCocktailSearch" type="text" placeholder="New Search"></input>
+                {/* <button onClick={handleSearch} type="submit">Search</button> */}
             </form>
         </>
     )

@@ -47,7 +47,7 @@ body {
   /* background: rgb(var(--primary)); */
   background-image: url("../public/resources/mymind-wHJ5L9KGTl4-unsplash.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -262,4 +262,23 @@ input {
   top: 33px;
   font-size: smaller;
   font-style: italic;
+}
+
+.newSearch {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.newSearchInput {
+  border-radius: 10px;
+  text-align: center;
+}
+
+.detailsPage {
+  background-image: url("../public/resources/mymind-wHJ5L9KGTl4-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
