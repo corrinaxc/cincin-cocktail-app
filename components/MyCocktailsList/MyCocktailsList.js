@@ -30,14 +30,14 @@ export default function MyCocktails() {
     <>
       {myCocktails.map((myCocktail) => (
         <div className="cocktailListDetail" key={myCocktail._id}>
-          <h2>{myCocktail.strDrink}</h2>
-          <ul>
+          <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
+          <ul className='cocktailDetailIngredients'>
             {myCocktail.ingredients?.map((ingredient) => (
             <li className="underline">{ingredient}</li>
              ))}
         </ul>
           <Link href={`/mycocktails/${myCocktail._id}`}>
-            <img className="w-28" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
+            <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
           </Link>
           <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
         </div>

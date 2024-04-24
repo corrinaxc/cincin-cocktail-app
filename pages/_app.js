@@ -73,7 +73,6 @@ export default function App({ Component, pageProps, session }) {
       searchQueryIngredient={searchQueryIngredient}
     />
     <Nav />
-    {/* </div> */}
     </SessionProvider>
     </>
   );
