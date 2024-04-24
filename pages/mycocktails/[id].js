@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import CocktailCard from "@/components/CocktailCard/CocktailCard";
 import { useRouter } from "next/router";
+import MyCocktailCard from '@/components/MyCocktailCard/MyCocktailCard'
 
 export default function MyCocktail() {
 
@@ -38,7 +38,7 @@ export default function MyCocktail() {
      } // Render a loading indicator while fetching data
 
     return (
-        <CocktailCard 
+        <MyCocktailCard 
         name = {myCocktail.strDrink}
         ingredients = {myCocktail.ingredients}
         method = {myCocktail.method}
