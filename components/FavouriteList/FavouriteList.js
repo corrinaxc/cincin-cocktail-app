@@ -25,7 +25,7 @@ export default function FavouriteList({ handleInputChange }) {
   return (
     <>
       <Searchbar handleInputChange={handleInputChange}/>
-      <>
+      <div>
         {favourites?.map((favourite) => (
           <div className="cocktailListDetail" key={favourite.idDrink}>
             <h2>{favourite.strDrink}</h2>
@@ -40,7 +40,7 @@ export default function FavouriteList({ handleInputChange }) {
             favourites={favourites}/>
           </div>
         ))}
-      </>
+      </div>
     </>
   );
 }

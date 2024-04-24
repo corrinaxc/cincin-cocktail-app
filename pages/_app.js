@@ -6,6 +6,7 @@ import useLocalStorageState from "use-local-storage-state";
 import {SessionProvider} from "next-auth/react";
 import {useSession} from 'next-auth/react'
 import { Head } from "next/head";
+import Banner from "@/components/Banner/Banner";
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
@@ -59,6 +60,7 @@ export default function App({ Component, pageProps, session }) {
   return (
     <>
     <SessionProvider session={session}>
+    <Banner />
     <Component
       {...pageProps}
       handleInputChange={handleInputChange}
