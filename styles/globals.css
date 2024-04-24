@@ -44,7 +44,10 @@
 
 body {
   color: black;
-  background: rgb(var(--primary));
+  /* background: rgb(var(--primary)); */
+  background-image: url("../public/resources/mymind-wHJ5L9KGTl4-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -251,4 +254,12 @@ input {
   position: absolute;
   font-size: larger;
   left: 190px;
+}
+
+.cocktailDetailIngredients {
+  position: absolute;
+  left:190px;
+  top: 33px;
+  font-size: smaller;
+  font-style: italic;
 }
