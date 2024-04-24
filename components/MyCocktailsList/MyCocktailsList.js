@@ -1,47 +1,42 @@
+import useSWR from 'swr';
+import DeleteButton from '../DeleteButton/DeleteButton';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+
+const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
 export default function MyCocktails() {
-  const [myCocktails, setMyCocktails] = useState([]);
+  const { data: myCocktails, error, mutate } = useSWR('/api/mycocktails', fetcher);
 
-  useEffect(() => {
-    const fetchCocktails = async () => {
-      try {
-        const response = await fetch(`/api/mycocktails`, {
-          method: "GET",
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setMyCocktails(data);
-        } else {
-          throw new Error('Failed to fetch data');
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`/api/mycocktails/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        mutate(); // Trigger re-fetch
+      } else {
+        console.error("Failed to delete the cocktail");
       }
-    };
-
-    fetchCocktails();
-  }, []);
-
-  console.log(myCocktails);
-
-    return (
-          <>
-            {myCocktails?.map((myCocktail) => (
-              <div className="cocktailListDetail" key={myCocktail.id}>
-                <h2>{myCocktail.strDrink}</h2>
-                <Link href={`/mycocktails/${myCocktail._id}`}>
-                  <img className="w-28" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
-                </Link>
-                {/* <FavouriteButton name={favourite.name}
-                id={favourite._id}
-                idDrink={favourite.idDrink}
-                image={favourite.strDrinkThumb}
-                mutate={mutate}
-                favourites={favourites}/> */}
-              </div>
-            ))}
-          </>      
-          );
+    } catch (error) {
+      console.error("Failed to delete the cocktail:", error);
     }
+  };
+
+  if (error) return <div>Error loading data</div>;
+  if (!myCocktails) return <div>Loading...</div>;
+
+  return (
+    <>
+      {myCocktails.map((myCocktail) => (
+        <div className="cocktailListDetail" key={myCocktail._id}>
+          <h2>{myCocktail.strDrink}</h2>
+          <Link href={`/mycocktails/${myCocktail._id}`}>
+            <img className="w-28" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
+          </Link>
+          <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
+        </div>
+      ))}
+    </>      
+  );
+}

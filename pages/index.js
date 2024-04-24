@@ -12,7 +12,6 @@ export default function Home( {handleInputChange, handleIngredientChange, cockta
   console.log(cocktails);
   return (
     <>
-    <Banner />
     <HomePageForm 
     handleInputChange={handleInputChange}
     handleIngredientChange={handleIngredientChange} />

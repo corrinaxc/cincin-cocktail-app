@@ -6,12 +6,11 @@ const Account = () => {
     const { data: session, status } = useSession();
     if (status === 'authenticated') {
         return (
-            <div>
-                <h1>Account</h1>
-                <p>Welcome {session.user.name}</p>
-                <img src={session.user.image}></img>
-                <button onClick={() => signOut()}>Sign Out</button>
-                <Link href="/mycocktails">My Cocktails</Link>
+            <div className="account">
+                <p className="userName">Welcome <br></br>✨{session.user.name}✨</p>
+                <img className="userImage"src={session.user.image}></img>
+                <button className="signOutButton" onClick={() => signOut()}>Sign Out</button>
+                <Link className="myCocktailsLink" href="/mycocktails">🍸 My Cocktails 🍸</Link>
             </div>
         );
     } else {

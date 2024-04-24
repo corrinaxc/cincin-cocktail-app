@@ -44,7 +44,10 @@
 
 body {
   color: black;
-  background: rgb(var(--primary));
+  /* background: rgb(var(--primary)); */
+  background-image: url("../public/resources/mymind-wHJ5L9KGTl4-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -63,15 +66,17 @@ form {
   align-self: center;
 }
 
-button {
+.homepageFormButton {
   width: 100px;;
   align-self: center;
   border-radius: 5px;
+  border: #0c0c0c;
+  border-width: 2px;
+  border-style: solid;
 }
 
 h1{
   text-align: center;
-  font-size: 1.5rem;
 }
 
 img {
@@ -85,6 +90,10 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  font-size: xx-large;
+  justify-content: space-evenly;
+  display: flex;
+  gap: 100px;
 }
 
 input {
@@ -101,11 +110,11 @@ input {
   flex-direction: row;
   background-color: white;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 20px;
   border-radius: 5px;
   width: 100%;
   padding: 5px;
+  height:64px;
+  font-size: xx-large;
 }
 
 .addCocktailButton {
@@ -150,8 +159,8 @@ input {
 
 .favButton {
   position: absolute;
-  top: 11px;
-  right: 1px;
+  top: 3px;
+  right: 42px;
 }
 
 .cocktailImage {
@@ -174,4 +183,102 @@ input {
   border-color: #0c0c0c;
   border-width: 1px;
   border-radius: 1px;
+}
+
+.account {
+  margin-top: 50px;
+  position: absolute;
+  width: 100%;
+  height: 225px;
+}
+
+.userImage {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 190px;
+  border-radius: 10px;
+}
+
+.userName {
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  font-size: larger;
+  top: 50px;
+}
+
+.signOutButton {
+  position: absolute;
+  bottom: 81px;
+  right: 66px;
+  border: black;
+  border-width: 1px;
+}
+
+.myCocktailsLink {
+  position: absolute;
+  left: 30px;
+  bottom: 0;
+  font-size: larger;
+}
+
+.profileButton {
+  margin-top: 5px;
+  width: 40px;
+}
+
+.homeIcon {
+  margin-top: 5px;
+  width: 40px;
+}
+
+.detailsList {
+  margin-bottom: 70px;
+}
+
+.cocktailListDetail {
+  position:relative;
+  width:400px;
+  height:200px;
+  margin:20px;
+}
+
+.cocktailListImage {
+  position: absolute;
+  border-radius: 10px;
+  width: 180px;
+}
+
+.cocktailDetailName {
+  position: absolute;
+  font-size: larger;
+  left: 190px;
+}
+
+.cocktailDetailIngredients {
+  position: absolute;
+  left:190px;
+  top: 33px;
+  font-size: smaller;
+  font-style: italic;
+}
+
+.newSearch {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.newSearchInput {
+  border-radius: 10px;
+  text-align: center;
+}
+
+.detailsPage {
+  background-image: url("../public/resources/mymind-wHJ5L9KGTl4-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
