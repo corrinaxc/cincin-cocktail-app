@@ -7,7 +7,7 @@ const DeleteButton = ({ id, onDelete }) => {
   };
 
   return (
-    <button onClick={handleDelete}>Delete</button>
+    <button className="delete-button" onClick={handleDelete}><img className="deleteIcon" src="/resources/delete.png"></img></button>
   );
 };
 

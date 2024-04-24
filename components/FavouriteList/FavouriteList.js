@@ -41,12 +41,10 @@ export default function FavouriteList({ handleInputChange }) {
   if (!favourites) return <div>No favourites found</div>;
 
   return (
-    <>
-      <Searchbar handleInputChange={handleInputChange}/>
       <div>
         {favourites?.map((favourite, index) => (
           <div className="cocktailListDetail" key={favourite.idDrink}>
-            <h2>{favourite.strDrink}</h2>
+            <h2 className='cocktailDetailName'>{favourite.strDrink}</h2>
             <ul className='cocktailDetailIngredients'>
             {cocktailExtraInfo[index]?.drinks[0] && (
               Object.keys(cocktailExtraInfo[index].drinks[0]).map(key => {
@@ -58,7 +56,7 @@ export default function FavouriteList({ handleInputChange }) {
             )}
          </ul>
             <Link href={`/cocktails/${favourite.idDrink}`}>
-              <img className="w-28" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
+              <img className="cocktailListImage" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
             </Link>
             <FavouriteButton name={favourite.name}
             id={favourite._id}
@@ -69,7 +67,6 @@ export default function FavouriteList({ handleInputChange }) {
           </div>
         ))}
       </div>
-    </>
   );
 }
 
