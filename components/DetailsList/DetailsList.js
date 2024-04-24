@@ -33,7 +33,7 @@ export default function DetailsList({
     return <div>No cocktails available</div>;
   }
   return (
-    <>
+    <div className='detailsPage'>
     <Searchbar handleInputChange={handleInputChange}/>
     <div className='detailsList'>
       {cocktails?.map((cocktail) => (
@@ -67,6 +67,6 @@ export default function DetailsList({
         </div>
       ))}
     </div>
-    </>
+    </div>
   );
 }
