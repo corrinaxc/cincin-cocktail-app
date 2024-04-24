@@ -11,12 +11,30 @@ export default function FavouriteList({ handleInputChange }) {
   const { data: session, status } = useSession();
   const [favourites, setFavourites] = useState([]);
   const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
+  const [cocktailExtraInfo, setCocktailExtraInfo] = useState([]);
 
   useEffect(() => {
     if (data) {
       setFavourites(data);
     }
   }, [data]);
+
+  useEffect(() => {
+    const fetchCocktailExtraInfo = async () => {
+      const detailsPromises = favourites.map(async favourite => {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${favourite.idDrink}`);
+        const data = await response.json();
+        return data;
+      });
+  
+      const detailsData = await Promise.all(detailsPromises);
+      setCocktailExtraInfo(detailsData);
+    };
+  
+    fetchCocktailExtraInfo();
+  }, [favourites]);    
+
+  console.log(cocktailExtraInfo)
 
   if (status === 'loading') return <div>Loading...</div>;
   if (error) return <div>Error fetching data</div>;
@@ -26,9 +44,19 @@ export default function FavouriteList({ handleInputChange }) {
     <>
       <Searchbar handleInputChange={handleInputChange}/>
       <div>
-        {favourites?.map((favourite) => (
+        {favourites?.map((favourite, index) => (
           <div className="cocktailListDetail" key={favourite.idDrink}>
             <h2>{favourite.strDrink}</h2>
+            <ul className='cocktailDetailIngredients'>
+            {cocktailExtraInfo[index]?.drinks[0] && (
+              Object.keys(cocktailExtraInfo[index].drinks[0]).map(key => {
+                if (key.startsWith('strIngredient') && cocktailExtraInfo[index].drinks[0][key]) {
+                  return <li key={key}>{cocktailExtraInfo[index].drinks[0][key]}</li>;
+                }
+                return null;
+              })
+            )}
+         </ul>
             <Link href={`/cocktails/${favourite.idDrink}`}>
               <img className="w-28" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
             </Link>
