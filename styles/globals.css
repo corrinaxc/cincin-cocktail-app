@@ -410,3 +410,15 @@ input {
 .signInButton {
   text-decoration: underline 5px pink;
 }
+
+.randomCocktail {
+  position:relative;
+  height:200px;
+  margin:20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
