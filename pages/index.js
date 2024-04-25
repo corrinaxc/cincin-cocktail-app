@@ -1,21 +1,35 @@
-import { Josefin_Sans } from "next/font/google";
 import HomePageForm from "@/components/HomepageForm/HomepageForm";
-import Banner from "@/components/Banner/Banner";
-import Nav from "@/components/Nav/Nav";
-import cocktailImage from "../public/resources/cocktail.png"
-import AddCocktailButton from "@/components/AddCocktailButton/AddCocktailButton";
+import useSWR from 'swr';
+import RandomCocktail from "@/components/RandomCocktail/RandomCocktail";
+import { useEffect, useState } from "react";
 
+const fetcher = async (url) => await fetch(url).then((res) => res.json());
+const searchURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
-const inter = Josefin_Sans({ subsets: ["latin"] });
+export default function Home({ handleInputChange, handleIngredientChange, cocktails }) {
+  const [randomCocktail, setRandomCocktail] = useState([]);
+  const [loading, setLoading] = useState(true); 
 
-export default function Home( {handleInputChange, handleIngredientChange, cocktails} ) {
-  console.log(cocktails);
+  const { data, error } = useSWR(searchURL, fetcher);
+
+  useEffect(() => {
+    if (data) {
+      setRandomCocktail(data.drinks);
+      setLoading(false); 
+    }
+  }, [data]);
+
   return (
     <>
-    <HomePageForm 
-    handleInputChange={handleInputChange}
-    handleIngredientChange={handleIngredientChange} />
-    <AddCocktailButton />
+      <HomePageForm
+        handleInputChange={handleInputChange}
+        handleIngredientChange={handleIngredientChange}
+      />
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <RandomCocktail randomCocktail={randomCocktail} />
+      )}
     </>
   );
 }
