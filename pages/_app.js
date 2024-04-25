@@ -60,6 +60,7 @@ export default function App({ Component, pageProps, session }) {
   return (
     <>
     <SessionProvider session={session}>
+    {/* <div className="pageWrapper"> */}
     <Banner />
     <Component
       {...pageProps}
