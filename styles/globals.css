@@ -90,6 +90,8 @@ img {
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  display: flex;
+  gap: 90px;
 }
 
 footer {
@@ -421,10 +423,32 @@ input {
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  margin-top: 40px;
 }
 
 .rejectionButton {
   position: absolute;
   top: 6px;
   right: 38px;
+}
+
+.randomCocktailDetailName {
+  position: absolute;
+  font-size: larger;
+  width: 100px;
+  left: 190px;
+}
+
+.nextDrinkButton {
+      position: absolute;
+    right: 6px;
+    top: 40%;
+    font-size: larger;
+}
+
+.featuredCocktailTitle {
+  position:absolute;
+  top: 0;
+  left: 50%;
+  margin:10px;
 }
