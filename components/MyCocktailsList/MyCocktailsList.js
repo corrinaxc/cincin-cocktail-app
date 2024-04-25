@@ -29,19 +29,21 @@ export default function MyCocktails() {
   return (
     <>
       {myCocktails.map((myCocktail) => (
-        <div className="cocktailListDetail" key={myCocktail._id}>
-          <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
-          <ul className='cocktailDetailIngredients'>
-            {myCocktail.ingredients?.map((ingredient) => (
-            <li className="underline">{ingredient}</li>
-             ))}
-        </ul>
-          <Link href={`/mycocktails/${myCocktail._id}`}>
-            <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
-          </Link>
-          <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
-        </div>
-      ))}
+  <div className="cocktailListDetail" key={myCocktail._id}>
+      <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
+      <ul className='cocktailDetailIngredients'>
+      {myCocktail.ingredients && myCocktail.ingredients.split(',').map((ingredient, index) => (
+        <li key={index}>
+          <span className="underline">{ingredient.trim()}</span>
+        </li>
+        ))}
+      </ul>
+      <Link href={`/mycocktails/${myCocktail._id}`}>
+        <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
+      </Link>
+      <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
+  </div>
+))}
     </>      
   );
 }

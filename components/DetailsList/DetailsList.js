@@ -15,7 +15,6 @@ export default function DetailsList({
 
     const { data: session, status } = useSession();
     const [favourites, setFavourites] = useState([]);
-    const [loading, setLoading] = useState(true); // Add loading state
     const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
     const [cocktailExtraInfo, setCocktailExtraInfo] = useState([]);
 
@@ -40,17 +39,12 @@ export default function DetailsList({
   
           const detailsData = await Promise.all(detailsPromises);
           setCocktailExtraInfo(detailsData);
-          setLoading(false); // Set loading to false when data is fetched
         }
       };
   
       fetchCocktailExtraInfo();
     }, [cocktails]);
   
-    if (loading) { // Render loading state if loading is true
-      return <div>Loading...</div>;
-    }
-
     if (!cocktails || !Array.isArray(cocktails) || cocktails.length === 0) {
       return <div>No Cocktails Found</div>;
     }
