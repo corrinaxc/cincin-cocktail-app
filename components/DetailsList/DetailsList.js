@@ -18,7 +18,9 @@ export default function DetailsList({
     const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
     const [cocktailExtraInfo, setCocktailExtraInfo] = useState([]);
 
-    console.log(cocktails)
+    if (!cocktails) {
+      return <div>No Cocktails Found</div>
+    }
   
     useEffect(() => {
       if (data) {
@@ -28,30 +30,29 @@ export default function DetailsList({
 
     useEffect(() => {
       const fetchCocktailExtraInfo = async () => {
-        const detailsPromises = cocktails.map(async cocktail => {
-          const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktail.idDrink}`);
-          const data = await response.json();
-          return data;
-        });
-    
-        const detailsData = await Promise.all(detailsPromises);
-        setCocktailExtraInfo(detailsData);
+        if (Array.isArray(cocktails) && cocktails.length > 0) {
+          const detailsPromises = cocktails.map(async cocktail => {
+            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktail.idDrink}`);
+            const data = await response.json();
+            return data;
+          });
+  
+          const detailsData = await Promise.all(detailsPromises);
+          setCocktailExtraInfo(detailsData);
+        }
       };
-    
+  
       fetchCocktailExtraInfo();
-    }, [cocktails]);    
+    }, [cocktails]);
+  
+    if (!cocktails || !Array.isArray(cocktails) || cocktails.length === 0) {
+      return <div>No Cocktails Found</div>;
+    }
+  
+    if (!cocktailExtraInfo) {
+      return <div>No cocktails found</div>;
+    }
 
-    console.log(cocktailExtraInfo)
-  
-  
-    if (status === 'loading') return <div>Loading...</div>;
-    if (error) return <div>Error fetching data</div>;
-    if (!favourites) return <div>No favourites found</div>;
-  
-    
-  if (!cocktails) {
-    return <div>No cocktails available</div>;
-  }
   return (
     <div className='detailsPage'>
     <Searchbar handleInputChange={handleInputChange}/>
