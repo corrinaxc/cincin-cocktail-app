@@ -422,3 +422,9 @@ input {
   border-color: black;
   border-width: 2px;
 }
+
+.rejectionButton {
+  position: absolute;
+  top: 6px;
+  right: 38px;
+}
