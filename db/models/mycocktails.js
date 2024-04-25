@@ -6,7 +6,7 @@ const mycocktailSchema = new Schema({
     strDrink: {type:String, required:true},
     strDrinkThumb: {type:String},
     userId: {type:String},
-    ingredients: {type:Array},
+    ingredients: {type:String},
     method: {type:String},
     });
 

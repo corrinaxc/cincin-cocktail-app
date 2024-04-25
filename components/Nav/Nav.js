@@ -15,4 +15,3 @@ export default function Nav() {
     )
 }
 
-// className="w-14"
