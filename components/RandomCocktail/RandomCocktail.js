@@ -33,10 +33,14 @@ export default function RandomCocktail( { randomCocktail }) {
         window.location.reload();
       }
 
+      function nextDrink() {
+        window.location.reload();
+      }
+
     return (
         <div>
         <div className="randomCocktail" key={randomCocktail[0].idDrink}>
-          <h2 className='cocktailDetailName'>{randomCocktail[0].strDrink}</h2>
+          <h2 className='randomCocktailDetailName'>{randomCocktail[0].strDrink}</h2>
           <ul className='cocktailDetailIngredients'>
                 {ingredients.map((item, index) => (
                     <li key={index}>{item.ingredient}</li>
@@ -51,6 +55,7 @@ export default function RandomCocktail( { randomCocktail }) {
          image={randomCocktail[0].strDrinkThumb}
          mutate={mutate}
          favourites={favourites} />
+         <button onClick={nextDrink}className='nextDrinkButton'>→</button>
     </div>
         </div>
     )
