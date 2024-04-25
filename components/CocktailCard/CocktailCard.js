@@ -52,24 +52,24 @@ export default function CocktailCard( {
         <>
         <div className="cocktailCard">
         <div className="cocktailCardImageDiv">
-        <button onClick={handleBackButtonClick} className="backButton">Back</button>
+        <div className="buttonDiv">
+        <button onClick={handleBackButtonClick} className="backButton">←</button>
+        <h1 className="cocktailCardName">{name}</h1>
         <FavouriteButton className="favButton" name={name}
         image={image}
         cocktailsInfo={cocktailsInfo}
         idDrink={idDrink}
         mutate={mutate}
         favourites={favourites}/>
-        <br></br>
-        <img className="cocktailImage" src={image}/>
         </div>
-        <div className="cocktailCardDetail">
-        <h1>{name}</h1>
-        <ul>
+        {/* <br></br> */}
+        <img className="cocktailImage" src={image}/>
+        <ul className="cocktailCardIngredients">
             {ingredients?.map((ingredient) => (
             <li className="underline">{ingredient.measure} {ingredient.ingredient}</li>
              ))}
         </ul>
-        <p className="italic">{method}</p>
+        <p className="italic cocktailCardMethod">{method}</p>
         </div>
         </div>
         </>

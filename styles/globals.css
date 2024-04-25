@@ -18,6 +18,7 @@
 
   body {
     margin: 0;
+    margin-bottom:50px;
   }
 
 .josefin-sans {
@@ -142,44 +143,73 @@ input {
 }
 
 .cocktailCardImageDiv{
-  background-image: url('../public/resources/vector.png');
-  background-size: 414px 600px;
-  z-index: 100;
-  height: 350px;
-  position:relative;
-  align-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-/* .cocktailListDetail {
   display: flex;
   flex-direction: column;
-  align-items: center; 
-} */
+  gap:10px;
+  margin: 20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+.buttonDiv {
+  position:relative;
+  margin-bottom: 10px;
+}
 
 .cocktailCardDetail{
-  z-index: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  height: 250px;
+  margin-left: 20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  margin-right: 20px;
+  margin-top: 0px;
+}
+
+.cocktailCardMethod {
+  bottom: 11px;
+}
+
+.cocktailCardName {
+  font-size: x-large;
+  position: absolute;
+  left: 50%;
+  /* right: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 16px;
 }
 
 .backButton {
-  position: absolute;
-  top: 10px;
-  left: 0px;
+  top: 6px;
+  left: 9px;
+  font-size: larger;
 }
 
 .favButton {
-  position: absolute;
+  position:absolute;
   top: 6px;
   right: 12px;
 }
 
 .cocktailImage {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 210px;
   border-radius: 10px;
+}
+
+.cocktailCardIngredients {
+  top: 280px;
 }
 
 .addCocktailForm {
@@ -344,3 +374,39 @@ input {
   top: 6px;
   width: 23px;
  }
+
+ .logInDiv {
+  position: relative;
+  height:200px;
+  margin:20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+ }
+
+ .glassHalfFullDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: x-large;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  width: 265px;
+ }
+
+ .signInDiv {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  font-size: large;
+}
+
+.signInButton {
+  text-decoration: underline 5px pink;
+}
