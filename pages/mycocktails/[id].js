@@ -43,9 +43,10 @@ export default function MyCocktail() {
         ingredients = {myCocktail.ingredients}
         method = {myCocktail.method}
         image = {myCocktail.strDrinkThumb}
-        idDrink = {myCocktail.id}
+        id = {myCocktail.id}
         // onToggleFavourite={onToggleFavourite}
         // cocktailsInfo={cocktailsInfo}
+        myCocktail={myCocktail}
         />
     )
 }
