@@ -470,3 +470,25 @@ input {
   top: 104px;
   font-style: italic;
 }
+
+.easterEggDiv {
+  position:relative;
+  height:485px;
+  margin:20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bells {
+  border-radius: 10px;
+  width: 400px;
+  align-self: center;
+}
