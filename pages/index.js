@@ -11,6 +11,8 @@ export default function Home({ handleInputChange, handleIngredientChange, cockta
   const [randomCocktail, setRandomCocktail] = useState([]);
   const [loading, setLoading] = useState(true);
   const router= useRouter();
+  const [animation, setAnimation] = useState(false);
+
 
   const { data, error } = useSWR(searchURL, fetcher);
 
@@ -34,7 +36,9 @@ export default function Home({ handleInputChange, handleIngredientChange, cockta
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <RandomCocktail randomCocktail={randomCocktail} />
+        <RandomCocktail randomCocktail={randomCocktail}
+        setAnimation={setAnimation}
+        animation={animation} />
       )}
       <button onClick={handleEasterEgg}>O</button>
     </>

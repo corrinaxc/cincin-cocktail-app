@@ -200,9 +200,6 @@ input {
 }
 
 .favButton {
-  position:absolute;
-  top: 6px;
-  right: 12px;
 }
 
 .cocktailImage {
@@ -306,8 +303,6 @@ input {
 }
 
 .cocktailListDetail {
-  position:relative;
-  height:200px;
   margin:20px;
   background-color: white;
   padding: 5px;
@@ -315,25 +310,22 @@ input {
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  display: flex;
+  gap: 15px;
 }
 
 .cocktailListImage {
-  position: absolute;
   border-radius: 10px;
   width: 180px;
 }
 
 .cocktailDetailName {
-  position: absolute;
   font-size: larger;
   width: 150px;
   left: 190px;
 }
 
 .cocktailDetailIngredients {
-  position: absolute;
-  left:190px;
-  top: 33px;
   font-size: smaller;
   font-style: italic;
   margin-top: 25px;
@@ -414,8 +406,6 @@ input {
 }
 
 .randomCocktail {
-  position:relative;
-  height:250px;
   margin:20px;
   background-color: white;
   padding: 5px;
@@ -424,33 +414,35 @@ input {
   border-color: black;
   border-width: 2px;
   margin-top: 40px;
+  display: flex;
+  gap: 15px;
+}
+
+@keyframes cocktailShaker {
+  0% { transform: translateX(0) }
+  25% { transform: translateY(-9px) }
+  35% { transform: translateY(-9px) rotate(17deg) }
+  55% { transform: translateY(-9px) rotate(-17deg) }
+  65% { transform: translateY(-9px) rotate(17deg) }
+  75% { transform: translateY(-9px) rotate(-17deg) }
+  100% { transform: translateY(0) rotate(0) }
+}
+
+.shake {
+  animation: cocktailShaker;
+  animation-duration: 700ms;
+  animation-timing-function: ease-in-out;
 }
 
 .rejectionButton {
-  position: absolute;
-  top: 6px;
-  right: 38px;
 }
 
 .randomCocktailDetailName {
-  position: absolute;
   font-size: larger;
   width: 100px;
-  top: 33px;
-  left: 218px;
-}
-
-.nextDrinkButton {
-      position: absolute;
-    right: 6px;
-    top: 40%;
-    font-size: larger;
 }
 
 .featuredCocktailTitle {
-  position: absolute;
-  top: 2px;
-  left: 120px;
   font-style: italic;
   text-decoration: underline 5px pink;
 }
@@ -459,17 +451,14 @@ input {
   text-decoration: underline 5px pink;
 }
 .randomCocktailImage {
-  position: absolute;
-    bottom: 12px;
-    border-radius: 10px;
-    left: 9px;
+  border-radius: 10px;
+  width: 180px;
 }
 
 .randomCocktailDetailIngredients{
-  position: absolute;
-  left: 220px;
-  top: 104px;
+  font-size: smaller;
   font-style: italic;
+  margin-top: 25px;
 }
 
 .easterEggDiv {

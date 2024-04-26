@@ -59,19 +59,21 @@ export default function DetailsList({
     <div className='detailsList'>
       {cocktails?.map((cocktail, index) => (
         <div className="cocktailListDetail" key={cocktail.idDrink}>
-          <h2 className='cocktailDetailName'>{cocktail.strDrink}</h2>
-          <ul className='cocktailDetailIngredients'>
-            {cocktailExtraInfo[index]?.drinks[0] && (
-              Object.keys(cocktailExtraInfo[index].drinks[0]).map(key => {
-                if (key.startsWith('strIngredient') && cocktailExtraInfo[index].drinks[0][key]) {
-                  return <li key={key}>{cocktailExtraInfo[index].drinks[0][key]}</li>;
-                }
-                return null;
-              })
-            )}
-         </ul>
-         <Link href={`/cocktails/${cocktail.idDrink}`}><img className="cocktailListImage" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+          <Link href={`/cocktails/${cocktail.idDrink}`}><img className="cocktailListImage" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
          </Link>
+         <div>
+            <h2 className='cocktailDetailName'>{cocktail.strDrink}</h2>
+            <ul className='cocktailDetailIngredients'>
+              {cocktailExtraInfo[index]?.drinks[0] && (
+                Object.keys(cocktailExtraInfo[index].drinks[0]).map(key => {
+                  if (key.startsWith('strIngredient') && cocktailExtraInfo[index].drinks[0][key]) {
+                    return <li key={key}>{cocktailExtraInfo[index].drinks[0][key]}</li>;
+                  }
+                  return null;
+                })
+              )}
+          </ul>
+         </div>
          <FavouriteButton 
          idDrink={cocktail.idDrink}
          name={cocktail.strDrink}
