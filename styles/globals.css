@@ -415,7 +415,7 @@ input {
 
 .randomCocktail {
   position:relative;
-  height:200px;
+  height:250px;
   margin:20px;
   background-color: white;
   padding: 5px;
@@ -436,7 +436,8 @@ input {
   position: absolute;
   font-size: larger;
   width: 100px;
-  left: 190px;
+  top: 33px;
+  left: 218px;
 }
 
 .nextDrinkButton {
@@ -447,8 +448,25 @@ input {
 }
 
 .featuredCocktailTitle {
-  position:absolute;
-  top: 0;
-  left: 50%;
-  margin:10px;
+  position: absolute;
+  top: 2px;
+  left: 120px;
+  font-style: italic;
+}
+
+.addCocktailFormButton {
+  text-decoration: underline 5px pink;
+}
+.randomCocktailImage {
+  position: absolute;
+    bottom: 12px;
+    border-radius: 10px;
+    left: 9px;
+}
+
+.randomCocktailDetailIngredients{
+  position: absolute;
+  left: 220px;
+  top: 104px;
+  font-style: italic;
 }
