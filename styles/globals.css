@@ -452,6 +452,7 @@ input {
   top: 2px;
   left: 120px;
   font-style: italic;
+  text-decoration: underline 5px pink;
 }
 
 .addCocktailFormButton {
