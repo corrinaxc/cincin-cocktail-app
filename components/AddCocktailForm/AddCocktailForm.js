@@ -52,7 +52,7 @@ export default function AddCocktailForm() {
             <input className='formInput' type="text" name="method" value={formData.method} onChange={handleChange}></input>
             <label htmlFor="cocktailImage">Image Upload</label>
             <input className='formInput' type="text" name="cocktailImage" onChange={handleChange} value={formData.cocktailImage}></input>
-            <button type="button" onClick={handleAddCocktail}>Add Cocktail</button>
+            <button type="button" className='addCocktailFormButton' onClick={handleAddCocktail}>Add Cocktail</button>
         </form>
     );
 }
