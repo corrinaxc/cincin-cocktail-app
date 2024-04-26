@@ -2,13 +2,15 @@ import HomePageForm from "@/components/HomepageForm/HomepageForm";
 import useSWR from 'swr';
 import RandomCocktail from "@/components/RandomCocktail/RandomCocktail";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 const searchURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
 export default function Home({ handleInputChange, handleIngredientChange, cocktails }) {
   const [randomCocktail, setRandomCocktail] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
+  const router= useRouter();
 
   const { data, error } = useSWR(searchURL, fetcher);
 
@@ -18,6 +20,10 @@ export default function Home({ handleInputChange, handleIngredientChange, cockta
       setLoading(false); 
     }
   }, [data]);
+
+  function handleEasterEgg() {
+    router.push('/easter-egg');
+  }
 
   return (
     <>
@@ -30,6 +36,7 @@ export default function Home({ handleInputChange, handleIngredientChange, cockta
       ) : (
         <RandomCocktail randomCocktail={randomCocktail} />
       )}
+      <button onClick={handleEasterEgg}>O</button>
     </>
   );
 }

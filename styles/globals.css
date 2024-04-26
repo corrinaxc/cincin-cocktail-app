@@ -493,3 +493,7 @@ input {
   width: 400px;
   align-self: center;
 }
+
+.coPilot {
+  text-decoration: underline 5px pink;
+}
