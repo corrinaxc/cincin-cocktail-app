@@ -35,7 +35,10 @@ export default function MyCocktails() {
         <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
       </Link>
       <div>
+        <div className='deleteDiv'>
       <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
+      <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
+      </div>
       <ul className='cocktailDetailIngredients'>
       {myCocktail.ingredients && myCocktail.ingredients.split(',').map((ingredient, index) => (
         <li key={index}>
@@ -44,7 +47,6 @@ export default function MyCocktails() {
         ))}
       </ul>
       </div>
-      <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
   </div>
 ))}
     </div>

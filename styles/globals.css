@@ -357,9 +357,6 @@ input {
  }
 
  .deleteIcon{
-  position: absolute;
-  right: 10px;
-  top: 6px;
   width: 23px;
  }
 
@@ -502,4 +499,14 @@ input {
   left: 29px;
   color: red;
   font-size: 33px;
+}
+
+.buttonDiv{
+  display:flex;
+  justify-content: space-between;
+  margin: 0px;
+}
+
+.deleteDiv {
+  display: flex;
 }
