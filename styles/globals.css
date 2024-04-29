@@ -185,12 +185,6 @@ input {
 
 .cocktailCardName {
   font-size: x-large;
-  position: absolute;
-  left: 50%;
-  /* right: 50%; */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  top: 16px;
 }
 
 .backButton {
@@ -200,9 +194,6 @@ input {
 }
 
 .favButton {
-  position:absolute;
-  top: 6px;
-  right: 12px;
 }
 
 .cocktailImage {
@@ -306,8 +297,6 @@ input {
 }
 
 .cocktailListDetail {
-  position:relative;
-  height:200px;
   margin:20px;
   background-color: white;
   padding: 5px;
@@ -315,25 +304,22 @@ input {
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  display: flex;
+  gap: 15px;
 }
 
 .cocktailListImage {
-  position: absolute;
   border-radius: 10px;
   width: 180px;
 }
 
 .cocktailDetailName {
-  position: absolute;
   font-size: larger;
   width: 150px;
   left: 190px;
 }
 
 .cocktailDetailIngredients {
-  position: absolute;
-  left:190px;
-  top: 33px;
   font-size: smaller;
   font-style: italic;
   margin-top: 25px;
@@ -371,9 +357,6 @@ input {
  }
 
  .deleteIcon{
-  position: absolute;
-  right: 10px;
-  top: 6px;
   width: 23px;
  }
 
@@ -414,43 +397,58 @@ input {
 }
 
 .randomCocktail {
-  position:relative;
-  height:250px;
-  margin:20px;
+  margin: 20px;
   background-color: white;
   padding: 5px;
   border-radius: 10px;
   border-style: solid;
   border-color: black;
   border-width: 2px;
-  margin-top: 40px;
+ 
+}
+
+.blabla{
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.header-cocktail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-cocktail{
+  display: flex;
+  align-self: flex-end;
+  gap:10px;
+}
+
+@keyframes cocktailShaker {
+  0% { transform: translateX(0) }
+  25% { transform: translateY(-9px) }
+  35% { transform: translateY(-9px) rotate(17deg) }
+  55% { transform: translateY(-9px) rotate(-17deg) }
+  65% { transform: translateY(-9px) rotate(17deg) }
+  75% { transform: translateY(-9px) rotate(-17deg) }
+  100% { transform: translateY(0) rotate(0) }
+}
+
+.shake {
+  animation: cocktailShaker;
+  animation-duration: 700ms;
+  animation-timing-function: ease-in-out;
 }
 
 .rejectionButton {
-  position: absolute;
-  top: 6px;
-  right: 38px;
 }
 
 .randomCocktailDetailName {
-  position: absolute;
   font-size: larger;
-  width: 100px;
-  top: 33px;
-  left: 218px;
-}
-
-.nextDrinkButton {
-      position: absolute;
-    right: 6px;
-    top: 40%;
-    font-size: larger;
+  width: 150px;
 }
 
 .featuredCocktailTitle {
-  position: absolute;
-  top: 2px;
-  left: 120px;
   font-style: italic;
   text-decoration: underline 5px pink;
 }
@@ -459,17 +457,14 @@ input {
   text-decoration: underline 5px pink;
 }
 .randomCocktailImage {
-  position: absolute;
-    bottom: 12px;
-    border-radius: 10px;
-    left: 9px;
+  border-radius: 10px;
+  width: 180px;
 }
 
 .randomCocktailDetailIngredients{
-  position: absolute;
-  left: 220px;
-  top: 104px;
+  font-size: smaller;
   font-style: italic;
+  margin-top: 25px;
 }
 
 .easterEggDiv {
@@ -496,4 +491,22 @@ input {
 
 .coPilot {
   text-decoration: underline 5px pink;
+}
+
+.easterEggButton {
+  position: absolute;
+  top: 655px;
+  left: 29px;
+  color: red;
+  font-size: 33px;
+}
+
+.buttonDiv{
+  display:flex;
+  justify-content: space-between;
+  margin: 0px;
+}
+
+.deleteDiv {
+  display: flex;
 }
