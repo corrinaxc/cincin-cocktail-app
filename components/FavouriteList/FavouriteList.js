@@ -44,6 +44,10 @@ export default function FavouriteList({ handleInputChange }) {
       <div>
         {favourites?.map((favourite, index) => (
           <div className="cocktailListDetail" key={favourite.idDrink}>
+              <Link href={`/cocktails/${favourite.idDrink}`}>
+              <img className="cocktailListImage" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
+            </Link>
+            <div>
             <h2 className='cocktailDetailName'>{favourite.strDrink}</h2>
             <ul className='cocktailDetailIngredients'>
             {cocktailExtraInfo[index]?.drinks[0] && (
@@ -55,9 +59,7 @@ export default function FavouriteList({ handleInputChange }) {
               })
             )}
          </ul>
-            <Link href={`/cocktails/${favourite.idDrink}`}>
-              <img className="cocktailListImage" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
-            </Link>
+         </div>
             <FavouriteButton name={favourite.name}
             id={favourite._id}
             idDrink={favourite.idDrink}
