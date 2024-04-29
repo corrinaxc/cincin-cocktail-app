@@ -27,9 +27,14 @@ export default function MyCocktails() {
   if (!myCocktails) return <div>Loading...</div>;
 
   return (
-    <>
+    <div>
+      <div>
       {myCocktails.map((myCocktail) => (
   <div className="cocktailListDetail" key={myCocktail._id}>
+        <Link href={`/mycocktails/${myCocktail._id}`}>
+        <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
+      </Link>
+      <div>
       <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
       <ul className='cocktailDetailIngredients'>
       {myCocktail.ingredients && myCocktail.ingredients.split(',').map((ingredient, index) => (
@@ -38,12 +43,11 @@ export default function MyCocktails() {
         </li>
         ))}
       </ul>
-      <Link href={`/mycocktails/${myCocktail._id}`}>
-        <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
-      </Link>
+      </div>
       <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
   </div>
 ))}
-    </>      
+    </div>
+    </div>      
   );
 }
