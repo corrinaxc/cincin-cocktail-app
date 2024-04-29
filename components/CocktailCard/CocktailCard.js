@@ -54,13 +54,15 @@ export default function CocktailCard( {
         <div className="cocktailCardImageDiv">
         <div className="buttonDiv">
         <button onClick={handleBackButtonClick} className="backButton">←</button>
-        <h1 className="cocktailCardName">{name}</h1>
+        <div>
         <FavouriteButton className="favButton" name={name}
         image={image}
         cocktailsInfo={cocktailsInfo}
         idDrink={idDrink}
         mutate={mutate}
         favourites={favourites}/>
+        </div>
+        <h1 className="cocktailCardName">{name}</h1>
         </div>
         {/* <br></br> */}
         <img className="cocktailImage" src={image}/>

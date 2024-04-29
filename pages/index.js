@@ -40,7 +40,7 @@ export default function Home({ handleInputChange, handleIngredientChange, cockta
         setAnimation={setAnimation}
         animation={animation} />
       )}
-      <button onClick={handleEasterEgg}>O</button>
+      <button className="easterEggButton" onClick={handleEasterEgg}>O</button>
     </>
   );
 }

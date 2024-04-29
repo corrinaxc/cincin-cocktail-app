@@ -185,12 +185,6 @@ input {
 
 .cocktailCardName {
   font-size: x-large;
-  position: absolute;
-  left: 50%;
-  /* right: 50%; */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  top: 16px;
 }
 
 .backButton {
@@ -406,16 +400,31 @@ input {
 }
 
 .randomCocktail {
-  margin:20px;
+  margin: 20px;
   background-color: white;
   padding: 5px;
   border-radius: 10px;
   border-style: solid;
   border-color: black;
   border-width: 2px;
-  margin-top: 40px;
+ 
+}
+
+.blabla{
   display: flex;
-  gap: 15px;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.header-cocktail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-cocktail{
+  display: flex;
+  align-self: flex-end;
+  gap:10px;
 }
 
 @keyframes cocktailShaker {
@@ -439,7 +448,7 @@ input {
 
 .randomCocktailDetailName {
   font-size: larger;
-  width: 100px;
+  width: 150px;
 }
 
 .featuredCocktailTitle {
@@ -485,4 +494,12 @@ input {
 
 .coPilot {
   text-decoration: underline 5px pink;
+}
+
+.easterEggButton {
+  position: absolute;
+  top: 655px;
+  left: 29px;
+  color: red;
+  font-size: 33px;
 }
