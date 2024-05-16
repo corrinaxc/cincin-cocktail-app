@@ -1,0 +1,14 @@
+.nav {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    display: flex;
+    gap: 90px;
+    background-color: white;
+    margin-top: 12px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    height: 64px;
+    border-radius: 10px;
+  }

@@ -12,8 +12,6 @@
 
 :root {
   --primary: 253, 137, 147
- /* --background-start-rgb: 214, 219, 220;
- --background-end-rgb: 255, 255, 255; */
 }
 
   body {
@@ -37,15 +35,8 @@
   }
 }
 
-/* .just-another hand-regular {
-  font-family: "Just Another Hand", cursive;
-  font-weight: 400;
-  font-style: normal;
-} */
-
 body {
   color: black;
-  /* background: rgb(var(--primary)); */
   background-image: url("../public/resources/cocktailwallpaper.jpeg");
   background-repeat: repeat;
   background-size: auto;
@@ -67,15 +58,6 @@ form {
   align-self: center;
 }
 
-.homepageFormButton {
-  width: 100px;;
-  align-self: center;
-  border-radius: 5px;
-  border: #0c0c0c;
-  border-width: 2px;
-  border-style: solid;
-}
-
 h1{
   text-align: center;
 }
@@ -84,14 +66,6 @@ img {
   border-radius: 5px;
   width: 200px;
   align-self: center;
-}
-
-.nav {
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  display: flex;
-  gap: 90px;
 }
 
 footer {
@@ -191,9 +165,6 @@ input {
   top: 6px;
   left: 9px;
   font-size: larger;
-}
-
-.favButton {
 }
 
 .cocktailImage {
@@ -489,16 +460,16 @@ input {
   align-self: center;
 }
 
-.coPilot {
-  text-decoration: underline 5px pink;
-}
-
 .easterEggButton {
   position: absolute;
   top: 655px;
   left: 29px;
   color: red;
   font-size: 33px;
+}
+
+.coPilot {
+  text-decoration: underline 5px pink;
 }
 
 .buttonDiv{
