@@ -1,0 +1,14 @@
+.addCocktailButton {
+    background-color: #ff5f7a;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 150px;
+    position: fixed;
+    bottom: 130px;
+    right: 30px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #0c0c0c;
+    border-radius: 10px;;
+  }
