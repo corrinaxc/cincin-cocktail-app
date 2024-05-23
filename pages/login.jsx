@@ -29,39 +29,27 @@
 
 // export default login;
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 const Login = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
+    const hasRedirected = useRef(false);
 
     useEffect(() => {
-        const handleRouteChangeStart = (url) => {
-            console.log('Route change started:', url);
-        };
-
-        const handleRouteChangeComplete = (url) => {
-            console.log('Route change completed:', url);
-        };
-
-        router.events.on('routeChangeStart', handleRouteChangeStart);
-        router.events.on('routeChangeComplete', handleRouteChangeComplete);
-
-        return () => {
-            router.events.off('routeChangeStart', handleRouteChangeStart);
-            router.events.off('routeChangeComplete', handleRouteChangeComplete);
-        };
-    }, [router]);
-
-    useEffect(() => {
-        if (status === "authenticated") {
+        console.log('Session status:', status);
+        if (status === 'authenticated' && !hasRedirected.current) {
+            hasRedirected.current = true;
+            console.log('Redirecting to /account');
             router.push('/account');
+        } else if (status === 'unauthenticated' && !hasRedirected.current) {
+            hasRedirected.current = false;
         }
     }, [session, status, router]);
 
-    if (status === "loading") {
+    if (status === 'loading') {
         return <div>Loading...</div>;
     }
 
