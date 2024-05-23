@@ -29,7 +29,6 @@
 
 // export default login;
 
-
 import React, { useEffect } from "react";
 import { useSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
@@ -37,6 +36,24 @@ import { useRouter } from 'next/router';
 const Login = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
+
+    useEffect(() => {
+        const handleRouteChangeStart = (url) => {
+            console.log('Route change started:', url);
+        };
+
+        const handleRouteChangeComplete = (url) => {
+            console.log('Route change completed:', url);
+        };
+
+        router.events.on('routeChangeStart', handleRouteChangeStart);
+        router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+        return () => {
+            router.events.off('routeChangeStart', handleRouteChangeStart);
+            router.events.off('routeChangeComplete', handleRouteChangeComplete);
+        };
+    }, [router]);
 
     useEffect(() => {
         if (status === "authenticated") {
