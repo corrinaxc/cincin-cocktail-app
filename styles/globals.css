@@ -264,6 +264,23 @@ input {
   gap: 15px;
 }
 
+@media (min-width: 1200px) {
+  .cocktailListDetail {
+    margin:20px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    display: flex;
+    gap: 15px;
+    width: 30%;
+    margin-left: 35%;
+  }
+
+}
+
 .cocktailListImage {
   border-radius: 10px;
   width: 180px;
@@ -305,12 +322,6 @@ input {
 .homepageInput {
   background-color: #ffe3ea;
 }
- .homepageForm {
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  border-radius: 10px;
- }
 
  .deleteIcon{
   width: 23px;

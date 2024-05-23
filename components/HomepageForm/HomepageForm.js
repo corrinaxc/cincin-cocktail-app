@@ -28,7 +28,7 @@ function handleSubmit(e) {
     }
 }
     return (
-        <form className="flex flex-col bg-white gap-2.5 homepageForm" onSubmit={handleSubmit}>
+        <form className={styles.homepageForm} onSubmit={handleSubmit}>
         {/* <HomeSearchbar /> */}
         <label htmlFor="cocktailInput" className="text-black">What is your tipple of choice?</label>
         <input type="text" name="cocktailInput" className="border-2 border-black rounded-md"></input>
