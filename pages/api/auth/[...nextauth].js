@@ -1,8 +1,7 @@
-import NextAuth from "next-auth/next"
-import GoogleProvider from "next-auth/providers/google"
-import { MongoDBAdapter } from "@auth/mongodb-adapter"
-import clientPromise from "../../../lib/db"
-
+import NextAuth from "next-auth/next";
+import GoogleProvider from "next-auth/providers/google";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "../../../lib/db";
 
 export default NextAuth({
     adapter: MongoDBAdapter(clientPromise),
@@ -15,12 +14,12 @@ export default NextAuth({
     ],
 
     callbacks: {
-        async session({session, user}) {
+        async session({ session, user }) {
             console.log(user);
             session.user.id = user.id;
-
-            return session
+            return session;
         }
     },
-    secret: process.env.JWT_SECRET
-})
+    
+    secret: process.env.NEXTAUTH_SECRET
+});
