@@ -7,4 +7,28 @@
     border-style: solid;
   }
 
+  .homepageForm {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 10px;
+   }
   
+   @media (min-width: 1200px) {
+    .homepageForm {
+      border-style: solid;
+      border-color: black;
+      border-width: 2px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      gap: 10px;
+      width: 30%;
+      margin-left: 35%;
+     }
+  }
