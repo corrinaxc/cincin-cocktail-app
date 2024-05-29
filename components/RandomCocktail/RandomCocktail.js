@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import { useSession } from 'next-auth/react';
 import { set } from 'mongoose';
+import styles from './RandomCocktail.module.css';
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
@@ -41,11 +42,11 @@ export default function RandomCocktail( { randomCocktail, setAnimation, animatio
 
     return (
         <div className={`${animation? "shake" : ""}`}>
-        <div className="randomCocktail" key={randomCocktail[0].idDrink}>
+        <div className={styles.randomCocktail} key={randomCocktail[0].idDrink}>
           <div className='header-cocktail'>
-        <h2 className='featuredCocktailTitle'>Featured Cocktail</h2>
+        <h2 className={styles.featuredCocktailTitle}>Featured Cocktail</h2>
         <div className='button-cocktail'>
-        <button className='rejectionButton' onClick={handleRejection}>👎</button>
+        <button className={styles.rejectionButton} onClick={handleRejection}>👎</button>
          <FavouriteButton 
          idDrink={randomCocktail[0].idDrink}
          name={randomCocktail[0].strDrink}
@@ -54,14 +55,14 @@ export default function RandomCocktail( { randomCocktail, setAnimation, animatio
          favourites={favourites} />
          </div>
          </div>
-          <div className='blabla'>
+          <div className={styles.blabla}>
           
           
-          <Link href={`/cocktails/${randomCocktail[0].idDrink}`}><img className="randomCocktailImage" src={randomCocktail[0].strDrinkThumb} alt={randomCocktail[0].strDrink} />
+          <Link href={`/cocktails/${randomCocktail[0].idDrink}`}><img className={styles.randomCocktailImage} src={randomCocktail[0].strDrinkThumb} alt={randomCocktail[0].strDrink} />
          </Link>
          <div>
-          <h2 className='randomCocktailDetailName'>{randomCocktail[0].strDrink}</h2>
-          <ul className='randomCocktailDetailIngredients'>
+          <h2 className={styles.randomCocktailDetailName}>{randomCocktail[0].strDrink}</h2>
+          <ul className={styles.randomCocktailDetailIngredients}>
                 {ingredients.map((item, index) => (
                     <li key={index}>{item.ingredient}</li>
                 ))}

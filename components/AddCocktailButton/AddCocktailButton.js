@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import styles from './AddCocktailButton.module.css';
 
 export default function AddCocktailButton() {
     const { data: session, status } = useSession();
@@ -14,6 +15,6 @@ export default function AddCocktailButton() {
     }
 
     return (
-        <button className="addCocktailButton" onClick={handleAddCocktailButton}>Add New Cocktail</button>
+        <button className={styles.addCocktailButton} onClick={handleAddCocktailButton}>Add New Cocktail</button>
     );
 }

@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import styles from './Nav.module.css';
 
 
 export default function Nav() {
     return(
         <footer>
-        <nav className="bg-white mt-3 w-screen text-center display: flex justify-center gap-7 h-16 nav">
+        <nav className={styles.nav}>
             <Link className="homeIcon" href={'/'}><img src='/resources/icons8-home-50.png'></img></Link>
             <Link href={'/favourites'}>❤️</Link>
             <Link href={'/account'}>
@@ -14,4 +15,3 @@ export default function Nav() {
         </footer>
     )
 }
-

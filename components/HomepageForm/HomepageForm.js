@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import styles from'./HomepageForm.module.css';
 
 export default function HomePageForm({ handleInputChange, handleIngredientChange }) {
 
@@ -27,13 +28,13 @@ function handleSubmit(e) {
     }
 }
     return (
-        <form className="flex flex-col bg-white gap-2.5 homepageForm" onSubmit={handleSubmit}>
+        <form className={styles.homepageForm} onSubmit={handleSubmit}>
         {/* <HomeSearchbar /> */}
         <label htmlFor="cocktailInput" className="text-black">What is your tipple of choice?</label>
         <input type="text" name="cocktailInput" className="border-2 border-black rounded-md"></input>
         <label htmlFor="ingredientInput" className="text-black border-black">What do you have in your fridge?</label>
         <input type="text" name="ingredientInput" className="border-2 border-black rounded-md"></input>
-        <button type="submit" className="homepageFormButton">I'm thirsty! Let's go</button>
+        <button type="submit" className={styles.homepageFormButton}>I'm thirsty! Let's go</button>
         </form>
     )
 }
