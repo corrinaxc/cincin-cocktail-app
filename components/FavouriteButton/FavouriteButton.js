@@ -59,7 +59,7 @@ export default function FavouriteButton( {
   }
 
   return (
-    <div>
+    <div className='favButtonDiv'>
       {favouriteItem ? (
         <button className="favButton" onClick={handleDelete}>❤️</button>
       ) : (

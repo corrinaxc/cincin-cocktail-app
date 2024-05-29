@@ -262,6 +262,7 @@ input {
   border-width: 2px;
   display: flex;
   gap: 15px;
+  position:relative;
 }
 
 @media (min-width: 1200px) {
@@ -277,8 +278,15 @@ input {
     gap: 15px;
     width: 30%;
     margin-left: 35%;
+    position:relative;
   }
-
+}
+@media (min-width: 430px) {
+  .favButtonDiv {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+  }
 }
 
 .cocktailListImage {
