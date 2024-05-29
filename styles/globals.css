@@ -12,8 +12,6 @@
 
 :root {
   --primary: 253, 137, 147
- /* --background-start-rgb: 214, 219, 220;
- --background-end-rgb: 255, 255, 255; */
 }
 
   body {
@@ -37,15 +35,8 @@
   }
 }
 
-/* .just-another hand-regular {
-  font-family: "Just Another Hand", cursive;
-  font-weight: 400;
-  font-style: normal;
-} */
-
 body {
   color: black;
-  /* background: rgb(var(--primary)); */
   background-image: url("../public/resources/cocktailwallpaper.jpeg");
   background-repeat: repeat;
   background-size: auto;
@@ -67,15 +58,6 @@ form {
   align-self: center;
 }
 
-.homepageFormButton {
-  width: 100px;;
-  align-self: center;
-  border-radius: 5px;
-  border: #0c0c0c;
-  border-width: 2px;
-  border-style: solid;
-}
-
 h1{
   text-align: center;
 }
@@ -84,14 +66,6 @@ img {
   border-radius: 5px;
   width: 200px;
   align-self: center;
-}
-
-.nav {
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  display: flex;
-  gap: 90px;
 }
 
 footer {
@@ -127,21 +101,6 @@ input {
   border-style: solid;
   border-color: black;
   border-width: 2px;
-}
-
-.addCocktailButton {
-  background-color: #ff5f7a;
-  padding: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 150px;
-  position: fixed;
-  bottom: 130px;
-  right: 30px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #0c0c0c;
-  border-radius: 10px;;
 }
 
 .cocktailCardImageDiv{
@@ -191,9 +150,6 @@ input {
   top: 6px;
   left: 9px;
   font-size: larger;
-}
-
-.favButton {
 }
 
 .cocktailImage {
@@ -306,6 +262,31 @@ input {
   border-width: 2px;
   display: flex;
   gap: 15px;
+  position:relative;
+}
+
+@media (min-width: 1200px) {
+  .cocktailListDetail {
+    margin:20px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    display: flex;
+    gap: 15px;
+    width: 30%;
+    margin-left: 35%;
+    position:relative;
+  }
+}
+@media (min-width: 430px) {
+  .favButtonDiv {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+  }
 }
 
 .cocktailListImage {
@@ -349,12 +330,6 @@ input {
 .homepageInput {
   background-color: #ffe3ea;
 }
- .homepageForm {
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  border-radius: 10px;
- }
 
  .deleteIcon{
   width: 23px;
@@ -396,22 +371,6 @@ input {
   text-decoration: underline 5px pink;
 }
 
-.randomCocktail {
-  margin: 20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
- 
-}
-
-.blabla{
-  display: flex;
-  margin-top: 20px;
-  gap: 10px;
-}
 
 .header-cocktail {
   display: flex;
@@ -440,31 +399,9 @@ input {
   animation-timing-function: ease-in-out;
 }
 
-.rejectionButton {
-}
-
-.randomCocktailDetailName {
-  font-size: larger;
-  width: 150px;
-}
-
-.featuredCocktailTitle {
-  font-style: italic;
-  text-decoration: underline 5px pink;
-}
 
 .addCocktailFormButton {
   text-decoration: underline 5px pink;
-}
-.randomCocktailImage {
-  border-radius: 10px;
-  width: 180px;
-}
-
-.randomCocktailDetailIngredients{
-  font-size: smaller;
-  font-style: italic;
-  margin-top: 25px;
 }
 
 .easterEggDiv {
@@ -489,16 +426,16 @@ input {
   align-self: center;
 }
 
-.coPilot {
-  text-decoration: underline 5px pink;
-}
-
 .easterEggButton {
   position: absolute;
   top: 655px;
   left: 29px;
   color: red;
   font-size: 33px;
+}
+
+.coPilot {
+  text-decoration: underline 5px pink;
 }
 
 .buttonDiv{

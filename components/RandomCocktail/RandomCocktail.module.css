@@ -1,0 +1,70 @@
+.randomCocktailDetailName {
+    font-size: larger;
+    width: 150px;
+  }
+  
+  .featuredCocktailTitle {
+    font-style: italic;
+    text-decoration: underline 5px pink;
+  }
+
+  .randomCocktailImage {
+    border-radius: 10px;
+    width: 180px;
+  }
+  
+  .randomCocktailDetailIngredients{
+    font-size: smaller;
+    font-style: italic;
+    margin-top: 25px;
+  }
+
+  .randomCocktail {
+    margin: 20px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    position:relative;
+  }
+
+  .blabla{
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  @media (min-width: 1200px) {
+    .randomCocktail {
+      margin: 20px;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+      border-style: solid;
+      border-color: black;
+      border-width: 2px;
+      width: 30%;
+      margin-left: 35%;
+    }
+
+    .randomCocktailImage {
+      border-radius: 10px;
+      width: 335px;
+    }
+
+    .blabla{
+      display: flex;
+      margin-top: 20px;
+      gap: 20px;
+    }
+  }
+
+  @media (min-width: 430px) {
+    .rejectionButton{
+      position: absolute;
+      right: 33px;
+      top: 8px;
+    }
+  }
