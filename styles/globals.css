@@ -83,11 +83,6 @@ input {
   border-radius: 5;
 }
 
-.cocktailCard {
-  display: flex;
-  flex-direction: column;
-}
-
 .banner {
   display: flex;
   flex-direction: row;
@@ -101,24 +96,6 @@ input {
   border-style: solid;
   border-color: black;
   border-width: 2px;
-}
-
-.cocktailCardImageDiv{
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-  margin: 20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
-
-.buttonDiv {
-  position:relative;
-  margin-bottom: 10px;
 }
 
 .cocktailCardDetail{
@@ -136,29 +113,6 @@ input {
   border-width: 2px;
   margin-right: 20px;
   margin-top: 0px;
-}
-
-.cocktailCardMethod {
-  bottom: 11px;
-}
-
-.cocktailCardName {
-  font-size: x-large;
-}
-
-.backButton {
-  top: 6px;
-  left: 9px;
-  font-size: larger;
-}
-
-.cocktailImage {
-  width: 210px;
-  border-radius: 10px;
-}
-
-.cocktailCardIngredients {
-  top: 280px;
 }
 
 .addCocktailForm {
