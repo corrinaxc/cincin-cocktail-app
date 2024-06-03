@@ -138,7 +138,7 @@ input {
   position: absolute;
   position: relative;
   height: 250px;
-  margin: 20px;
+  margin: 20px auto;
   background-color: white;
   padding: 5px;
   border-radius: 10px;
@@ -245,6 +245,10 @@ input {
     border-color: black;
     border-width: 2px;
     width: 30%;
+   }
+  .account {
+    width: 30%;
+    margin-left: 35%;
    }
 }
 @media (min-width: 430px) {
