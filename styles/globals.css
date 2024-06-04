@@ -250,6 +250,12 @@ input {
     width: 30%;
     margin-left: 35%;
    }
+   .cocktailCard {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 35%;
+  }
 }
 @media (min-width: 430px) {
   .favButtonDiv {
@@ -422,4 +428,53 @@ input {
 
 .deleteDiv {
   display: flex;
+}
+
+/*cocktail card*/
+
+.cocktailCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.cocktailCardImageDiv{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  margin: 20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+.buttonDiv {
+  position:relative;
+  margin-bottom: 10px;
+}
+
+.cocktailCardMethod {
+  bottom: 11px;
+  font-style:italic;
+}
+
+.cocktailCardName {
+  font-size: x-large;
+}
+
+.backButton {
+  top: 6px;
+  left: 9px;
+  font-size: larger;
+}
+
+.cocktailImage {
+  width: 210px;
+  border-radius: 10px;
+}
+
+.cocktailCardIngredients {
+  top: 280px;
 }
