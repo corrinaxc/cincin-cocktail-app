@@ -51,9 +51,9 @@ export default function CocktailCard( {
     
     return (
         <>
-        <div className={styles.cocktailCard}>
-        <div className={styles.cocktailCardImageDiv}>
-        <div className={styles.buttonDiv}>
+        <div className="cocktailCard">
+        <div className="cocktailCardImageDiv">
+        <div className="buttonDiv">
         <button onClick={handleBackButtonClick} className={styles.backButton}>←</button>
         <FavouriteButton className="favButton" name={name}
         image={image}
@@ -62,14 +62,14 @@ export default function CocktailCard( {
         mutate={mutate}
         favourites={favourites}/>
         </div>
-        <h1 className={styles.cocktailCardName}>{name}</h1>
-        <img className={styles.cocktailImage} src={image}/>
-        <ul className={styles.cocktailCardIngredients}>
+        <h1 className="cocktailCardName">{name}</h1>
+        <img className="cocktailImage" src={image}/>
+        <ul className="cocktailCardIngredients">
             {ingredients?.map((ingredient) => (
             <li className="underline">{ingredient.measure} {ingredient.ingredient}</li>
              ))}
         </ul>
-        <p className={styles.cocktailCardMethod}>{method}</p>
+        <p className="cocktailCardMethod">{method}</p>
         </div>
         </div>
         </>
