@@ -180,6 +180,19 @@ input {
   text-decoration: underline 5px pink;
 }
 
+.cocktailListDetail {
+  margin:20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  gap: 15px;
+  position:relative;
+}
+
 .myCocktailsLink {
   position: absolute;
   right: 8px;
@@ -204,19 +217,6 @@ input {
 
 .detailsList {
   margin-bottom: 70px;
-}
-
-.cocktailListDetail {
-  margin:20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  display: flex;
-  gap: 15px;
-  position:relative;
 }
 
 @media (min-width: 1200px) {
@@ -250,6 +250,12 @@ input {
     width: 30%;
     margin-left: 35%;
    }
+   .cocktailCard {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 35%;
+  }
 }
 @media (min-width: 430px) {
   .favButtonDiv {
@@ -257,7 +263,17 @@ input {
     right: 10px;
     top: 8px;
   }
+  .deleteIcon{
+    width: 23px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+   }
 }
+
+.deleteIcon{
+  width: 23px;
+ }
 
 .cocktailListImage {
   border-radius: 10px;
@@ -300,10 +316,6 @@ input {
 .homepageInput {
   background-color: #ffe3ea;
 }
-
- .deleteIcon{
-  width: 23px;
- }
 
  .logInDiv {
   position: relative;
@@ -416,4 +428,53 @@ input {
 
 .deleteDiv {
   display: flex;
+}
+
+/*cocktail card*/
+
+.cocktailCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.cocktailCardImageDiv{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  margin: 20px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+.buttonDiv {
+  position:relative;
+  margin-bottom: 10px;
+}
+
+.cocktailCardMethod {
+  bottom: 11px;
+  font-style:italic;
+}
+
+.cocktailCardName {
+  font-size: x-large;
+}
+
+.backButton {
+  top: 6px;
+  left: 9px;
+  font-size: larger;
+}
+
+.cocktailImage {
+  width: 210px;
+  border-radius: 10px;
+}
+
+.cocktailCardIngredients {
+  top: 280px;
 }
