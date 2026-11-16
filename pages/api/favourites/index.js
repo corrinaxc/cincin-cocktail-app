@@ -24,7 +24,8 @@ export default async function handler(request, response) {
         }
     } else if (request.method === "GET") {
         try {
-            const favourites = await Favourite.find({ userId });
+            // Newest first (MongoDB ids start with their creation time)
+            const favourites = await Favourite.find({ userId }).sort({ _id: -1 });
             response.status(200).json(favourites);
         } catch (error) {
             console.error(error);
