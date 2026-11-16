@@ -6,6 +6,7 @@ import {SessionProvider} from "next-auth/react";
 import {useSession} from 'next-auth/react'
 import { Head } from "next/head";
 import Banner from "@/components/Banner/Banner";
+import CherryEasterEgg from "@/components/CherryEasterEgg/CherryEasterEgg";
 
 export default function App({ Component, pageProps }) {
   const [input, setInput] = useState("");
@@ -53,6 +54,7 @@ export default function App({ Component, pageProps }) {
       searchQueryIngredient={searchQueryIngredient}
     />
     <Nav />
+    <CherryEasterEgg />
     </SessionProvider>
     </>
   );
