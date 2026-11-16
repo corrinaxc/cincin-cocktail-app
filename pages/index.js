@@ -1,27 +1,28 @@
 import HomePageForm from "@/components/HomepageForm/HomepageForm";
 import useSWR from 'swr';
 import RandomCocktail from "@/components/RandomCocktail/RandomCocktail";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 const searchURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
-export default function Home({ handleInputChange, handleIngredientChange, cocktails }) {
-  const [randomCocktail, setRandomCocktail] = useState([]);
-  const [loading, setLoading] = useState(true);
+export default function Home({ handleInputChange, handleIngredientChange }) {
   const router= useRouter();
   const [animation, setAnimation] = useState(false);
 
+  // Don't swap the featured drink just because the user switched tabs and came back
+  const { data, mutate } = useSWR(searchURL, fetcher, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
+  const randomCocktail = data?.drinks;
+  const loading = !randomCocktail;
 
-  const { data, error } = useSWR(searchURL, fetcher);
-
-  useEffect(() => {
-    if (data) {
-      setRandomCocktail(data.drinks);
-      setLoading(false); 
-    }
-  }, [data]);
+  // Fetch a new random drink in place instead of reloading the whole page
+  function nextCocktail() {
+    mutate();
+  }
 
   function handleEasterEgg() {
     router.push('/easter-egg');
@@ -38,7 +39,8 @@ export default function Home({ handleInputChange, handleIngredientChange, cockta
       ) : (
         <RandomCocktail randomCocktail={randomCocktail}
         setAnimation={setAnimation}
-        animation={animation} />
+        animation={animation}
+        nextCocktail={nextCocktail} />
       )}
       <button className="easterEggButton" onClick={handleEasterEgg}>O</button>
     </>

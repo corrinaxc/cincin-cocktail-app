@@ -1,14 +1,89 @@
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  padding: 0 8px calc(8px + env(safe-area-inset-bottom));
+  pointer-events: none; /* only the bar itself is clickable */
+}
+
 .nav {
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    display: flex;
-    gap: 90px;
-    background-color: white;
-    margin-top: 12px;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    height: 64px;
-    border-radius: 10px;
-  }
+  pointer-events: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 480px;
+  height: 64px;
+  margin: 0 auto;
+  padding: 0 8px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 0 3px 0 black;
+}
+
+.link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 100%;
+  color: black;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.iconWrap {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 32px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.iconWrap svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.link:hover .iconWrap {
+  background-color: rgba(var(--primary), 0.25);
+}
+
+.link:active .iconWrap {
+  transform: scale(0.94);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link:focus-visible .iconWrap {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.active .iconWrap {
+  background-color: rgb(var(--primary));
+  border-color: black;
+}
+
+.active .label {
+  font-weight: 700;
+}

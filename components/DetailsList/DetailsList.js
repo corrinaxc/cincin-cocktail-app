@@ -4,9 +4,24 @@ import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
-import CocktailDetails from '@/pages/cocktails';
+import { sizedThumb } from '@/lib/cocktailImage';
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
+
+// Remember drink details we've already fetched so repeat searches are instant
+const lookupCache = new Map();
+function lookupCocktail(idDrink) {
+  if (!lookupCache.has(idDrink)) {
+    const request = fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`)
+      .then((res) => res.json())
+      .catch((error) => {
+        lookupCache.delete(idDrink); // let it retry next time
+        throw error;
+      });
+    lookupCache.set(idDrink, request);
+  }
+  return lookupCache.get(idDrink);
+}
 
 export default function DetailsList({ 
   cocktails,
@@ -18,10 +33,6 @@ export default function DetailsList({
     const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
     const [cocktailExtraInfo, setCocktailExtraInfo] = useState([]);
 
-    if (!cocktails) {
-      return <div>No Cocktails Found</div>
-    }
-  
     useEffect(() => {
       if (data) {
         setFavourites(data);
@@ -30,16 +41,19 @@ export default function DetailsList({
 
     useEffect(() => {
       const fetchCocktailExtraInfo = async () => {
-        if (Array.isArray(cocktails) && cocktails.length > 0) {
-          const detailsPromises = cocktails.map(async cocktail => {
-            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktail.idDrink}`);
-            const data = await response.json();
-            return data;
-          });
-  
-          const detailsData = await Promise.all(detailsPromises);
-          setCocktailExtraInfo(detailsData);
+        if (!Array.isArray(cocktails) || cocktails.length === 0) return;
+
+        // Name searches already return each drink's ingredients, so there's
+        // nothing extra to fetch. Only ingredient searches need a lookup per drink.
+        if (cocktails[0].strIngredient1 !== undefined) {
+          setCocktailExtraInfo(cocktails.map((cocktail) => ({ drinks: [cocktail] })));
+          return;
         }
+
+        const detailsPromises = cocktails.map((cocktail) => lookupCocktail(cocktail.idDrink));
+
+        const detailsData = await Promise.all(detailsPromises);
+        setCocktailExtraInfo(detailsData);
       };
   
       fetchCocktailExtraInfo();
@@ -59,7 +73,7 @@ export default function DetailsList({
     <div className='detailsList'>
       {cocktails?.map((cocktail, index) => (
         <div className="cocktailListDetail" key={cocktail.idDrink}>
-          <Link href={`/cocktails/${cocktail.idDrink}`}><img className="cocktailListImage" src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+          <Link href={`/cocktails/${cocktail.idDrink}`}><img className="cocktailListImage" src={sizedThumb(cocktail.strDrinkThumb)} alt={cocktail.strDrink} loading={index < 4 ? "eager" : "lazy"} />
          </Link>
          <div>
             <h2 className='cocktailDetailName'>{cocktail.strDrink}</h2>

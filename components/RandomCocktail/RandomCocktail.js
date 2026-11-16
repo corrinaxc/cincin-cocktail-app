@@ -4,17 +4,15 @@ import { useEffect } from 'react';
 import useSWR from 'swr';
 import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import { useSession } from 'next-auth/react';
-import { set } from 'mongoose';
 import styles from './RandomCocktail.module.css';
+import { sizedThumb } from '@/lib/cocktailImage';
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
-export default function RandomCocktail( { randomCocktail, setAnimation, animation }) {
+export default function RandomCocktail( { randomCocktail, setAnimation, animation, nextCocktail }) {
     const [favourites, setFavourites] = useState([]);
     const { data: session, status } = useSession();
     const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
-
-    console.log(randomCocktail);
 
     const ingredients = [];
     for (let i = 1; i <= 15; i++) {
@@ -33,11 +31,10 @@ export default function RandomCocktail( { randomCocktail, setAnimation, animatio
 
       function handleRejection() {
         setAnimation(true);
-        setTimeout(() => {window.location.reload();}, 700);
-      }
-
-      function nextDrink() {
-        window.location.reload();
+        setTimeout(() => {
+          nextCocktail();
+          setAnimation(false);
+        }, 700);
       }
 
     return (
@@ -58,7 +55,7 @@ export default function RandomCocktail( { randomCocktail, setAnimation, animatio
           <div className={styles.blabla}>
           
           
-          <Link href={`/cocktails/${randomCocktail[0].idDrink}`}><img className={styles.randomCocktailImage} src={randomCocktail[0].strDrinkThumb} alt={randomCocktail[0].strDrink} />
+          <Link href={`/cocktails/${randomCocktail[0].idDrink}`}><img className={styles.randomCocktailImage} src={sizedThumb(randomCocktail[0].strDrinkThumb)} alt={randomCocktail[0].strDrink} />
          </Link>
          <div>
           <h2 className={styles.randomCocktailDetailName}>{randomCocktail[0].strDrink}</h2>
