@@ -1,5 +1,6 @@
 import {useSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import styles from './FavouriteButton.module.css';
 
 export default function FavouriteButton( {
   name,
@@ -58,13 +59,22 @@ export default function FavouriteButton( {
     }
   }
 
+  const isFavourite = Boolean(favouriteItem);
+
   return (
     <div className='favButtonDiv'>
-      {favouriteItem ? (
-        <button className="favButton" onClick={handleDelete}>❤️</button>
-      ) : (
-        <button className="favButton" onClick={handleToggleFavorite}>🤍</button>
-      )}
+      <button
+        type="button"
+        className={`${styles.button} ${isFavourite ? styles.active : ''}`}
+        onClick={isFavourite ? handleDelete : handleToggleFavorite}
+        aria-pressed={isFavourite}
+        aria-label={isFavourite ? `Remove ${name} from favourites` : `Add ${name} to favourites`}
+        title={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 20s-7.5-4.6-9-9.2C2 7.6 4 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.9 1.2-1.8 2.8-2.9 4.8-2.9C20 4.5 22 7.6 21 10.8 19.5 15.4 12 20 12 20Z" />
+        </svg>
+      </button>
     </div>
   );
 }
