@@ -52,7 +52,7 @@ export default function CocktailCard( {
           <div className="buttonDiv">
           <button onClick={handleBackButtonClick} className="backButton">←</button>
           <h1 className="cocktailCardName">{name}</h1>
-          <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
+          <DeleteButton label={name} onDelete={() => handleDelete(myCocktail._id)} />
           </div>
         <img className="cocktailImage" src={image}/>
         <ul className='cocktailCardIngredients'>

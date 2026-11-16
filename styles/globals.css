@@ -233,17 +233,7 @@ input {
     right: 10px;
     top: 8px;
   }
-  .deleteIcon{
-    width: 23px;
-    position: absolute;
-    right: 10px;
-    top: 8px;
-   }
 }
-
-.deleteIcon{
-  width: 23px;
- }
 
 .cocktailListImage {
   border-radius: 10px;
@@ -396,8 +386,16 @@ input {
   margin: 0px;
 }
 
+.myCocktailInfo {
+  flex: 1;
+  min-width: 0;
+}
+
 .deleteDiv {
   display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-right: 4px;
 }
 
 /*cocktail card*/
