@@ -51,14 +51,6 @@
   transform: scaleX(-1) rotate(14deg);
 }
 
-.banner:hover .left {
-  animation: clinkLeft 450ms ease-in-out;
-}
-
-.banner:hover .right {
-  animation: clinkRight 450ms ease-in-out;
-}
-
 @keyframes clinkLeft {
   0%, 100% { transform: rotate(14deg); }
   45% { transform: translateX(6px) rotate(24deg); }
@@ -75,5 +67,16 @@
   .banner:hover .left,
   .banner:hover .right {
     animation: none;
+  }
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .banner:hover .left {
+    animation: clinkLeft 450ms ease-in-out;
+  }
+
+  .banner:hover .right {
+    animation: clinkRight 450ms ease-in-out;
   }
 }

@@ -24,10 +24,6 @@
   transition: fill 150ms ease, transform 150ms ease;
 }
 
-.button:hover {
-  background-color: rgba(var(--primary), 0.3);
-}
-
 .button:active {
   transform: translateY(2px);
   box-shadow: 0 0 0 black;
@@ -47,4 +43,16 @@
 .active svg {
   fill: white;
   transform: scale(1.05);
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .button:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
+
+  /* keep a favourited heart fully pink */
+  .active:hover {
+    background-color: rgb(var(--primary));
+  }
 }

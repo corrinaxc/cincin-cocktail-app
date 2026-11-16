@@ -137,10 +137,6 @@
   transition: background-color 150ms ease, transform 100ms ease, box-shadow 100ms ease;
 }
 
-.pill:hover {
-  background-color: rgba(var(--primary), 0.45);
-}
-
 .pill:active {
   transform: translateY(2px);
   box-shadow: 0 0 0 black;
@@ -155,11 +151,6 @@
   box-shadow: 0 3px 0 black;
 }
 
-.button:hover {
-  background-color: rgb(var(--primary));
-  filter: brightness(1.05);
-}
-
 .pill:focus-visible,
 .button:focus-visible {
   outline: 2px solid black;
@@ -168,4 +159,16 @@
 
 @media (prefers-reduced-motion: reduce) {
   .drop1, .drop2, .olive { animation: none; }
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .pill:hover {
+    background-color: rgba(var(--primary), 0.45);
+  }
+
+  .button:hover {
+    background-color: rgb(var(--primary));
+    filter: brightness(1.05);
+  }
 }
