@@ -30,7 +30,6 @@ export default function AddCocktailForm() {
                     strDrinkThumb: formData.cocktailImage,
                     ingredients: formData.ingredients,
                     method: formData.method,
-                    userId: session.user.id
                 }),
             });
             const data = await response.json();

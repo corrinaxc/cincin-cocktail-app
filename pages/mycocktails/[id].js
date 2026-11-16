@@ -6,6 +6,7 @@ import MyCocktailCard from '@/components/MyCocktailCard/MyCocktailCard'
 export default function MyCocktail() {
 
     const [myCocktail, setMyCocktail] = useState(null);
+    const [notFound, setNotFound] = useState(false);
     const router = useRouter();
     const { id } = router.query;
 
@@ -14,11 +15,10 @@ export default function MyCocktail() {
           try {
               if (id) {
                   const response = await fetch(`/api/mycocktails/${id}`);
-                  console.log('Response status:', response.status);
                   if (response.ok) {
-                      const data = await response.json();
-                      console.log('Fetched data:', data);
-                      setMyCocktail(data);
+                      setMyCocktail(await response.json());
+                  } else if (response.status === 404 || response.status === 401) {
+                      setNotFound(true);
                   } else {
                       throw new Error('Failed to fetch data');
                   }
@@ -31,7 +31,9 @@ export default function MyCocktail() {
       fetchCocktail();
   }, [id]);
 
-    console.log(myCocktail);
+    if (notFound) {
+        return <div>Cocktail not found</div>;
+    }
 
     if (!myCocktail) {
         return <div>Loading...</div>;

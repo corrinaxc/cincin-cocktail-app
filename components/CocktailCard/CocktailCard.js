@@ -15,7 +15,7 @@ export default function CocktailCard({
 }) {
     const { data: session, status } = useSession();
     const { data: favourites, mutate } = useSWR(
-        status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null,
+        status === 'authenticated' ? "/api/favourites" : null,
         fetcher
     );
 

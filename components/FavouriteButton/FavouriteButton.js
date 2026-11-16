@@ -24,10 +24,8 @@ export default function FavouriteButton( {
       idDrink: idDrink,
       strDrink: name,
       strDrinkThumb: image,
-      userId: session.user.id
     };
 
-    console.log(favourite);
     const response = await fetch("/api/favourites", {
       method: "POST",
       headers: {
