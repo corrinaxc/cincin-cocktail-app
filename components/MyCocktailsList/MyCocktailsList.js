@@ -34,10 +34,10 @@ export default function MyCocktails() {
         <Link href={`/mycocktails/${myCocktail._id}`}>
         <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
       </Link>
-      <div>
+      <div className='myCocktailInfo'>
         <div className='deleteDiv'>
       <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
-      <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
+      <DeleteButton label={myCocktail.strDrink} onDelete={() => handleDelete(myCocktail._id)} />
       </div>
       <ul className='cocktailDetailIngredients'>
       {myCocktail.ingredients && myCocktail.ingredients.split(',').map((ingredient, index) => (
