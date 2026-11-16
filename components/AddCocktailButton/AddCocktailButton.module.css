@@ -1,14 +1,50 @@
+/* Floating pink pill above the bottom nav, lined up with the nav's right edge.
+   Same outline, shadow and press effect as the app's other buttons. */
 .addCocktailButton {
-    background-color: #ff5f7a;
-    padding: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 150px;
-    position: fixed;
-    bottom: 130px;
-    right: 30px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #0c0c0c;
-    border-radius: 10px;;
-  }
+  position: fixed;
+  z-index: 40;
+  right: max(16px, calc(50vw - 232px));
+  bottom: calc(88px + env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 20px 0 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+  background-color: rgb(var(--primary));
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 black;
+  transition: transform 100ms ease, box-shadow 100ms ease, filter 150ms ease;
+}
+
+.addCocktailButton svg {
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 999px;
+  box-sizing: content-box;
+}
+
+.addCocktailButton:hover {
+  filter: brightness(1.05);
+}
+
+.addCocktailButton:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 black;
+}
+
+.addCocktailButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 3px;
+}
