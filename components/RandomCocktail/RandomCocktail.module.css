@@ -26,10 +26,6 @@
   stroke-linejoin: round;
 }
 
-.rejectionButton:hover {
-  background-color: rgba(var(--primary), 0.3);
-}
-
 .rejectionButton:active {
   transform: translateY(2px);
   box-shadow: 0 0 0 black;
@@ -72,4 +68,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .skeleton { animation: none; }
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .rejectionButton:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
 }

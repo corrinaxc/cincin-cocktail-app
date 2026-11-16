@@ -81,10 +81,6 @@
   stroke-linejoin: round;
 }
 
-.button:hover {
-  filter: brightness(1.05);
-}
-
 .button:active {
   transform: translateY(3px);
   box-shadow: 0 0 0 black;
@@ -93,4 +89,11 @@
 .button:focus-visible {
   outline: 2px solid black;
   outline-offset: 3px;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .button:hover {
+    filter: brightness(1.05);
+  }
 }

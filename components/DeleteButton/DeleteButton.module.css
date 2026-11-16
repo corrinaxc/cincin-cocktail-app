@@ -31,10 +31,6 @@
   stroke-linejoin: round;
 }
 
-.button:hover {
-  background-color: rgba(var(--primary), 0.3);
-}
-
 .button:active {
   transform: translateY(2px);
   box-shadow: 0 0 0 black;
@@ -59,4 +55,16 @@
 
 .text {
   white-space: nowrap;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .button:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
+
+  /* keep the "Delete?" state red */
+  .confirming:hover {
+    background-color: #d93a4a;
+  }
 }

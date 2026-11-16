@@ -111,10 +111,6 @@
   box-sizing: border-box;
 }
 
-.signIn:hover {
-  filter: brightness(1.05);
-}
-
 .signIn:active {
   transform: translateY(3px);
   box-shadow: 0 0 0 black;
@@ -128,4 +124,11 @@
 @media (prefers-reduced-motion: reduce) {
   .wave { animation: none; }
   .liquid { transition: none; }
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .signIn:hover {
+    filter: brightness(1.05);
+  }
 }

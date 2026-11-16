@@ -62,10 +62,6 @@
   font-weight: 500;
 }
 
-.link:hover .iconWrap {
-  background-color: rgba(var(--primary), 0.25);
-}
-
 .link:active .iconWrap {
   transform: scale(0.94);
 }
@@ -86,4 +82,11 @@
 
 .active .label {
   font-weight: 700;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .link:hover .iconWrap {
+    background-color: rgba(var(--primary), 0.25);
+  }
 }

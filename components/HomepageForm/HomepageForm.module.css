@@ -73,10 +73,6 @@
   font-style: italic;
 }
 
-.input:hover {
-  background-color: white;
-}
-
 .input:focus {
   background-color: white;
   box-shadow: 0 0 0 4px rgba(var(--primary), 0.45);
@@ -118,10 +114,6 @@
   transition: transform 100ms ease, box-shadow 100ms ease, filter 150ms ease;
 }
 
-.homepageFormButton:hover {
-  filter: brightness(1.05);
-}
-
 .homepageFormButton:active {
   transform: translateY(3px);
   box-shadow: 0 0 0 black;
@@ -130,4 +122,15 @@
 .homepageFormButton:focus-visible {
   outline: 2px solid black;
   outline-offset: 3px;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .input:hover {
+    background-color: white;
+  }
+
+  .homepageFormButton:hover {
+    filter: brightness(1.05);
+  }
 }

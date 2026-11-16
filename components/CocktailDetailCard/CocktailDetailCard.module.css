@@ -69,10 +69,6 @@
   stroke-linejoin: round;
 }
 
-.backButton:hover {
-  background-color: rgba(var(--primary), 0.3);
-}
-
 .backButton:active {
   transform: translateY(2px);
   box-shadow: 0 0 0 black;
@@ -125,4 +121,11 @@
   margin: 0;
   font-style: italic;
   line-height: 1.5;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .backButton:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
 }

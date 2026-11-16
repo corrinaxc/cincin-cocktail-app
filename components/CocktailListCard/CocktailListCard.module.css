@@ -74,10 +74,6 @@
   transition: transform 150ms ease;
 }
 
-.imageLink:hover .image {
-  transform: rotate(-2deg) scale(1.02);
-}
-
 @media (min-width: 420px) {
   .image {
     width: 150px;
@@ -106,13 +102,11 @@
 }
 
 .name a {
+  display: inline-block;
+  padding: 6px 0; /* taller tap target on phones */
+  margin: -6px 0;
   color: inherit;
   text-decoration: none;
-}
-
-.name a:hover {
-  text-decoration: underline 3px rgb(var(--primary));
-  text-underline-offset: 4px;
 }
 
 .meta {
@@ -154,10 +148,6 @@
   transition: transform 100ms ease, box-shadow 100ms ease, filter 150ms ease;
 }
 
-.recipeLink:hover {
-  filter: brightness(1.05);
-}
-
 .recipeLink:active {
   transform: translateY(2px);
   box-shadow: 0 0 0 black;
@@ -174,12 +164,16 @@
     flex-direction: column;
   }
 
-  .image {
+  /* The link needs its own width here, or not-yet-loaded photos collapse to nothing */
+  .imageLink {
     width: 100%;
     max-width: 260px;
   }
-}
 
+  .image {
+    width: 100%;
+  }
+}
 
 .nameRow {
   display: flex;
@@ -202,4 +196,20 @@
 /* Lists of cards: keep a gap above the bottom nav */
 .card:last-child {
   margin-bottom: 100px;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .imageLink:hover .image {
+    transform: rotate(-2deg) scale(1.02);
+  }
+
+  .name a:hover {
+    text-decoration: underline 3px rgb(var(--primary));
+    text-underline-offset: 4px;
+  }
+
+  .recipeLink:hover {
+    filter: brightness(1.05);
+  }
 }

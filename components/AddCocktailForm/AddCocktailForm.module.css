@@ -61,10 +61,6 @@
   stroke-linejoin: round;
 }
 
-.backButton:hover {
-  background-color: rgba(var(--primary), 0.3);
-}
-
 .backButton:active {
   transform: translateY(2px);
   box-shadow: 0 0 0 black;
@@ -108,10 +104,6 @@
 .input::placeholder {
   color: #9a8a8d;
   font-style: italic;
-}
-
-.input:hover {
-  background-color: white;
 }
 
 .input:focus {
@@ -180,10 +172,6 @@
   transition: transform 100ms ease, box-shadow 100ms ease, filter 150ms ease;
 }
 
-.submit:hover {
-  filter: brightness(1.05);
-}
-
 .submit:active {
   transform: translateY(3px);
   box-shadow: 0 0 0 black;
@@ -198,4 +186,19 @@
 .backButton:focus-visible {
   outline: 2px solid black;
   outline-offset: 3px;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .backButton:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
+
+  .input:hover {
+    background-color: white;
+  }
+
+  .submit:hover {
+    filter: brightness(1.05);
+  }
 }
