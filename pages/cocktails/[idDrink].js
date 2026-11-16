@@ -1,3 +1,5 @@
+import Link from "next/link";
+import EmptyState, { emptyStateStyles } from "@/components/EmptyState/EmptyState";
 import { useRouter } from 'next/router';
 import { useState } from "react";
 import CocktailCard from '@/components/CocktailCard/CocktailCard';
@@ -46,12 +48,19 @@ export default function IndividualCocktailPage({
     }, [selectedCocktail]);
     
 
-    if (!idDrink) {
+    if (!idDrink || isLoading) {
         return <div>Loading...</div>;
     }
 
     if (!selectedCocktail) {
-        return <div>Cocktail not found</div>;
+        return (
+            <EmptyState
+                title="Last orders – this one's gone"
+                message="We can't find that cocktail. It may have been removed, or the link is wrong."
+            >
+                <Link href="/" className={emptyStateStyles.button}>Back to the bar 🍸</Link>
+            </EmptyState>
+        );
     }
 
     return (

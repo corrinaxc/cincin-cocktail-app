@@ -1,0 +1,58 @@
+/* Matches the round outlined DeleteButton and back button */
+.button {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 black;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 100ms ease, box-shadow 100ms ease;
+}
+
+.button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition: fill 150ms ease, transform 150ms ease;
+}
+
+.button:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 black;
+}
+
+.button:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+/* Favourited: pink fill like the active nav tab */
+.active,
+.active:hover {
+  background-color: rgb(var(--primary));
+}
+
+.active svg {
+  fill: white;
+  transform: scale(1.05);
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .button:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
+
+  /* keep a favourited heart fully pink */
+  .active:hover {
+    background-color: rgb(var(--primary));
+  }
+}

@@ -1,0 +1,70 @@
+.button {
+  flex-shrink: 0;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0 7px;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 black;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  transition: background-color 150ms ease, color 150ms ease, transform 100ms ease, box-shadow 100ms ease;
+}
+
+.button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.button:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 black;
+}
+
+.button:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.confirming,
+.confirming:hover {
+  padding: 0 12px 0 10px;
+  color: white;
+  background-color: #d93a4a;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.text {
+  white-space: nowrap;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .button:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
+
+  /* keep the "Delete?" state red */
+  .confirming:hover {
+    background-color: #d93a4a;
+  }
+}

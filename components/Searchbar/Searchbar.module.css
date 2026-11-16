@@ -1,0 +1,99 @@
+/* Results-page search. Same input style as the homepage search card,
+   with a round go button like the other icon buttons. */
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 480px;
+  margin: 16px auto 4px;
+  padding: 0 20px;
+}
+
+.inputWrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.inputWrap svg {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px 0 42px;
+  font: inherit;
+  font-size: 16px; /* 16px stops iOS zooming in on focus */
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 black;
+  outline: none;
+  transition: box-shadow 150ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder {
+  color: #9a8a8d;
+  font-style: italic;
+}
+
+.input:focus {
+  box-shadow: 0 3px 0 black, 0 0 0 4px rgba(var(--primary), 0.45);
+}
+
+.button {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: black;
+  background-color: rgb(var(--primary));
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 black;
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 100ms ease, filter 150ms ease;
+}
+
+.button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.button:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 black;
+}
+
+.button:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 3px;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .button:hover {
+    filter: brightness(1.05);
+  }
+}
