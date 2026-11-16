@@ -1,34 +1,136 @@
+/* Homepage search card. Matches the featured cocktail and detail cards:
+   white card, black outline, solid shadow, pink accents. */
+
+.homepageForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 20px;
+  padding: 18px 16px 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 0 3px 0 black;
+}
+
+/* Line up with the featured cocktail card on wide screens */
+@media (min-width: 1200px) {
+  .homepageForm {
+    width: 30%;
+    margin-left: 35%;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWrap svg {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px 0 40px;
+  font: inherit;
+  font-size: 16px; /* 16px stops iOS zooming in on focus */
+  color: black;
+  background-color: #fff7f8;
+  border: 2px solid black;
+  border-radius: 12px;
+  outline: none;
+  transition: box-shadow 150ms ease, background-color 150ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder {
+  color: #9a8a8d;
+  font-style: italic;
+}
+
+.input:focus {
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(var(--primary), 0.45);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: -2px 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgb(var(--primary)) 0 6px, transparent 6px 10px);
+}
+
 .homepageFormButton {
-    width: 100px;;
-    align-self: center;
-    border-radius: 5px;
-    border: #0c0c0c;
-    border-width: 2px;
-    border-style: solid;
+  align-self: center;
+  margin-top: 4px;
+  padding: 10px 22px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+  background-color: rgb(var(--primary));
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 black;
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 100ms ease, filter 150ms ease;
+}
+
+.homepageFormButton:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 black;
+}
+
+.homepageFormButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 3px;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .input:hover {
+    background-color: white;
   }
 
-  .homepageForm {
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    gap: 10px;
-   }
-  
-   @media (min-width: 1200px) {
-    .homepageForm {
-      border-style: solid;
-      border-color: black;
-      border-width: 2px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      gap: 10px;
-      width: 30%;
-      margin-left: 35%;
-     }
+  .homepageFormButton:hover {
+    filter: brightness(1.05);
   }
+}

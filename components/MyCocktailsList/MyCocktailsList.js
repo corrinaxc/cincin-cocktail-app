@@ -1,8 +1,13 @@
 import useSWR from 'swr';
 import DeleteButton from '../DeleteButton/DeleteButton';
-import Link from 'next/link';
+import CocktailListCard from '../CocktailListCard/CocktailListCard';
+import EmptyState from '../EmptyState/EmptyState';
 
-const fetcher = async (url) => await fetch(url).then((res) => res.json());
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'Error loading data');
+  return res.json();
+};
 
 export default function MyCocktails() {
   const { data: myCocktails, error, mutate } = useSWR('/api/mycocktails', fetcher);
@@ -23,33 +28,35 @@ export default function MyCocktails() {
     }
   };
 
-  if (error) return <div>Error loading data</div>;
+  if (error) return <div>{error.message}</div>;
   if (!myCocktails) return <div>Loading...</div>;
+  if (myCocktails.length === 0) {
+    return (
+      <EmptyState
+        title="No house specials yet"
+        message="Your cocktail menu is looking a little dry."
+        hint="Hit “Add cocktail” to mix up your first signature drink."
+      />
+    );
+  }
 
   return (
-    <div>
-      <div>
+    <div className='detailsList'>
       {myCocktails.map((myCocktail) => (
-  <div className="cocktailListDetail" key={myCocktail._id}>
-        <Link href={`/mycocktails/${myCocktail._id}`}>
-        <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
-      </Link>
-      <div>
-        <div className='deleteDiv'>
-      <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
-      <DeleteButton id={myCocktail._id} onDelete={() => handleDelete(myCocktail._id)} />
-      </div>
-      <ul className='cocktailDetailIngredients'>
-      {myCocktail.ingredients && myCocktail.ingredients.split(',').map((ingredient, index) => (
-        <li key={index}>
-          <span className="underline">{ingredient.trim()}</span>
-        </li>
-        ))}
-      </ul>
-      </div>
-  </div>
-))}
+        <CocktailListCard
+          key={myCocktail._id}
+          href={`/mycocktails/${myCocktail._id}`}
+          name={myCocktail.strDrink}
+          image={myCocktail.strDrinkThumb}
+          ingredients={(myCocktail.ingredients ?? '')
+            .split(',')
+            .map((ingredient) => ingredient.trim())
+            .filter(Boolean)}
+          actions={
+            <DeleteButton label={myCocktail.strDrink} onDelete={() => handleDelete(myCocktail._id)} />
+          }
+        />
+      ))}
     </div>
-    </div>      
   );
 }

@@ -1,14 +1,12 @@
 import HomePageForm from "@/components/HomepageForm/HomepageForm";
 import useSWR from 'swr';
-import RandomCocktail from "@/components/RandomCocktail/RandomCocktail";
+import RandomCocktail, { RandomCocktailSkeleton } from "@/components/RandomCocktail/RandomCocktail";
 import { useState } from "react";
-import { useRouter } from "next/router";
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 const searchURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
 export default function Home({ handleInputChange, handleIngredientChange }) {
-  const router= useRouter();
   const [animation, setAnimation] = useState(false);
 
   // Don't swap the featured drink just because the user switched tabs and came back
@@ -24,10 +22,6 @@ export default function Home({ handleInputChange, handleIngredientChange }) {
     mutate();
   }
 
-  function handleEasterEgg() {
-    router.push('/easter-egg');
-  }
-
   return (
     <>
       <HomePageForm
@@ -35,14 +29,13 @@ export default function Home({ handleInputChange, handleIngredientChange }) {
         handleIngredientChange={handleIngredientChange}
       />
       {loading ? (
-        <div>Loading...</div>
+        <RandomCocktailSkeleton />
       ) : (
         <RandomCocktail randomCocktail={randomCocktail}
         setAnimation={setAnimation}
         animation={animation}
         nextCocktail={nextCocktail} />
       )}
-      <button className="easterEggButton" onClick={handleEasterEgg}>O</button>
     </>
   );
 }

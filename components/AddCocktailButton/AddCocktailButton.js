@@ -1,20 +1,18 @@
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import styles from './AddCocktailButton.module.css';
 
+// Floating "Add cocktail" button that sits just above the bottom nav
 export default function AddCocktailButton() {
-    const { data: session, status } = useSession();
-    const router = useRouter();
-
-    function handleAddCocktailButton() {
-        if (status === "unauthenticated") {
-            router.push("/login");
-        } else {
-            router.push("/addcocktail");
-        }
-    }
+    const { status } = useSession();
+    const href = status === "unauthenticated" ? "/login" : "/addcocktail";
 
     return (
-        <button className={styles.addCocktailButton} onClick={handleAddCocktailButton}>Add New Cocktail</button>
+        <Link href={href} className={styles.addCocktailButton}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" />
+            </svg>
+            <span>Add cocktail</span>
+        </Link>
     );
 }

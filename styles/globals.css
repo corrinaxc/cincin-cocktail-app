@@ -28,12 +28,23 @@
 
 body {
   color: black;
-  background-image: url("../public/resources/cocktailwallpaper.jpeg");
-  background-repeat: repeat;
-  background-size: auto;
+  background-color: #fee3ea; /* the wallpaper's own pink */
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+/* The wallpaper isn't a seamless pattern (drinks at its edges are cut off),
+   so instead of tiling it, show one copy that fills the screen and stays put
+   while the page scrolls. A fixed layer is used instead of
+   background-attachment: fixed, which iOS Safari ignores. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../public/resources/cocktailwallpaper.jpeg") center / cover no-repeat;
+  pointer-events: none;
 }
 
 @layer utilities {
@@ -63,220 +74,21 @@ input {
   border-radius: 5;
 }
 
-.banner {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  justify-content: center;
-  border-radius: 5px;
-  width: 100%;
-  padding: 5px;
-  height:64px;
-  font-size: xx-large;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
 
-.cocktailCardDetail{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-  height: 250px;
-  margin-left: 20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  margin-right: 20px;
-  margin-top: 0px;
-}
 
-.addCocktailForm {
-  display:flex;
-  flex-direction: column;
-  gap: 2.5px;
-  background-color: white;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px; 
-}
 
-.formInput {
-  border-color: #0c0c0c;
-  border-width: 1px;
-  border-radius: 5px;
-  border-style: solid;
-}
 
-.account {
-  margin-top: 50px;
-  position: absolute;
-  position: relative;
-  height: 250px;
-  margin: 20px auto;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
 
-}
 
-.userImage {
-  position: absolute;
-  top: 27px;
-  left: 5px;
-  width: 190px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
 
-.userName {
-  position: absolute;
-  right: 2px;
-  text-align: center;
-  font-size: larger;
-  top: 50px;
-  background-color: white;
-}
-
-.signOutButton {
-  position: absolute;
-  bottom: 45px;
-  right: 50px;
-  border: black;
-  background-color: white;
-  border-radius: 10px;
-  padding: 5px;
-  font-size: large;
-  text-decoration: underline 5px pink;
-}
-
-.cocktailListDetail {
-  margin:20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  display: flex;
-  gap: 15px;
-  position:relative;
-}
-
-.myCocktailsLink {
-  position: absolute;
-  right: 8px;
-  bottom: 84px;
-  font-size: large;
-  background-color: white;
-  padding: 5px;
-  width: 170px;
-  text-align: center;
-  text-decoration: underline 5px pink;
-}
 
 .detailsList {
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
-@media (min-width: 1200px) {
-  .cocktailListDetail {
-    margin:20px;
-    background-color: white;
-    padding: 5px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    display: flex;
-    gap: 15px;
-    width: 30%;
-    margin-left: 35%;
-    position:relative;
-  }
-  .logInDiv {
-    position: relative;
-    height:200px;
-    margin: 20px auto;
-    background-color: white;
-    padding: 5px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    width: 30%;
-   }
-  .account {
-    width: 30%;
-    margin-left: 35%;
-   }
-   .cocktailCard {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin-left: 35%;
-  }
-}
-@media (min-width: 430px) {
-  .favButtonDiv {
-    position: absolute;
-    right: 10px;
-    top: 8px;
-  }
-  .deleteIcon{
-    width: 23px;
-    position: absolute;
-    right: 10px;
-    top: 8px;
-   }
-}
 
-.deleteIcon{
-  width: 23px;
- }
 
-.cocktailListImage {
-  border-radius: 10px;
-  width: 180px;
-}
 
-.cocktailDetailName {
-  font-size: larger;
-  width: 150px;
-  left: 190px;
-}
-
-.cocktailDetailIngredients {
-  font-size: smaller;
-  font-style: italic;
-  margin-top: 25px;
-}
-
-.newSearch {
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-  padding: 5px;
-  margin-top: 15px;
-}
-
-.newSearchInput {
-  border-radius: 10px;
-  text-align: center;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
 
 .detailsPage {
   background-repeat: no-repeat;
@@ -287,53 +99,10 @@ input {
   background-color: #ffe3ea;
 }
 
- .logInDiv {
-  position: relative;
-  height:200px;
-  margin:20px auto;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
- }
-
- .glassHalfFullDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: x-large;
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, -50%);
-  width: 265px;
- }
-
- .signInDiv {
-  position: absolute;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -50%);
-  font-size: large;
-}
-
-.signInButton {
-  text-decoration: underline 5px pink;
-}
 
 
-.header-cocktail {
-  display: flex;
-  justify-content: space-between;
-}
 
-.button-cocktail{
-  display: flex;
-  align-self: flex-end;
-  gap:10px;
-}
+
 
 @keyframes cocktailShaker {
   0% { transform: translateX(0) }
@@ -352,99 +121,10 @@ input {
 }
 
 
-.addCocktailFormButton {
-  text-decoration: underline 5px pink;
-}
 
-.easterEggDiv {
-  position:relative;
-  height:485px;
-  margin:20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-}
 
-.bells {
-  border-radius: 10px;
-  width: 400px;
-  align-self: center;
-}
 
-.easterEggButton {
-  position: absolute;
-  top: 655px;
-  left: 29px;
-  color: red;
-  font-size: 33px;
-}
 
-.coPilot {
-  text-decoration: underline 5px pink;
-}
 
-.buttonDiv{
-  display:flex;
-  justify-content: space-between;
-  margin: 0px;
-}
 
-.deleteDiv {
-  display: flex;
-}
 
-/*cocktail card*/
-
-.cocktailCard {
-  display: flex;
-  flex-direction: column;
-}
-
-.cocktailCardImageDiv{
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-  margin: 20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
-
-.buttonDiv {
-  position:relative;
-  margin-bottom: 10px;
-}
-
-.cocktailCardMethod {
-  bottom: 11px;
-  font-style:italic;
-}
-
-.cocktailCardName {
-  font-size: x-large;
-}
-
-.backButton {
-  top: 6px;
-  left: 9px;
-  font-size: larger;
-}
-
-.cocktailImage {
-  width: 210px;
-  border-radius: 10px;
-}
-
-.cocktailCardIngredients {
-  top: 280px;
-}

@@ -6,8 +6,10 @@ import {SessionProvider} from "next-auth/react";
 import {useSession} from 'next-auth/react'
 import { Head } from "next/head";
 import Banner from "@/components/Banner/Banner";
+import CherryEasterEgg from "@/components/CherryEasterEgg/CherryEasterEgg";
+import PendingFavourite from "@/components/PendingFavourite/PendingFavourite";
 
-export default function App({ Component, pageProps, session }) {
+export default function App({ Component, pageProps }) {
   const [input, setInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -40,7 +42,7 @@ export default function App({ Component, pageProps, session }) {
  
   return (
     <>
-    <SessionProvider session={session}>
+    <SessionProvider session={pageProps.session}>
     {/* <div className="pageWrapper"> */}
     <Banner />
     <Component
@@ -53,6 +55,8 @@ export default function App({ Component, pageProps, session }) {
       searchQueryIngredient={searchQueryIngredient}
     />
     <Nav />
+    <CherryEasterEgg />
+    <PendingFavourite />
     </SessionProvider>
     </>
   );

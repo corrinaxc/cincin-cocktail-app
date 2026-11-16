@@ -1,0 +1,131 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 520px;
+  margin: 20px auto 100px;
+  padding: 14px 16px 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 0 3px 0 black;
+}
+
+@media (max-width: 559px) {
+  .card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: x-large;
+  line-height: 1.2;
+}
+
+.action {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+/* FavouriteButton is absolutely positioned on list cards; keep it in the header here */
+.action :global(.favButtonDiv) {
+  position: static;
+}
+
+.backButton {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 black;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 100ms ease, box-shadow 100ms ease;
+}
+
+.backButton svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.backButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 black;
+}
+
+.backButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+.sectionTitle {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: underline 3px rgb(var(--primary));
+  text-underline-offset: 4px;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ingredients li {
+  padding: 4px 10px;
+  font-size: 14px;
+  background-color: rgba(var(--primary), 0.2);
+  border: 1.5px solid black;
+  border-radius: 999px;
+}
+
+.method {
+  margin: 0;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Hover effects only on devices that can hover, so taps on phones don't leave them stuck on */
+@media (hover: hover) {
+  .backButton:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
+}
