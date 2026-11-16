@@ -46,7 +46,7 @@ export default function IndividualCocktailPage({
     }, [selectedCocktail]);
     
 
-    if (!idDrink) {
+    if (!idDrink || isLoading) {
         return <div>Loading...</div>;
     }
 
