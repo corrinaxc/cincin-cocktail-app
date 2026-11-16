@@ -102,18 +102,6 @@ input {
     margin-left: 35%;
     position:relative;
   }
-  .logInDiv {
-    position: relative;
-    height:200px;
-    margin: 20px auto;
-    background-color: white;
-    padding: 5px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    width: 30%;
-   }
 }
 @media (min-width: 430px) {
   .favButtonDiv {
@@ -149,41 +137,9 @@ input {
   background-color: #ffe3ea;
 }
 
- .logInDiv {
-  position: relative;
-  height:200px;
-  margin:20px auto;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
- }
 
- .glassHalfFullDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: x-large;
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%, -50%);
-  width: 265px;
- }
 
- .signInDiv {
-  position: absolute;
-  left: 50%;
-  top: 70%;
-  transform: translate(-50%, -50%);
-  font-size: large;
-}
 
-.signInButton {
-  text-decoration: underline 5px pink;
-}
 
 
 @keyframes cocktailShaker {
