@@ -26,7 +26,10 @@ export default function DetailsPage({
     ingredientList?.drinks?.map((drink) => drink.strIngredient1) ?? [];
   const ingredientListReady = Boolean(ingredientList || ingredientListError);
 
-  const searchURL = isIngredientSearch
+  // router.query is empty until the router is ready; don't fire an empty search
+  const searchURL = !router.isReady
+    ? null
+    : isIngredientSearch
     ? ingredientListReady
       ? `https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${formatIngredientsQuery(searchQuery, knownIngredients)}`
       : null
