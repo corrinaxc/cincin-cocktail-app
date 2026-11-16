@@ -10,14 +10,19 @@ export default async function handler(request, response) {
 
     if (request.method === "POST") {
         const { idDrink, strDrink, strDrinkThumb } = request.body;
+        if (!idDrink || !strDrink) {
+            return response.status(400).json({ error: "Missing drink details." });
+        }
         try {
-            const existingFavourite = await Favourite.findOne({ idDrink, userId });
-            if (existingFavourite) {
-                return response.status(409).json({ message: 'This drink is already in your favourites!' });
-            }
-            // The owner always comes from the session, never from the request body
-            const newFavourite = await Favourite.create({ idDrink, strDrink, strDrinkThumb, userId });
-            response.status(201).json(newFavourite);
+            // One database round trip: create the favourite, or return the existing
+            // one if this drink is already saved (so double-clicks can't make duplicates).
+            // The owner always comes from the session, never from the request body.
+            const favourite = await Favourite.findOneAndUpdate(
+                { idDrink, userId },
+                { $setOnInsert: { idDrink, strDrink, strDrinkThumb, userId } },
+                { upsert: true, new: true }
+            );
+            response.status(200).json(favourite);
         } catch (error) {
             console.error(error);
             response.status(500).json({ error: "Could not save this favourite." });
