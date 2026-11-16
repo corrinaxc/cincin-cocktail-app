@@ -30,7 +30,7 @@ export default function DetailsList({
 
     const { data: session, status } = useSession();
     const [favourites, setFavourites] = useState([]);
-    const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
+    const { data, error, mutate } = useSWR(status === 'authenticated' ? "/api/favourites" : null, fetcher);
     const [cocktailExtraInfo, setCocktailExtraInfo] = useState([]);
 
     useEffect(() => {

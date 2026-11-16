@@ -5,12 +5,16 @@ import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
 
-const fetcher = async (url) => await fetch(url).then((res) => res.json());
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Error fetching data');
+  return res.json();
+};
 
 export default function FavouriteList({ handleInputChange }) {
   const { data: session, status } = useSession();
   const [favourites, setFavourites] = useState([]);
-  const { data, error, mutate } = useSWR(status === 'authenticated' ? `/api/favourites?userId=${session.user.id}` : null, fetcher);
+  const { data, error, mutate } = useSWR(status === 'authenticated' ? "/api/favourites" : null, fetcher);
   const [cocktailExtraInfo, setCocktailExtraInfo] = useState([]);
 
   useEffect(() => {
@@ -34,7 +38,6 @@ export default function FavouriteList({ handleInputChange }) {
     fetchCocktailExtraInfo();
   }, [favourites]);    
 
-  console.log(cocktailExtraInfo)
 
   if (status === 'loading') return <div>Loading...</div>;
   if (error) return <div>Error fetching data</div>;

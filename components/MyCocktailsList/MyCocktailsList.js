@@ -2,7 +2,11 @@ import useSWR from 'swr';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import Link from 'next/link';
 
-const fetcher = async (url) => await fetch(url).then((res) => res.json());
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'Error loading data');
+  return res.json();
+};
 
 export default function MyCocktails() {
   const { data: myCocktails, error, mutate } = useSWR('/api/mycocktails', fetcher);
@@ -23,7 +27,7 @@ export default function MyCocktails() {
     }
   };
 
-  if (error) return <div>Error loading data</div>;
+  if (error) return <div>{error.message}</div>;
   if (!myCocktails) return <div>Loading...</div>;
 
   return (
