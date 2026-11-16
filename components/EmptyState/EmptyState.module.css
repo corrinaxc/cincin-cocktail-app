@@ -1,0 +1,171 @@
+/* Cocktail-themed empty state. Same card look as the recipe cards. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 480px;
+  margin: 20px auto 100px;
+  padding: 26px 22px 28px;
+  text-align: center;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 0 3px 0 black;
+}
+
+@media (max-width: 519px) {
+  .card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.art {
+  width: 180px;
+  height: auto;
+  margin-bottom: 4px;
+  overflow: visible;
+}
+
+.table {
+  fill: none;
+  stroke: black;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.glass path {
+  fill: none;
+  stroke: black;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.glass path:first-child {
+  fill: white;
+}
+
+.puddle,
+.drop {
+  fill: rgb(var(--primary));
+  stroke: black;
+  stroke-width: 2;
+}
+
+.drop1 { animation: drip 2.4s ease-in infinite; }
+.drop2 { animation: drip 2.4s ease-in 0.6s infinite; }
+
+@keyframes drip {
+  0% { transform: translate(0, -6px); opacity: 0; }
+  20% { opacity: 1; }
+  70% { transform: translate(-4px, 6px); opacity: 1; }
+  100% { transform: translate(-5px, 8px); opacity: 0; }
+}
+
+.olive circle:first-child {
+  fill: #7a9a3a;
+  stroke: black;
+  stroke-width: 2.5;
+}
+
+.pimento {
+  fill: #d93a4a;
+}
+
+.olive {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wobble 3s ease-in-out infinite;
+}
+
+@keyframes wobble {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  50% { transform: translateX(4px) rotate(40deg); }
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: underline 4px rgb(var(--primary));
+  text-underline-offset: 6px;
+}
+
+.message {
+  margin: 6px 0 0;
+  max-width: 340px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  margin: 0;
+  max-width: 340px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #555;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Suggestion pills and buttons inside .actions */
+.pill {
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+  background-color: rgba(var(--primary), 0.2);
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 black;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 100ms ease, box-shadow 100ms ease;
+}
+
+.pill:hover {
+  background-color: rgba(var(--primary), 0.45);
+}
+
+.pill:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 black;
+}
+
+.button {
+  composes: pill;
+  padding: 10px 22px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: rgb(var(--primary));
+  box-shadow: 0 3px 0 black;
+}
+
+.button:hover {
+  background-color: rgb(var(--primary));
+  filter: brightness(1.05);
+}
+
+.pill:focus-visible,
+.button:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drop1, .drop2, .olive { animation: none; }
+}

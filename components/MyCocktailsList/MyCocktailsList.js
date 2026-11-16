@@ -1,6 +1,7 @@
 import useSWR from 'swr';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import CocktailListCard from '../CocktailListCard/CocktailListCard';
+import EmptyState from '../EmptyState/EmptyState';
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -29,6 +30,15 @@ export default function MyCocktails() {
 
   if (error) return <div>{error.message}</div>;
   if (!myCocktails) return <div>Loading...</div>;
+  if (myCocktails.length === 0) {
+    return (
+      <EmptyState
+        title="No house specials yet"
+        message="Your cocktail menu is looking a little dry."
+        hint="Hit “Add cocktail” to mix up your first signature drink."
+      />
+    );
+  }
 
   return (
     <div className='detailsList'>
