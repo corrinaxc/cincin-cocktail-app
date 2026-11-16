@@ -61,10 +61,53 @@
     }
   }
 
-  @media (min-width: 430px) {
-    .rejectionButton{
-      position: absolute;
-      right: 33px;
-      top: 8px;
-    }
+  /* Keep 👎 and the favourite heart side by side in the header */
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .actions :global(.favButtonDiv) {
+    position: static;
+  }
+
+  /* Same round outlined style as FavouriteButton and DeleteButton */
+  .rejectionButton {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 999px;
+    box-shadow: 0 2px 0 black;
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 100ms ease, box-shadow 100ms ease;
+  }
+
+  .rejectionButton svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .rejectionButton:hover {
+    background-color: rgba(var(--primary), 0.3);
+  }
+
+  .rejectionButton:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 black;
+  }
+
+  .rejectionButton:focus-visible {
+    outline: 2px solid black;
+    outline-offset: 2px;
   }

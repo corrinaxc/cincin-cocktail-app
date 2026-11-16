@@ -42,8 +42,20 @@ export default function RandomCocktail( { randomCocktail, setAnimation, animatio
         <div className={styles.randomCocktail} key={randomCocktail[0].idDrink}>
           <div className='header-cocktail'>
         <h2 className={styles.featuredCocktailTitle}>Featured Cocktail</h2>
-        <div className='button-cocktail'>
-        <button className={styles.rejectionButton} onClick={handleRejection}>👎</button>
+        <div className={`button-cocktail ${styles.actions}`}>
+        <button
+          type="button"
+          className={styles.rejectionButton}
+          onClick={handleRejection}
+          aria-label="Show me a different cocktail"
+          title="Not for me – show another"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17 14V3" />
+            <path d="M9 18.5 10 14H5.2a2 2 0 0 1-2-2.3l1.2-7A2 2 0 0 1 6.4 3H17v11l-4.3 6.4a1.6 1.6 0 0 1-2.9-1Z" />
+            <path d="M17 3h2.5a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H17" />
+          </svg>
+        </button>
          <FavouriteButton 
          idDrink={randomCocktail[0].idDrink}
          name={randomCocktail[0].strDrink}
