@@ -1,5 +1,5 @@
 import FavouriteList from "@/components/FavouriteList/FavouriteList";
-import { useSession, getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 

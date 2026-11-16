@@ -1,0 +1,46 @@
+/* Small confirmation that slides in just above the bottom nav */
+.toast {
+  position: fixed;
+  z-index: 60;
+  bottom: calc(92px + env(safe-area-inset-bottom));
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  padding: 10px 18px 10px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 black;
+  transform: translateX(-50%);
+  animation: slideIn 300ms cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: white;
+  background-color: rgb(var(--primary));
+  border: 2px solid black;
+  border-radius: 999px;
+}
+
+.error .icon {
+  background-color: #d93a4a;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+}

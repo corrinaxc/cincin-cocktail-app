@@ -1,5 +1,7 @@
 import React from "react";
-import { useSession, signOut, getSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "./api/auth/[...nextauth]";
 import Link from 'next/link';
 import styles from "@/styles/Account.module.css";
 
@@ -84,7 +86,8 @@ const Account = () => {
 export default Account;
 
 export const getServerSideProps = async (context) => {
-    const session = await getSession(context);
+    // Read the session cookie directly on the server (no extra HTTP request)
+    const session = await getServerSession(context.req, context.res, authOptions);
     if (!session) {
         return {
             redirect: {
