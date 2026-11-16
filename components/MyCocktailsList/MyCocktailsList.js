@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 import DeleteButton from '../DeleteButton/DeleteButton';
-import Link from 'next/link';
+import CocktailListCard from '../CocktailListCard/CocktailListCard';
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -31,29 +31,22 @@ export default function MyCocktails() {
   if (!myCocktails) return <div>Loading...</div>;
 
   return (
-    <div>
-      <div>
+    <div className='detailsList'>
       {myCocktails.map((myCocktail) => (
-  <div className="cocktailListDetail" key={myCocktail._id}>
-        <Link href={`/mycocktails/${myCocktail._id}`}>
-        <img className="cocktailListImage" src={myCocktail.strDrinkThumb} alt={myCocktail.strDrink} />
-      </Link>
-      <div className='myCocktailInfo'>
-        <div className='deleteDiv'>
-      <h2 className='cocktailDetailName'>{myCocktail.strDrink}</h2>
-      <DeleteButton label={myCocktail.strDrink} onDelete={() => handleDelete(myCocktail._id)} />
-      </div>
-      <ul className='cocktailDetailIngredients'>
-      {myCocktail.ingredients && myCocktail.ingredients.split(',').map((ingredient, index) => (
-        <li key={index}>
-          <span className="underline">{ingredient.trim()}</span>
-        </li>
-        ))}
-      </ul>
-      </div>
-  </div>
-))}
+        <CocktailListCard
+          key={myCocktail._id}
+          href={`/mycocktails/${myCocktail._id}`}
+          name={myCocktail.strDrink}
+          image={myCocktail.strDrinkThumb}
+          ingredients={(myCocktail.ingredients ?? '')
+            .split(',')
+            .map((ingredient) => ingredient.trim())
+            .filter(Boolean)}
+          actions={
+            <DeleteButton label={myCocktail.strDrink} onDelete={() => handleDelete(myCocktail._id)} />
+          }
+        />
+      ))}
     </div>
-    </div>      
   );
 }

@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import useSWR from 'swr';
 import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import { useSession } from 'next-auth/react';
 import styles from './RandomCocktail.module.css';
-import { sizedThumb } from '@/lib/cocktailImage';
+import card from '../CocktailListCard/CocktailListCard.module.css';
+import CocktailListCard, { drinkIngredients, drinkMeta } from '../CocktailListCard/CocktailListCard';
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
 
@@ -20,13 +20,13 @@ function ThumbsDownIcon() {
 // Placeholder with the same shape as the real card, so the page doesn't jump while loading
 export function RandomCocktailSkeleton() {
     return (
-        <section className={styles.card} aria-busy="true" aria-label="Loading featured cocktail">
-            <div className={styles.header}>
-                <h2 className={styles.label}>Featured cocktail</h2>
+        <section className={card.card} aria-busy="true" aria-label="Loading featured cocktail">
+            <div className={card.header}>
+                <h2 className={card.label}>Featured cocktail</h2>
             </div>
-            <div className={styles.body}>
-                <div className={`${styles.image} ${styles.skeleton}`} />
-                <div className={styles.details}>
+            <div className={card.body}>
+                <div className={`${card.image} ${styles.skeleton}`} />
+                <div className={card.details}>
                     <div className={`${styles.skeletonLine} ${styles.skeleton}`} />
                     <div className={`${styles.skeletonLine} ${styles.skeletonShort} ${styles.skeleton}`} />
                     <p className={styles.loadingText}>Shaking one up…</p>
@@ -44,15 +44,6 @@ export default function RandomCocktail({ randomCocktail, setAnimation, animation
     );
 
     const cocktail = randomCocktail[0];
-    const recipeHref = `/cocktails/${cocktail.idDrink}`;
-
-    const ingredients = [];
-    for (let i = 1; i <= 15; i++) {
-        const ingredient = cocktail[`strIngredient${i}`]?.trim();
-        if (ingredient) ingredients.push(ingredient);
-    }
-
-    const meta = [cocktail.strCategory, cocktail.strGlass].filter(Boolean).join(' · ');
 
     function handleRejection() {
         setAnimation(true);
@@ -63,10 +54,17 @@ export default function RandomCocktail({ randomCocktail, setAnimation, animation
     }
 
     return (
-        <section className={`${styles.card} ${animation ? 'shake' : ''}`} key={cocktail.idDrink}>
-            <div className={styles.header}>
-                <h2 className={styles.label}>Featured cocktail</h2>
-                <div className={styles.actions}>
+        <CocktailListCard
+            key={cocktail.idDrink}
+            className={animation ? 'shake' : ''}
+            label="Featured cocktail"
+            href={`/cocktails/${cocktail.idDrink}`}
+            name={cocktail.strDrink}
+            image={cocktail.strDrinkThumb}
+            meta={drinkMeta(cocktail)}
+            ingredients={drinkIngredients(cocktail)}
+            actions={
+                <>
                     <button
                         type="button"
                         className={styles.rejectionButton}
@@ -83,33 +81,8 @@ export default function RandomCocktail({ randomCocktail, setAnimation, animation
                         mutate={mutate}
                         favourites={favourites ?? []}
                     />
-                </div>
-            </div>
-
-            <div className={styles.body}>
-                <Link href={recipeHref} className={styles.imageLink}>
-                    <img
-                        className={styles.image}
-                        src={sizedThumb(cocktail.strDrinkThumb)}
-                        alt={cocktail.strDrink}
-                    />
-                </Link>
-
-                <div className={styles.details}>
-                    <h3 className={styles.name}>
-                        <Link href={recipeHref}>{cocktail.strDrink}</Link>
-                    </h3>
-                    {meta && <p className={styles.meta}>{meta}</p>}
-                    <ul className={styles.ingredients}>
-                        {ingredients.map((ingredient, index) => (
-                            <li key={index}>{ingredient}</li>
-                        ))}
-                    </ul>
-                    <Link href={recipeHref} className={styles.recipeLink}>
-                        View recipe <span aria-hidden="true">→</span>
-                    </Link>
-                </div>
-            </div>
-        </section>
+                </>
+            }
+        />
     );
 }

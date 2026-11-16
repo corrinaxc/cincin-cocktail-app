@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import Searchbar from '../Searchbar/Searchbar';
-import Link from 'next/link';
+import CocktailListCard, { drinkIngredients, drinkMeta } from '../CocktailListCard/CocktailListCard';
 import FavouriteButton from '../FavouriteButton/FavouriteButton';
 import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
@@ -44,33 +43,30 @@ export default function FavouriteList({ handleInputChange }) {
   if (!favourites) return <div>No favourites found</div>;
 
   return (
-      <div>
-        {favourites?.map((favourite, index) => (
-          <div className="cocktailListDetail" key={favourite.idDrink}>
-              <Link href={`/cocktails/${favourite.idDrink}`}>
-              <img className="cocktailListImage" src={favourite.strDrinkThumb} alt={favourite.strDrink} />
-            </Link>
-            <div>
-            <h2 className='cocktailDetailName'>{favourite.strDrink}</h2>
-            <ul className='cocktailDetailIngredients'>
-            {cocktailExtraInfo[index]?.drinks[0] && (
-              Object.keys(cocktailExtraInfo[index].drinks[0]).map(key => {
-                if (key.startsWith('strIngredient') && cocktailExtraInfo[index].drinks[0][key]) {
-                  return <li key={key}>{cocktailExtraInfo[index].drinks[0][key]}</li>;
-                }
-                return null;
-              })
-            )}
-         </ul>
-         </div>
-            <FavouriteButton name={favourite.name}
-            id={favourite._id}
-            idDrink={favourite.idDrink}
-            image={favourite.strDrinkThumb}
-            mutate={mutate}
-            favourites={favourites}/>
-          </div>
-        ))}
+      <div className='detailsList'>
+        {favourites?.map((favourite, index) => {
+          const drink = cocktailExtraInfo[index]?.drinks?.[0];
+          return (
+            <CocktailListCard
+              key={favourite.idDrink}
+              href={`/cocktails/${favourite.idDrink}`}
+              name={favourite.strDrink}
+              image={favourite.strDrinkThumb}
+              meta={drinkMeta(drink)}
+              ingredients={drinkIngredients(drink)}
+              imageLoading={index < 4 ? 'eager' : 'lazy'}
+              actions={
+                <FavouriteButton
+                  name={favourite.strDrink}
+                  idDrink={favourite.idDrink}
+                  image={favourite.strDrinkThumb}
+                  mutate={mutate}
+                  favourites={favourites}
+                />
+              }
+            />
+          );
+        })}
       </div>
   );
 }
