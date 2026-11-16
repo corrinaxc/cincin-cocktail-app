@@ -69,64 +69,15 @@ input {
 
 
 
-.cocktailListDetail {
-  margin:20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  display: flex;
-  gap: 15px;
-  position:relative;
-}
 
 
 .detailsList {
-  margin-bottom: 70px;
+  margin-bottom: 30px;
 }
 
-@media (min-width: 1200px) {
-  .cocktailListDetail {
-    margin:20px;
-    background-color: white;
-    padding: 5px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    display: flex;
-    gap: 15px;
-    width: 30%;
-    margin-left: 35%;
-    position:relative;
-  }
-}
-@media (min-width: 430px) {
-  .favButtonDiv {
-    position: absolute;
-    right: 10px;
-    top: 8px;
-  }
-}
 
-.cocktailListImage {
-  border-radius: 10px;
-  width: 180px;
-}
 
-.cocktailDetailName {
-  font-size: larger;
-  width: 150px;
-  left: 190px;
-}
 
-.cocktailDetailIngredients {
-  font-size: smaller;
-  font-style: italic;
-  margin-top: 25px;
-}
 
 .detailsPage {
   background-repeat: no-repeat;
@@ -194,15 +145,5 @@ input {
   text-decoration: underline 5px pink;
 }
 
-.myCocktailInfo {
-  flex: 1;
-  min-width: 0;
-}
 
-.deleteDiv {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding-right: 4px;
-}
 
