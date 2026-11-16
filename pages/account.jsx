@@ -32,6 +32,8 @@ function PlusIcon() {
 const Account = () => {
     const { data: session, status } = useSession();
 
+    if (status === 'loading') return null;
+
     if (status !== 'authenticated') {
         return (
             <section className={styles.card}>
