@@ -4,23 +4,9 @@ import useSWR from 'swr';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import CocktailListCard, { drinkIngredients, drinkMeta } from '../CocktailListCard/CocktailListCard';
+import { lookupCocktail } from '@/lib/lookupCocktail';
 
 const fetcher = async (url) => await fetch(url).then((res) => res.json());
-
-// Remember drink details we've already fetched so repeat searches are instant
-const lookupCache = new Map();
-function lookupCocktail(idDrink) {
-  if (!lookupCache.has(idDrink)) {
-    const request = fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`)
-      .then((res) => res.json())
-      .catch((error) => {
-        lookupCache.delete(idDrink); // let it retry next time
-        throw error;
-      });
-    lookupCache.set(idDrink, request);
-  }
-  return lookupCache.get(idDrink);
-}
 
 export default function DetailsList({ 
   cocktails,
