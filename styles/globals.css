@@ -28,12 +28,23 @@
 
 body {
   color: black;
-  background-image: url("../public/resources/cocktailwallpaper.jpeg");
-  background-repeat: repeat;
-  background-size: auto;
+  background-color: #fee3ea; /* the wallpaper's own pink */
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+/* The wallpaper isn't a seamless pattern (drinks at its edges are cut off),
+   so instead of tiling it, show one copy that fills the screen and stays put
+   while the page scrolls. A fixed layer is used instead of
+   background-attachment: fixed, which iOS Safari ignores. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("../public/resources/cocktailwallpaper.jpeg") center / cover no-repeat;
+  pointer-events: none;
 }
 
 @layer utilities {
@@ -111,39 +122,9 @@ input {
 
 
 
-.easterEggDiv {
-  position:relative;
-  height:485px;
-  margin:20px;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-}
 
-.bells {
-  border-radius: 10px;
-  width: 400px;
-  align-self: center;
-}
 
-.easterEggButton {
-  position: absolute;
-  top: 655px;
-  left: 29px;
-  color: red;
-  font-size: 33px;
-}
 
-.coPilot {
-  text-decoration: underline 5px pink;
-}
 
 
 
