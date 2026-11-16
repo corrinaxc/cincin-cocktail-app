@@ -1,14 +1,16 @@
-import cocktailImage from "../../public/resources/cocktail-svgrepo-com.svg"
-import Link from 'next/link'
+import Link from 'next/link';
+import styles from './Banner.module.css';
 
+// Two glasses tilted towards each other – "cin cin!" is a toast – and they
+// clink when you hover over the logo.
 export default function Banner() {
     return (
-        <Link href={'/'}>
-        <div className="banner"> 
-            <img className="w-10 text-center " src="/resources/cocktail.png" alt="cocktail-icon"/>
-            <h1>   Cin-Cin   </h1>
-            <img className="w-10" src="/resources/cocktail.png" alt="cocktail-icon"/>
-        </div>
-        </Link>
-    )
+        <header className={styles.header}>
+            <Link href="/" className={styles.banner} aria-label="Cin-Cin home">
+                <img className={`${styles.glass} ${styles.left}`} src="/resources/cocktail.png" alt="" />
+                <span className={styles.title}>Cin-Cin</span>
+                <img className={`${styles.glass} ${styles.right}`} src="/resources/cocktail.png" alt="" />
+            </Link>
+        </header>
+    );
 }

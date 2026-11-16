@@ -1,0 +1,150 @@
+/* Account page. Matches the cocktail detail card: white card, black outline,
+   solid shadow, pink accents and round outlined buttons. */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;
+  margin: 20px auto 100px;
+  padding: 24px 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 0 3px 0 black;
+}
+
+@media (max-width: 519px) {
+  .card {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 12px;
+  object-fit: cover;
+  font-size: 40px;
+  font-weight: 700;
+  color: black;
+  background-color: rgb(var(--primary));
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 black;
+}
+
+.welcome {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.name {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: underline 4px rgb(var(--primary));
+  text-underline-offset: 6px;
+}
+
+.email {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-style: italic;
+  color: #555;
+  overflow-wrap: anywhere;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 black;
+  transition: background-color 150ms ease, transform 100ms ease, box-shadow 100ms ease;
+}
+
+.link::after {
+  content: "→";
+  margin-left: auto;
+  font-size: 18px;
+}
+
+.link svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.link:hover {
+  background-color: rgba(var(--primary), 0.3);
+}
+
+.link:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 black;
+}
+
+.link:focus-visible,
+.signOut:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 3px;
+}
+
+.primary,
+.primary:hover {
+  background-color: rgb(var(--primary));
+}
+
+.signOut {
+  align-self: center;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  background: none;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: underline 2px rgb(var(--primary));
+  text-underline-offset: 4px;
+}
+
+.signOut:hover {
+  color: black;
+  background-color: rgba(var(--primary), 0.2);
+}

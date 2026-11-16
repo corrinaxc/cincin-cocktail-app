@@ -63,21 +63,6 @@ input {
   border-radius: 5;
 }
 
-.banner {
-  display: flex;
-  flex-direction: row;
-  background-color: white;
-  justify-content: center;
-  border-radius: 5px;
-  width: 100%;
-  padding: 5px;
-  height:64px;
-  font-size: xx-large;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
-
 .addCocktailForm {
   display:flex;
   flex-direction: column;
@@ -96,52 +81,9 @@ input {
   border-style: solid;
 }
 
-.account {
-  margin-top: 50px;
-  position: absolute;
-  position: relative;
-  height: 250px;
-  margin: 20px auto;
-  background-color: white;
-  padding: 5px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
 
-}
 
-.userImage {
-  position: absolute;
-  top: 27px;
-  left: 5px;
-  width: 190px;
-  border-radius: 10px;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-}
 
-.userName {
-  position: absolute;
-  right: 2px;
-  text-align: center;
-  font-size: larger;
-  top: 50px;
-  background-color: white;
-}
-
-.signOutButton {
-  position: absolute;
-  bottom: 45px;
-  right: 50px;
-  border: black;
-  background-color: white;
-  border-radius: 10px;
-  padding: 5px;
-  font-size: large;
-  text-decoration: underline 5px pink;
-}
 
 .cocktailListDetail {
   margin:20px;
@@ -156,17 +98,6 @@ input {
   position:relative;
 }
 
-.myCocktailsLink {
-  position: absolute;
-  right: 8px;
-  bottom: 84px;
-  font-size: large;
-  background-color: white;
-  padding: 5px;
-  width: 170px;
-  text-align: center;
-  text-decoration: underline 5px pink;
-}
 
 .detailsList {
   margin-bottom: 70px;
@@ -199,10 +130,6 @@ input {
     border-width: 2px;
     width: 30%;
    }
-  .account {
-    width: 30%;
-    margin-left: 35%;
-   }
 }
 @media (min-width: 430px) {
   .favButtonDiv {
@@ -227,22 +154,6 @@ input {
   font-size: smaller;
   font-style: italic;
   margin-top: 25px;
-}
-
-.newSearch {
-  display: flex;
-  justify-content: center;
-  margin: 5px;
-  padding: 5px;
-  margin-top: 15px;
-}
-
-.newSearchInput {
-  border-radius: 10px;
-  text-align: center;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
 }
 
 .detailsPage {
