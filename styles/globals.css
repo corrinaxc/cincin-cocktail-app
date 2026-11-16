@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-
   *,
   *::before,
   *::after {
@@ -18,13 +16,6 @@
     margin: 0;
     margin-bottom:50px;
   }
-
-.josefin-sans {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
 
 
 @media (prefers-color-scheme: dark) {
@@ -66,17 +57,6 @@ img {
   border-radius: 5px;
   width: 200px;
   align-self: center;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  font-size: xx-large;
-  justify-content: space-evenly;
-  display: flex;
-  gap: 100px;
 }
 
 input {
@@ -203,16 +183,6 @@ input {
   width: 170px;
   text-align: center;
   text-decoration: underline 5px pink;
-}
-
-.profileButton {
-  margin-top: 5px;
-  width: 40px;
-}
-
-.homeIcon {
-  margin-top: 5px;
-  width: 40px;
 }
 
 .detailsList {
