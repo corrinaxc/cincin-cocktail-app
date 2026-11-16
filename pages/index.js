@@ -1,6 +1,6 @@
 import HomePageForm from "@/components/HomepageForm/HomepageForm";
 import useSWR from 'swr';
-import RandomCocktail from "@/components/RandomCocktail/RandomCocktail";
+import RandomCocktail, { RandomCocktailSkeleton } from "@/components/RandomCocktail/RandomCocktail";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -35,7 +35,7 @@ export default function Home({ handleInputChange, handleIngredientChange }) {
         handleIngredientChange={handleIngredientChange}
       />
       {loading ? (
-        <div>Loading...</div>
+        <RandomCocktailSkeleton />
       ) : (
         <RandomCocktail randomCocktail={randomCocktail}
         setAnimation={setAnimation}
