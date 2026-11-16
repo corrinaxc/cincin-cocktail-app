@@ -291,17 +291,6 @@ input {
 }
 
 
-.header-cocktail {
-  display: flex;
-  justify-content: space-between;
-}
-
-.button-cocktail{
-  display: flex;
-  align-self: flex-end;
-  gap:10px;
-}
-
 @keyframes cocktailShaker {
   0% { transform: translateX(0) }
   25% { transform: translateY(-9px) }
